@@ -14,16 +14,11 @@ packer.startup(function(use)
     -- I mean this should be required but whatever lol
     use { 'nvim-treesitter/nvim-treesitter', run = "<cmd>TSUpdate<cr>", }
 
-    -- May be replaced in the future
-    -- use('tpope/vim-surround')
-
     -- Close brackets automatically
     use 'windwp/nvim-autopairs'
 
     -- Theme
     use 'navarasu/onedark.nvim'
-
-    use 'folke/which-key.nvim'
 
     -- Telescope for fuzzy finding as well as history listings
     use {

@@ -3,9 +3,9 @@ vim.cmd = function(vimscript)
     vim.api.nvim_exec(vimscript, false)
 end
 
-require('options')
-require('mappings')
-require('colors')
-require('autocmd')
-require('plugins')
-require('config')
+require 'options'
+require 'mappings'
+require 'colors'
+require 'autocmd'
+require 'plugins'
+require 'config'

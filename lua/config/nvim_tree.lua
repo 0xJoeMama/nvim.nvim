@@ -3,20 +3,20 @@ require('nvim-tree').setup {
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
-    sort_by = "name",
+    sort_by = 'name',
     view = {
         width = 30,
-        side = "left",
+        side = 'left',
         preserve_window_proportions = true,
-        signcolumn = "yes",
+        signcolumn = 'yes',
     },
     renderer = {
         indent_markers = {
             enable = true,
             icons = {
-                corner = "└ ",
-                edge = "│ ",
-                none = "  ",
+                corner = '└ ',
+                edge = '│ ',
+                none = '  ',
             },
         },
     },
@@ -24,10 +24,10 @@ require('nvim-tree').setup {
         enable = true,
         show_on_dirs = false,
         icons = {
-            hint = "",
-            info = "",
-            warning = "",
-            error = "",
+            hint = '',
+            info = '',
+            warning = '',
+            error = '',
         },
     },
     filters = {
@@ -51,16 +51,16 @@ require('nvim-tree').setup {
             resize_window = false,
             window_picker = {
                 enable = true,
-                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
                 exclude = {
-                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-                    buftype = { "nofile", "terminal", "help" },
+                    filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+                    buftype = { 'nofile', 'terminal', 'help' },
                 },
             },
         },
     },
     trash = {
-        cmd = "trash",
+        cmd = 'trash',
         require_confirm = true,
     },
 }

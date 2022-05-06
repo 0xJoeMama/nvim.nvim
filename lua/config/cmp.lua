@@ -1,6 +1,6 @@
-local cmp = require('cmp')
-local lspkind = require('lspkind')
-local luasnip = require('luasnip')
+local cmp = require 'cmp'
+local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
 
 cmp.setup {
     snippet = {
@@ -15,13 +15,13 @@ cmp.setup {
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.confirm { select = true, }
+                cmp.confirm { select = true }
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -30,21 +30,21 @@ cmp.setup {
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
     },
     sources = cmp.config.sources {
         -- { name = "nvim_lua", priority = 10 }, We no longer need this since the LSP for lua is configured correctly
         { name = 'nvim_lsp', priority = 9 },
         { name = 'luasnip', priority = 8 },
-        { name = "buffer", keyword_length = 5, priority = 0 },
-        { name = "path", },
+        { name = 'buffer', keyword_length = 5, priority = 0 },
+        { name = 'path' },
     },
     formatting = {
         format = lspkind.cmp_format {
@@ -55,7 +55,7 @@ cmp.setup {
                 -- nvim_lua = '[Lua Engine]', Same as ^^
                 luasnip = '[Snippet]',
                 path = '[SysPath]',
-            }
+            },
         },
     },
     experimental = {

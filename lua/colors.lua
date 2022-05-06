@@ -1,7 +1,7 @@
-local onedark = require('onedark')
+local onedark = require 'onedark'
 
 onedark.setup {
-    style = "cool",
+    style = 'cool',
     transparent = true,
 }
 

@@ -17,7 +17,7 @@ require('telescope').setup {
             layout_strategy = 'center',
             previewer = false,
             -- layout_strategy = require('telescope.pickers.layout_strategies').center(),
-        }
+        },
     },
     extensions = {
         -- Your extension configuration goes here:
@@ -25,5 +25,5 @@ require('telescope').setup {
         --   extension_config_key = value,
         -- }
         -- please take a look at the readme of the extension you want to configure
-    }
+    },
 }

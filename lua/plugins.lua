@@ -1,9 +1,11 @@
-local packer = require('packer')
+local packer = require 'packer'
 
 packer.init {
     display = {
-        open_fn = function() return require('packer.util').float { border = 'rounded', } end,
-        prompt_border = "rounded",
+        open_fn = function()
+            return require('packer.util').float { border = 'rounded' }
+        end,
+        prompt_border = 'rounded',
     },
 }
 
@@ -12,7 +14,7 @@ packer.startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- I mean this should be required but whatever lol
-    use { 'nvim-treesitter/nvim-treesitter', run = "<cmd>TSUpdate<cr>", }
+    use { 'nvim-treesitter/nvim-treesitter', run = '<cmd>TSUpdate<cr>' }
 
     -- Close brackets automatically
     use 'windwp/nvim-autopairs'
@@ -23,15 +25,15 @@ packer.startup(function(use)
     -- Telescope for fuzzy finding as well as history listings
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/plenary.nvim', },
+        requires = { 'nvim-lua/plenary.nvim' },
     }
 
     -- File Explorer
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
-            { 'kyazdani42/nvim-web-devicons', },
-        }
+            { 'kyazdani42/nvim-web-devicons' },
+        },
     }
 
     -- LSP Config
@@ -53,19 +55,19 @@ packer.startup(function(use)
     use {
         'onsails/lspkind-nvim',
         requires = {
-            'hrsh7th/nvim-cmp'
+            'hrsh7th/nvim-cmp',
         },
     }
 
     -- Status line
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', }
+        requires = { 'kyazdani42/nvim-web-devicons' },
     }
 
     -- Opening screen
     use 'goolord/alpha-nvim'
 
-    use "ur4ltz/surround.nvim"
+    use 'ur4ltz/surround.nvim'
     -- packer.sync()
 end)

@@ -11,7 +11,7 @@ vim.opt.background = 'dark'
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
-vim.opt.undodir = os.getenv('HOME') .. '/.cache/nvim/undoes'
+vim.opt.undodir = os.getenv 'HOME' .. '/.cache/nvim/undoes'
 vim.opt.undofile = true
 vim.opt.hidden = true
 vim.opt.signcolumn = 'yes'
@@ -31,10 +31,10 @@ vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
 
 -- Appending/removing to/from existing lists
-vim.opt.clipboard:append('unnamedplus')
-vim.opt.shortmess:append('c')
-vim.opt.whichwrap:append('<,>,[,],h,l')
-vim.opt.iskeyword:append('-')
-vim.opt.formatoptions:remove('cro') -- seems to not work for some weird reason
+vim.opt.clipboard:append 'unnamedplus'
+vim.opt.shortmess:append 'c'
+vim.opt.whichwrap:append '<,>,[,],h,l'
+vim.opt.iskeyword:append '-'
+vim.opt.formatoptions:remove 'cro' -- seems to not work for some weird reason
 
 vim.opt.laststatus = 3

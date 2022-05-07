@@ -21,6 +21,7 @@ packer.startup(function(use)
 
     -- Theme
     use 'navarasu/onedark.nvim'
+    use 'olimorris/onedarkpro.nvim'
 
     -- Telescope for fuzzy finding as well as history listings
     use {
@@ -59,9 +60,14 @@ packer.startup(function(use)
         },
     }
 
-    -- Status line
+    -- Status line and bufferline(tabs at the top)
     use {
         'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+    }
+
+    use {
+        'akinsho/bufferline.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
     }
 
@@ -69,5 +75,8 @@ packer.startup(function(use)
     use 'goolord/alpha-nvim'
 
     use 'ur4ltz/surround.nvim'
+
+    -- Git Integration
+    use 'lewis6991/gitsigns.nvim'
     -- packer.sync()
 end)

@@ -35,7 +35,7 @@ local M = {
     keep_sel_right = map('v', '>', '>gv', make_opt 'Indent selected text'),
 
     quick_save = remap('n', 'W', '<cmd>w<cr>', make_opt 'Save the current buffer'),
-    quick_close = map('n', 'Q', '<cmd>wq<cr>', make_opt 'Close the current buffer'),
+    quick_close = map('n', 'Q', '<cmd>bd<cr>', make_opt 'Close the current buffer'),
 
     telescope_live_grep = map(
         'n',

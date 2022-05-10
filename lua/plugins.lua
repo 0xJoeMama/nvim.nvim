@@ -20,7 +20,6 @@ packer.startup(function(use)
     use 'windwp/nvim-autopairs'
 
     -- Theme
-    use 'navarasu/onedark.nvim'
     use 'olimorris/onedarkpro.nvim'
 
     -- Telescope for fuzzy finding as well as history listings
@@ -52,7 +51,7 @@ packer.startup(function(use)
         },
     }
 
-    -- Formatter
+    -- Text formatter
     use {
         'onsails/lspkind-nvim',
         requires = {

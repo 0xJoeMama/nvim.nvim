@@ -39,4 +39,4 @@ vim.opt.formatoptions:remove 'cro' -- seems to not work for some weird reason
 
 vim.opt.laststatus = 3
 
-vim.opt.guifont = 'Jetbrains Mono:16'
+vim.opt.guifont = 'JetBrainsMono Nerd Font:h11'

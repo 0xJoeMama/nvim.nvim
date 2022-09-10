@@ -41,8 +41,9 @@ cmp.setup {
     },
     sources = cmp.config.sources {
         -- { name = "nvim_lua", priority = 10 }, We no longer need this since the LSP for lua is configured correctly
+        { name = 'copilot' },
         { name = 'nvim_lsp', priority = 9 },
-        { name = 'luasnip', priority = 8 },
+        { name = 'luasnip', priority = 7 },
         { name = 'buffer', keyword_length = 5, priority = 0 },
         { name = 'path' },
     },
@@ -52,14 +53,18 @@ cmp.setup {
             menu = {
                 buffer = '[Buffer]',
                 nvim_lsp = '[LSP]',
-                -- nvim_lua = '[Lua Engine]', Same as ^^
                 luasnip = '[Snippet]',
-                path = '[SysPath]',
+                path = '[Path]',
+                copilot = '[Copilot]',
             },
         },
     },
     experimental = {
         ghost_text = true,
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
 }
 

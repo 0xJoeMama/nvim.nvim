@@ -11,3 +11,10 @@ require 'config.gitsigns'
 
 local capabilities = require 'config.cmp'
 require('config.lsp').setup(capabilities)
+
+require('copilot').setup {
+    cmp = {
+        enabled = true,
+        method = 'getCompletionsCycling',
+    },
+}

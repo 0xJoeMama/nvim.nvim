@@ -14,7 +14,7 @@ M.setup = function(caps)
     local on_attach = function()
         map('n', 'gd', vim.lsp.buf.definition, mkopts 'Goto definition of the current symbol')
         map('n', 'gD', vim.lsp.buf.declaration, mkopts 'Goto the declaration of the current symbol')
-        map('n', '<leader>nn', vim.lsp.buf.rename, mkopts 'Rename the current symbol')
+        map('n', '<leader>r', vim.lsp.buf.rename, mkopts 'Rename the current symbol')
         map('n', '<leader>f', vim.lsp.buf.formatting, mkopts 'Format the current buffer')
     end
 
@@ -23,6 +23,7 @@ M.setup = function(caps)
         'clangd',
         'jsonls',
         'html',
+        'pyright',
     }
 
     for _, server in ipairs(configured_servers) do

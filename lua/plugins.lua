@@ -20,7 +20,8 @@ packer.startup(function(use)
     use 'windwp/nvim-autopairs'
 
     -- Theme
-    use 'olimorris/onedarkpro.nvim'
+    use 'navarasu/onedark.nvim'
+    use 'rmehri01/onenord.nvim'
 
     -- Telescope for fuzzy finding as well as history listings
     use {
@@ -73,9 +74,13 @@ packer.startup(function(use)
     -- Opening screen
     use 'goolord/alpha-nvim'
 
+    -- bad plugin not working properly!!!
     use 'ur4ltz/surround.nvim'
 
     -- Git Integration
     use 'lewis6991/gitsigns.nvim'
-    -- packer.sync()
+
+    -- Copilot
+    use 'zbirenbaum/copilot.lua'
+    use { 'zbirenbaum/copilot-cmp', module = 'copilot_cmp' }
 end)

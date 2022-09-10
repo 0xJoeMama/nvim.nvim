@@ -25,7 +25,7 @@ local M = {
 
     nvim_tree_toggle = remap(
         'n',
-        '<leader>\\',
+        '<leader>e',
         require('nvim-tree').toggle,
         make_opt 'Toggle the view of the NvimTree plugin.'
     ),
@@ -34,8 +34,8 @@ local M = {
     keep_sel = map('v', '<', '<gv', make_opt 'Indent selected text'),
     keep_sel_right = map('v', '>', '>gv', make_opt 'Indent selected text'),
 
-    quick_save = remap('n', 'W', '<cmd>w<cr>', make_opt 'Save the current buffer'),
-    quick_close = map('n', 'Q', '<cmd>bd<cr>', make_opt 'Close the current buffer'),
+    quick_save = remap('n', '<leader>w', '<cmd>w<cr>', make_opt 'Save the current buffer'),
+    quick_close = map('n', '<leader>q', '<cmd>bd<cr>', make_opt 'Close the current buffer'),
 
     telescope_live_grep = map(
         'n',

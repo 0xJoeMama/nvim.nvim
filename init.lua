@@ -16,6 +16,6 @@ if util.load_modules {
   return
 end
 
-vim.cmd[[
+vim.cmd [[
 colorscheme slate
 ]]

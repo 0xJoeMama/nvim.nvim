@@ -41,4 +41,3 @@ M.apply_settings = function(target, settings)
 end
 
 return M
-

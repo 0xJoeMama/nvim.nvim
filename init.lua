@@ -1,11 +1,24 @@
--- Evil hack to improve runtime and prevent multiline commands from having issues. DO NOT TRY THIS AT HOME IT MAY BREAK STUFF
-vim.cmd = function(vimscript)
-    vim.api.nvim_exec(vimscript, false)
+function prequire(module)
+  local ok, val = pcall(require, module)
+
+  if not ok then
+    return nil
+  else
+    return val
+  end
 end
 
-require 'options'
-require 'mappings'
-require 'colors'
-require 'autocmd'
-require 'plugins'
-require 'config'
+function P(table)
+  vim.notify(vim.inspect(table))
+end
+
+local modules = {
+  "me.options",
+}
+
+for _, module in ipairs(modules) do
+  if prequire(module) == nil then
+    return
+  end
+end
+

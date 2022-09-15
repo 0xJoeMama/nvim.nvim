@@ -1,31 +1,21 @@
+-- ATTENTION: hack to improve runtime performance and cover some edge cases
+-- make sure you remove this before considering something a bug!!
 vim.cmd = function(viml)
   vim.api.nvim_exec(viml, false)
 end
 
-function prequire(module)
-  local ok, val = pcall(require, module)
+local ok, util = pcall(require, "me.util")
 
-  if not ok then
-    return nil
-  else
-    return val
-  end
+if not ok then
+  return
 end
 
-function P(table)
-  vim.notify(vim.inspect(table))
-end
-
-local modules = {
+if util.load_modules {
   "me.options",
-}
-
-for _, module in ipairs(modules) do
-  if prequire(module) == nil then
-    return
-  end
+} == nil then
+  return
 end
 
 vim.cmd[[
-colorscheme evening
+colorscheme slate
 ]]

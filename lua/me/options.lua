@@ -1,4 +1,4 @@
-local util = prequire("me.util")
+local util = prequire "me.util"
 
 util.apply_settings(vim.opt, {
   -- ***only*** use UTF-8 for character encoding
@@ -22,7 +22,7 @@ util.apply_settings(vim.opt, {
   swapfile = false,
   backup = false,
   writebackup = false,
-  undodir = os.getenv("HOME") .. "/.cache/nvim/undoes",
+  undodir = os.getenv "HOME" .. "/.cache/nvim/undoes",
   undofile = true,
   -- always add a signcolumn
   signcolumn = "yes",
@@ -35,7 +35,7 @@ util.apply_settings(vim.opt, {
   ignorecase = true, -- together with smartcase makes searches ignore casing except when a capital is present
   smartcase = true, -- ^^
   incsearch = true, -- show search results *while* the pattern is being typed out
-  cmdheight = 1, -- make the command bar smoll
+  cmdheight = 2, -- make the command bar smoll
   -- cmp asked for these
   completeopt = {
     "menu",
@@ -60,18 +60,20 @@ util.apply_settings(vim.opt, {
   cursorline = true,
   clipboard = function(clip)
     -- makes vim immediate register correspond to the system clipboard and vise-versa
-    clip:append("unnamedplus")
+    clip:append "unnamedplus"
   end,
   whichwrap = function(wrap)
     -- consider these jumpable when on different lines
-    wrap:append("<,>,[,],h,l")
+    wrap:append "<,>,[,],h,l"
   end,
   iskeyword = function(keywords)
     -- make '-' separated words count as a singular word
-    keywords:append("-")
+    keywords:append "-"
   end,
 })
 
 util.apply_settings(vim.g, {
-  neovide_transparency = 0.945,
+  neovide_transparency = 0.94,
+  mapleader = " ",
+  maplocalleader = " ",
 })

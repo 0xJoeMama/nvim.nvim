@@ -1,3 +1,7 @@
+vim.cmd = function(viml)
+  vim.api.nvim_exec(viml, false)
+end
+
 function prequire(module)
   local ok, val = pcall(require, module)
 
@@ -22,3 +26,6 @@ for _, module in ipairs(modules) do
   end
 end
 
+vim.cmd[[
+colorscheme evening
+]]

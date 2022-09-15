@@ -32,20 +32,18 @@ local opts = {
   scrolloff = 8,
   sidescrolloff = 8,
   wrap = false,
+  laststatus = 3,
+  guifont = "JetBrains Mono Nerd Font:h11",
+  cursorline = true,
   clipboard = function(clip)
     clip:append("unnamedplus") 
-    P("Called")
-    return clip 
   end,
   whichwrap = function(wrap)
     wrap:append("<,>,[,],h,l")
-    return wrap
   end,
   iskeyword = function(keywords)
     keywords:append("-")
   end,
-  laststatus = 3,
-  guifont = "JetBrains Mono Nerd Font:h11",
 }
 
 for opt, value in pairs(opts) do

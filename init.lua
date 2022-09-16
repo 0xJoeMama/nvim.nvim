@@ -1,5 +1,5 @@
 -- ATTENTION: hack to improve runtime performance and cover some edge cases
--- make sure you remove this before considering something a bug!!
+-- make sure you remove this before considering something a bug!!!
 vim.cmd = function(viml)
   vim.api.nvim_exec(viml, false)
 end
@@ -12,6 +12,7 @@ end
 
 if util.load_modules {
   "me.options",
+  "me.keymaps",
 } == nil then
   return
 end

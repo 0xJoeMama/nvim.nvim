@@ -1,6 +1,6 @@
 local util = prequire "me.util"
 
-util.apply_settings(vim.opt, {
+util.apply(vim.opt) {
   -- ***only*** use UTF-8 for character encoding
   encoding = "utf-8",
   -- line numbers
@@ -70,10 +70,12 @@ util.apply_settings(vim.opt, {
     -- make '-' separated words count as a singular word
     keywords:append "-"
   end,
-})
+  splitright = true,
+  splitbelow = true,
+}
 
-util.apply_settings(vim.g, {
+util.apply(vim.g) {
   neovide_transparency = 0.94,
   mapleader = " ",
   maplocalleader = " ",
-})
+}

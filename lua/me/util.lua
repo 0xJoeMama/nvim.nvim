@@ -18,16 +18,12 @@ M.load_modules = function(mods)
   local res = {}
 
   for _, module in ipairs(mods) do
-    local mod = prequire(module)
-
-    if not (mod == nil) then
-      table.insert(res, mod)
-    else
-      return nil
+    if not prequire(module) then
+      return true, module
     end
   end
 
-  return res
+  return false, nil
 end
 
 M.apply = function(target)
@@ -43,9 +39,10 @@ M.apply = function(target)
 end
 
 M.apply_keys = function(keys)
-  local function into_table(key, curr_obj)
-    if curr_obj.action ~= nil then
+  local function into_table(key, curr_obj, modifiers)
+    if curr_obj.action then
       curr_obj.trigger = key
+
       return {
         curr_obj,
       }

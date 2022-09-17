@@ -11,7 +11,7 @@ local no_op = function()
   }
 end
 
-local telescope_builtins = require("telescope.builtin")
+local telescope_builtins = require "telescope.builtin"
 
 require("me.util").apply_keys {
   n = {
@@ -70,5 +70,15 @@ require("me.util").apply_keys {
   i = {
     jk = exit_ins(),
     kj = exit_ins(),
+  },
+  v = {
+    ["<"] = {
+      action = "<gv",
+      desc = "Keep selected area after manual indentation",
+    },
+    [">"] = {
+      action = ">gv",
+      desc = "Keep selected area after manual indentation",
+    },
   },
 }

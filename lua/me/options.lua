@@ -3,6 +3,10 @@ local util = prequire "me.util"
 util.apply(vim.opt) {
   -- ***only*** use UTF-8 for character encoding
   encoding = "utf-8",
+  -- disable vi compat
+  compatible = false,
+  -- delay counting of keys or whatever its called
+  timeoutlen = 800,
   -- line numbers
   number = true,
   relativenumber = true,
@@ -12,6 +16,7 @@ util.apply(vim.opt) {
   expandtab = true,
   smarttab = true,
   autoindent = true,
+  smartindent = true,
   shiftround = true, -- round to shiftwidth
   -- mouse
   mouse = "a",

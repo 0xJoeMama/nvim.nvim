@@ -13,12 +13,10 @@ end
 local err, issue = util.load_modules {
   "me.options",
   "me.keymaps",
+  "me.plugins",
+  "me.colors",
 }
 
 if err then
-  vim.notify("Could not locate config module " .. issue, vim.log.levels.WARN)
+  vim.notify("There was an issue while loading module " .. issue, vim.log.levels.WARN)
 end
-
-vim.cmd [[
-colorscheme slate
-]]

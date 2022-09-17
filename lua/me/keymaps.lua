@@ -11,6 +11,8 @@ local no_op = function()
   }
 end
 
+local telescope_builtins = require("telescope.builtin")
+
 require("me.util").apply_keys {
   n = {
     ["<leader>"] = {
@@ -49,6 +51,20 @@ require("me.util").apply_keys {
     ["<C-l>"] = {
       action = "<C-w>l",
       desc = "Quick move right",
+    },
+    t = {
+      f = {
+        action = telescope_builtins.find_files,
+        desc = "Find files using Telescope",
+      },
+      g = {
+        action = telescope_builtins.live_grep,
+        desc = "Grep over files",
+      },
+    },
+    f = {
+      action = telescope_builtins.find_files,
+      desc = "Find files using Telescope",
     },
   },
   i = {

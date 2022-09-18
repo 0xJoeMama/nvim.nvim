@@ -32,6 +32,24 @@ require("me.util").keymap.apply_keys {
         action = "<cmd>q<cr>",
         desc = "Save and quit the current file",
       },
+      f = {
+        action = telescope_builtins.find_files,
+        desc = "Find files using Telescope",
+      },
+      t = {
+        f = {
+          action = telescope_builtins.find_files,
+          desc = "Find files using Telescope",
+        },
+        g = {
+          action = telescope_builtins.live_grep,
+          desc = "Grep over files",
+        },
+        h = {
+          action = telescope_builtins.help_tags,
+          desc = "Open help tags",
+        },
+      },
     },
     ["<Backspace>"] = no_op(),
     ["<Space>"] = no_op(),
@@ -51,24 +69,6 @@ require("me.util").keymap.apply_keys {
     ["<C-l>"] = {
       action = "<C-w>l",
       desc = "Quick move right",
-    },
-    t = {
-      f = {
-        action = telescope_builtins.find_files,
-        desc = "Find files using Telescope",
-      },
-      g = {
-        action = telescope_builtins.live_grep,
-        desc = "Grep over files",
-      },
-      h = {
-        action = telescope_builtins.help_tags,
-        desc = "Open help tags",
-      },
-    },
-    f = {
-      action = telescope_builtins.find_files,
-      desc = "Find files using Telescope",
     },
     ["<C-t>"] = {
       action = "<cmd>ToggleTerm<cr>",

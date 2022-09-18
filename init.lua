@@ -18,6 +18,7 @@ local err, issues = util.load_modules {
   "me.config.treesitter",
   "me.config.telescope",
   "me.config.toggleterm",
+  "me.config.whichkey",
   "me.colors",
 }
 

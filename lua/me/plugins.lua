@@ -13,7 +13,7 @@ packer.init {
 
 packer.startup(function(use)
   use {
-    "wbthomason/packer.nvim"
+    "wbthomason/packer.nvim",
   }
 
   use {
@@ -37,6 +37,10 @@ packer.startup(function(use)
     {
       "akinsho/toggleterm.nvim",
       commit = "e1e159c1b2075cfe9803dfdc521d028e48f6c1a4",
+    },
+    {
+      "folke/which-key.nvim",
+      commit = "92d924d1f4ec67a86a4d54c3ea22caf8ad09a5d4",
     },
   }
 

@@ -38,70 +38,95 @@ M.apply = function(target)
   end
 end
 
-M.apply_keys = function(keys)
-  local function into_table(key, curr_obj, modifiers)
-    if curr_obj.action then
-      curr_obj.trigger = key
+M.keymap = {
+  apply_keys = function(keys)
+    local function into_table(key, curr_obj, modifiers)
+      if curr_obj.action then
+        curr_obj.trigger = key
 
-      return {
-        curr_obj,
-      }
-    else
-      local inner_keys = {}
+        return {
+          curr_obj,
+        }
+      else
+        local inner_keys = {}
 
-      for new_key, new_obj in pairs(curr_obj) do
-        for _, mapping in ipairs(into_table(key .. new_key, new_obj)) do
-          table.insert(inner_keys, mapping)
+        for new_key, new_obj in pairs(curr_obj) do
+          for _, mapping in ipairs(into_table(key .. new_key, new_obj)) do
+            table.insert(inner_keys, mapping)
+          end
         end
+
+        return inner_keys
+      end
+    end
+
+    for mode, mappings in pairs(keys) do
+      local parsed = into_table("", mappings)
+
+      for _, parsed_map in ipairs(parsed) do
+        local opts = parsed_map.opts or {
+          remap = false,
+          silent = true,
+        }
+
+        opts.desc = parsed_map.desc or opts.desc or ""
+
+        vim.keymap.set(mode, parsed_map.trigger, parsed_map.action, opts)
+      end
+    end
+  end
+}
+
+M.packer = {
+  ensure_packer = function()
+    local ensure_packer = function()
+      local fn = vim.fn
+      local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+
+      if fn.empty(fn.glob(install_path)) > 0 then
+        vim.notify("Installing 'packer.nvim', please stand by!", vim.log.levels.INFO)
+        fn.system {
+          "git",
+          "clone",
+          "--depth",
+          "1",
+          "https://github.com/wbthomason/packer.nvim",
+          install_path,
+        }
+
+        vim.cmd [[packadd packer.nvim]]
+
+        vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
+
+        return true
       end
 
-      return inner_keys
+      return false
     end
+
+    return ensure_packer(), require "packer"
   end
+}
 
-  for mode, mappings in pairs(keys) do
-    local parsed = into_table("", mappings)
+M.autocmd = {
+  group = function(arg)
+    if type(arg) == "string" then
+      return vim.api.nvim_create_augroup(arg, {
+        clear = true,
+      })
+    end
 
-    for _, parsed_map in ipairs(parsed) do
-      local opts = parsed_map.opts or {
-        remap = false,
-        silent = true,
+    return vim.api.nvim_create_augroup(arg.name, arg.opts)
+  end,
+  cmd = function(arg)
+    if type(arg.opts) == "function" or type(arg.opts) == "string" then
+      arg.opts = {
+        callback = arg.opts
       }
-
-      opts.desc = parsed_map.desc or opts.desc or ""
-
-      vim.keymap.set(mode, parsed_map.trigger, parsed_map.action, opts)
-    end
-  end
-end
-
-M.ensure_packer = function()
-  local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-
-    if fn.empty(fn.glob(install_path)) > 0 then
-      vim.notify("Installing 'packer.nvim', please stand by!", vim.log.levels.INFO)
-      fn.system {
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-      }
-
-      vim.cmd [[packadd packer.nvim]]
-
-      vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
-
-      return true
     end
 
-    return false
+    vim.api.nvim_create_autocmd(arg.events, arg.opts)
   end
-
-  return ensure_packer(), require "packer"
-end
+}
 
 return M

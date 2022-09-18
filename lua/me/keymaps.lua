@@ -13,7 +13,7 @@ end
 
 local telescope_builtins = require "telescope.builtin"
 
-require("me.util").apply_keys {
+require("me.util").keymap.apply_keys {
   n = {
     ["<leader>"] = {
       e = {
@@ -70,6 +70,10 @@ require("me.util").apply_keys {
       action = telescope_builtins.find_files,
       desc = "Find files using Telescope",
     },
+    ["<C-t>"] = {
+      action = "<cmd>ToggleTerm<cr>",
+      desc = "Toggle Toggleterm view",
+    },
   },
   i = {
     jk = exit_ins(),
@@ -83,6 +87,12 @@ require("me.util").apply_keys {
     [">"] = {
       action = ">gv",
       desc = "Keep selected area after manual indentation",
+    },
+  },
+  t = {
+    ["<C-t>"] = {
+      action = "<cmd>ToggleTerm<cr>",
+      desc = "Toggle Toggleterm view",
     },
   },
 }

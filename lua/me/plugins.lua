@@ -1,4 +1,4 @@
-local boostrap, packer = require("me.util").ensure_packer()
+local boostrap, packer = require("me.util").packer.ensure_packer()
 
 packer.init {
   preview_updates = true,
@@ -32,6 +32,10 @@ packer.startup(function(use)
   use {
     "rmehri01/onenord.nvim",
     "p00f/nvim-ts-rainbow",
+    {
+      "akinsho/toggleterm.nvim",
+      commit = "e1e159c1b2075cfe9803dfdc521d028e48f6c1a4",
+    },
   }
 
   if bootstrap then

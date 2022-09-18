@@ -9,7 +9,9 @@ cmd {
     group = resource_config,
     pattern = vim.fn.stdpath("config") .. "/*.lua",
     callback = function(args)
-      vim.notify("Configuration files changed, sourcing...", vim.log.levels.INFO)
+      vim.notify("Configuration files have changed", vim.log.levels.INFO, {
+        title = "Sourcing config...",
+      })
       vim.cmd("source " .. args.file)
     end,
   },
@@ -21,7 +23,9 @@ cmd {
     group = resource_config,
     pattern = vim.fn.stdpath("config") .. "*plugins.lua",
     callback = function(args)
-      vim.notify("Packer configuration has been modified! Syncing...", vim.log.levels.INFO)
+      vim.notify("Packer configuration has been modified", vim.log.levels.INFO, {
+        title = "Syncing...",
+      })
       require("packer").sync()
     end,
   },

@@ -42,6 +42,10 @@ packer.startup(function(use)
       "folke/which-key.nvim",
       commit = "92d924d1f4ec67a86a4d54c3ea22caf8ad09a5d4",
     },
+    {
+      "rcarriga/nvim-notify",
+      branch = "master",
+    },
   }
 
   if bootstrap then

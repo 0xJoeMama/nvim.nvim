@@ -19,14 +19,17 @@ local err, issues = util.load_modules {
   "me.config.telescope",
   "me.config.toggleterm",
   "me.config.whichkey",
+  "me.config.notify",
   "me.colors",
 }
 
 if err then
   local issue_string = ""
   for _, issue in ipairs(issues) do
-    issue_string = issue_string .. issue .. ", "
+    issue_string = issue_string .. "'" .. issue .. "', "
   end
 
-  vim.notify("There was an issue while loading the following modules: " .. issue_string, vim.log.levels.WARN)
+  vim.notify("Modules " .. issue_string .. " were invalid!", vim.log.levels.WARN, {
+    title = "Woops, there was issue!",
+  })
 end

@@ -86,7 +86,10 @@ M.packer = {
       local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
       if fn.empty(fn.glob(install_path)) > 0 then
-        vim.notify("Installing 'packer.nvim', please stand by!", vim.log.levels.INFO)
+        vim.notify("Installing 'packer.nvim'!", vim.log.levels.INFO, {
+          title = "Please stand by!",
+        })
+
         fn.system {
           "git",
           "clone",

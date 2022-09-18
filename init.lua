@@ -15,6 +15,7 @@ local err, issue = util.load_modules {
   "me.keymaps",
   "me.plugins",
   "me.config.treesitter",
+  "me.config.telescope",
   "me.colors",
 }
 

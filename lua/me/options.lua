@@ -7,6 +7,8 @@ util.apply(vim.opt) {
   compatible = false,
   -- delay counting of keys or whatever its called
   timeoutlen = 800,
+  -- hide closed buffers
+  hidden = true,
   -- line numbers
   number = true,
   relativenumber = true,
@@ -77,10 +79,16 @@ util.apply(vim.opt) {
   end,
   splitright = true,
   splitbelow = true,
+  confirm = true,
+  pumblend = 10,
+  winblend = 10,
 }
 
 util.apply(vim.g) {
-  neovide_transparency = 0.94,
+  neovide_transparency = 0.95,
+  neovide_refress_rate = 60,
+  neovide_idle_refresh_rate = 24,
+  neovide_cursor_vfx_mode = "wireframe",
   mapleader = " ",
   maplocalleader = " ",
 }

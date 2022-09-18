@@ -61,6 +61,10 @@ require("me.util").apply_keys {
         action = telescope_builtins.live_grep,
         desc = "Grep over files",
       },
+      h = {
+        action = telescope_builtins.help_tags,
+        desc = "Open help tags",
+      },
     },
     f = {
       action = telescope_builtins.find_files,

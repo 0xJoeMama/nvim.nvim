@@ -11,7 +11,7 @@ local no_op = function()
   }
 end
 
-local telescope_builtins = require "telescope.builtin"
+local telescope_builtins = require("telescope.builtin")
 
 require("me.util").keymap.apply_keys {
   n = {

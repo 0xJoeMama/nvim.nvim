@@ -76,14 +76,14 @@ M.keymap = {
         vim.keymap.set(mode, parsed_map.trigger, parsed_map.action, opts)
       end
     end
-  end
+  end,
 }
 
 M.packer = {
   ensure_packer = function()
     local ensure_packer = function()
       local fn = vim.fn
-      local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+      local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
       if fn.empty(fn.glob(install_path)) > 0 then
         vim.notify("Installing 'packer.nvim', please stand by!", vim.log.levels.INFO)
@@ -96,7 +96,7 @@ M.packer = {
           install_path,
         }
 
-        vim.cmd [[packadd packer.nvim]]
+        vim.cmd([[packadd packer.nvim]])
 
         vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
 
@@ -106,8 +106,8 @@ M.packer = {
       return false
     end
 
-    return ensure_packer(), require "packer"
-  end
+    return ensure_packer(), require("packer")
+  end,
 }
 
 M.autocmd = {
@@ -123,12 +123,12 @@ M.autocmd = {
   cmd = function(arg)
     if type(arg.opts) == "function" or type(arg.opts) == "string" then
       arg.opts = {
-        callback = arg.opts
+        callback = arg.opts,
       }
     end
 
     vim.api.nvim_create_autocmd(arg.events, arg.opts)
-  end
+  end,
 }
 
 return M

@@ -1,4 +1,4 @@
-local util = prequire "me.util"
+local util = prequire("me.util")
 
 util.apply(vim.opt) {
   -- ***only*** use UTF-8 for character encoding
@@ -29,7 +29,7 @@ util.apply(vim.opt) {
   swapfile = false,
   backup = false,
   writebackup = false,
-  undodir = os.getenv "HOME" .. "/.cache/nvim/undoes",
+  undodir = os.getenv("HOME") .. "/.cache/nvim/undoes",
   undofile = true,
   -- always add a signcolumn
   signcolumn = "yes",
@@ -67,15 +67,15 @@ util.apply(vim.opt) {
   cursorline = true,
   clipboard = function(clip)
     -- makes vim immediate register correspond to the system clipboard and vise-versa
-    clip:append "unnamedplus"
+    clip:append("unnamedplus")
   end,
   whichwrap = function(wrap)
     -- consider these jumpable when on different lines
-    wrap:append "<,>,[,],h,l"
+    wrap:append("<,>,[,],h,l")
   end,
   iskeyword = function(keywords)
     -- make '-' separated words count as a singular word
-    keywords:append "-"
+    keywords:append("-")
   end,
   splitright = true,
   splitbelow = true,

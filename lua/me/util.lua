@@ -15,15 +15,17 @@ end
 local M = {}
 
 M.load_modules = function(mods)
+  local err = false
   local res = {}
 
   for _, module in ipairs(mods) do
     if not prequire(module) then
-      return true, module
+      table.insert(res, module)
+      err = true
     end
   end
 
-  return false, nil
+  return err, res
 end
 
 M.apply = function(target)

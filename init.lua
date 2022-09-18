@@ -10,7 +10,7 @@ if not ok then
   return
 end
 
-local err, issue = util.load_modules {
+local err, issues = util.load_modules {
   "me.options",
   "me.keymaps",
   "me.plugins",
@@ -22,5 +22,10 @@ local err, issue = util.load_modules {
 }
 
 if err then
-  vim.notify("There was an issue while loading module " .. issue, vim.log.levels.WARN)
+  local issue_string = ""
+  for _, issue in ipairs(issues) do
+    issue_string = issue_string .. issue .. ", "
+  end
+
+  vim.notify("There was an issue while loading the following modules: " .. issue_string, vim.log.levels.WARN)
 end

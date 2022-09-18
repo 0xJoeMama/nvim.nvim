@@ -18,9 +18,9 @@ local err, issues = util.load_modules {
   "me.config.treesitter",
   "me.config.telescope",
   "me.config.toggleterm",
-  "me.config.whichkey",
+  "me.config.which-key",
   "me.config.notify",
-  "me.config.nvim_tree",
+  "me.config.nvim-tree",
   "me.colors",
 }
 

@@ -31,7 +31,7 @@ require("nvim-tree").setup {
         { key = "x", action = "cut", },
         { key = "y", action = "copy", },
         { key = "p", action = "paste", },
-        { key = "Y", action = "copy_path", },
+        { key = "Y", action = "copy_absolute_path", },
         { key = "f", action = "live_filter", },
         { key = "<Esc>", action = "clear_live_filter", },
         { key = "q", action = "close", },

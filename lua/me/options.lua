@@ -60,7 +60,7 @@ util.apply(vim.opt) {
   -- do not wrap lines for the love of god
   wrap = false,
   -- always display the statusline
-  laststatus = 2,
+  laststatus = 3,
   -- neovide font
   guifont = "JetBrainsMono Nerd Font:h11",
   -- highlight current line

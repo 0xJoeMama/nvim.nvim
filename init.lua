@@ -20,6 +20,7 @@ local err, issues = util.load_modules {
   "me.config.toggleterm",
   "me.config.whichkey",
   "me.config.notify",
+  "me.config.nvim_tree",
   "me.colors",
 }
 

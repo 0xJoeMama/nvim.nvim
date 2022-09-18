@@ -91,4 +91,6 @@ util.apply(vim.g) {
   neovide_cursor_vfx_mode = "wireframe",
   mapleader = " ",
   maplocalleader = " ",
+  loaded_netrw = 1,
+  loaded_netrmPlugin = 1,
 }

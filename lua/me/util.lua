@@ -9,7 +9,7 @@ function prequire(module)
 end
 
 function P(table)
-  vim.notify(vim.inspect(table))
+  print(vim.inspect(table))
 end
 
 local M = {}

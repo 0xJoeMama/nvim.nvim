@@ -23,6 +23,7 @@ local err, issues = util.load_modules {
   "me.config.nvim-tree",
   "me.config.nvim-surround",
   "me.config.nvim-autopairs",
+  "me.config.lualine",
   "me.colors",
 }
 

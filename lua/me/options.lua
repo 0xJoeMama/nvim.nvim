@@ -42,7 +42,7 @@ util.apply(vim.opt) {
   ignorecase = true, -- together with smartcase makes searches ignore casing except when a capital is present
   smartcase = true, -- ^^
   incsearch = true, -- show search results *while* the pattern is being typed out
-  cmdheight = 2, -- make the command bar smoll
+  cmdheight = 1, -- make the command bar smoll
   -- cmp asked for these
   completeopt = {
     "menu",

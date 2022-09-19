@@ -47,11 +47,11 @@ packer.startup(function(use)
       branch = "master",
     },
     {
-      'kyazdani42/nvim-tree.lua',
+      "kyazdani42/nvim-tree.lua",
       requires = {
-        'kyazdani42/nvim-web-devicons',
+        "kyazdani42/nvim-web-devicons",
       },
-      tag = 'nightly',
+      tag = "nightly",
     },
     {
       "kylechui/nvim-surround",
@@ -60,6 +60,13 @@ packer.startup(function(use)
     {
       "windwp/nvim-autopairs",
       commit = "14cc2a4fc6243152ba085cc2059834113496c60a",
+    },
+    {
+      "nvim-lualine/lualine.nvim",
+      requires = {
+        "kyazdani42/nvim-web-devicons",
+      },
+      commit = "a52f078026b27694d2290e34efa61a6e4a690621",
     },
   }
 

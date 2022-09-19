@@ -74,6 +74,11 @@ require("me.util").keymap.apply_keys {
       action = "<cmd>ToggleTerm<cr>",
       desc = "Toggle Toggleterm view",
     },
+    FF = {
+      action = "<cmd>wqa<cr>",
+      desc = "KILL IT!",
+    },
+    ZZ = no_op(),
   },
   i = {
     jk = exit_ins(),

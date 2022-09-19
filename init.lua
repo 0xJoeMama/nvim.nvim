@@ -11,9 +11,9 @@ if not ok then
 end
 
 local err, issues = util.load_modules {
+  "me.plugins",
   "me.options",
   "me.keymaps",
-  "me.plugins",
   "me.autocmds",
   "me.config.treesitter",
   "me.config.telescope",
@@ -21,6 +21,8 @@ local err, issues = util.load_modules {
   "me.config.which-key",
   "me.config.notify",
   "me.config.nvim-tree",
+  "me.config.nvim-surround",
+  "me.config.nvim-autopairs",
   "me.colors",
 }
 
@@ -30,7 +32,7 @@ if err then
     issue_string = issue_string .. "'" .. issue .. "', "
   end
 
-  vim.notify("Modules " .. issue_string .. " were invalid!", vim.log.levels.WARN, {
+  vim.notify("Modules " .. issue_string .. "were invalid!", vim.log.levels.WARN, {
     title = "Woops, there was issue!",
   })
 end

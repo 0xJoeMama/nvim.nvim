@@ -51,8 +51,16 @@ packer.startup(function(use)
       requires = {
         'kyazdani42/nvim-web-devicons',
       },
-      tag = 'nightly'
-    }
+      tag = 'nightly',
+    },
+    {
+      "kylechui/nvim-surround",
+      tag = "v1.0.0",
+    },
+    {
+      "windwp/nvim-autopairs",
+      commit = "14cc2a4fc6243152ba085cc2059834113496c60a",
+    },
   }
 
   if bootstrap then

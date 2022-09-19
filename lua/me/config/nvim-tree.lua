@@ -20,7 +20,7 @@ require("nvim-tree").setup {
     mappings = {
       list = {
         { key = "l", action = "edit", },
-        { key = "h", action = "edit", },
+        { key = "h", action = "close_node", },
         { key = "<CR>", action = "vsplit", },
         { key = "H", action = "parent_node", },
         { key = "<Tab>", action = "preview", },
@@ -38,6 +38,8 @@ require("nvim-tree").setup {
         { key = "c", action = "collapse_all", },
         { key = "e", action = "expand_all", },
         { key = "g?", action = "toggle_help", },
+        { key = "<leader>c", action = "cd", },
+        { key = "i", action = "toggle_file_info", },
       },
     },
   },
@@ -78,7 +80,7 @@ require("nvim-tree").setup {
     },
     file_popup = {
       open_win_config = {
-        border = "single",
+        border = "rounded",
       },
     },
     open_file = {

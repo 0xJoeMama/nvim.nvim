@@ -5,20 +5,6 @@ require("which-key").setup {
     ["<tab>"] = "Tab",
   },
   window = {
-    border = "double",
-    padding = {
-      1,
-      0,
-      3,
-      0,
-    },
+    border = "rounded",
   },
-  layout = {
-    height = { min = 4, max = 25 },
-    width = { min = 20, max = 50 },
-    spacing = 3,
-    align = "center",
-  },
-  ignore_missing = false,
-  show_help = true,
 }

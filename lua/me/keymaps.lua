@@ -17,9 +17,7 @@ require("me.util").keymap.apply_keys {
   n = {
     ["<leader>"] = {
       e = {
-        action = function() 
-          require("nvim-tree").toggle(false, false, vim.fn.getcwd())
-        end,
+        action = require("nvim-tree.api").tree.toggle,
         desc = "Open the file explorer",
       },
       xs = {

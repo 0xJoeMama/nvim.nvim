@@ -67,6 +67,15 @@ packer.startup(function(use)
       "lewis6991/gitsigns.nvim",
       tag = "v0.5",
     },
+    {
+      "numToStr/Comment.nvim",
+      commit = "30d23aa2e1ba204a74d5dfb99777e9acbe9dd2d6",
+    },
+    {
+      "goolord/alpha-nvim",
+      requires = { "kyazdani42/nvim-web-devicons" },
+      commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31",
+    },
   }
 
   if bootstrap then

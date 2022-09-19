@@ -5,6 +5,7 @@ require("lualine").setup {
     disabled_filetypes = {
       statusline = {
         "TelescopePrompt",
+        "alpha",
       },
     },
     ignore_focus = {},

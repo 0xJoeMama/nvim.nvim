@@ -25,6 +25,8 @@ local err, issues = util.load_modules {
   "me.config.nvim-autopairs",
   "me.config.lualine",
   "me.config.gitsigns",
+  "me.config.comment",
+  "me.config.alpha",
   "me.colors",
 }
 

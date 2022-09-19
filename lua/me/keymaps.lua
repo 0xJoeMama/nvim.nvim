@@ -12,6 +12,7 @@ local no_op = function()
 end
 
 local telescope_builtins = require("telescope.builtin")
+local gitsigns = require("gitsigns")
 
 require("me.util").keymap.apply_keys {
   n = {
@@ -35,6 +36,20 @@ require("me.util").keymap.apply_keys {
       f = {
         action = telescope_builtins.find_files,
         desc = "Find files using Telescope",
+      },
+      g = {
+        B = {
+          action = gitsigns.blame_line,
+          desc = "Current Line Blame",
+        },
+        b = {
+          action = gitsigns.toggle_current_line_blame,
+          desc = "Current Line Blame",
+        },
+        h = {
+          action = gitsigns.preview_hunk,
+          desc = "Current Line Blame",
+        },
       },
       t = {
         f = {

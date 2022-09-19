@@ -14,26 +14,21 @@ packer.init {
 packer.startup(function(use)
   use {
     "wbthomason/packer.nvim",
-  }
-
-  use {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-  }
-
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = function()
-      require("nvim-treesitter.install").update {}
-    end,
-  }
-
-  use {
     "rmehri01/onenord.nvim",
     "p00f/nvim-ts-rainbow",
+    {
+      "nvim-telescope/telescope.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+      branch = "0.1.x",
+    },
+    {
+      "nvim-treesitter/nvim-treesitter",
+      run = function()
+        require("nvim-treesitter.install").update {}
+      end,
+    },
     {
       "akinsho/toggleterm.nvim",
       commit = "e1e159c1b2075cfe9803dfdc521d028e48f6c1a4",
@@ -67,6 +62,10 @@ packer.startup(function(use)
         "kyazdani42/nvim-web-devicons",
       },
       commit = "a52f078026b27694d2290e34efa61a6e4a690621",
+    },
+    {
+      "lewis6991/gitsigns.nvim",
+      tag = "v0.5",
     },
   }
 

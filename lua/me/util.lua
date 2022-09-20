@@ -1,4 +1,4 @@
-function prequire(module)
+local function prequire(module)
   local ok, val = pcall(require, module)
 
   if not ok then
@@ -14,18 +14,33 @@ end
 
 local M = {}
 
-M.load_modules = function(mods)
+function M:load_modules(mods)
   local err = false
   local res = {}
 
   for _, module in ipairs(mods) do
-    if not prequire(module) then
+    local mod = prequire(module)
+    if not mod then
       table.insert(res, module)
       err = true
+    else
+      if type(mod) == "function" then
+        mod(self)
+      end
     end
   end
 
   return err, res
+end
+
+M.safe_run = function(modname, action)
+  local mod = prequire(modname)
+
+  if not mod then
+    vim.notify("Module " .. modname .. " could not be loaded!")
+  end
+
+  action(mod)
 end
 
 M.apply = function(target)

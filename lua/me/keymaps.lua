@@ -1,3 +1,5 @@
+local util = require("me.util")
+
 local exit_ins = function()
   return {
     action = "<Esc>",
@@ -11,14 +13,33 @@ local no_op = function()
   }
 end
 
-local telescope_builtins = require("telescope.builtin")
-local gitsigns = require("gitsigns")
+local telescope_prompt = function(builtin_name) 
+  return function()
+    util.safe_run("telescope.builtin", function(builtins) 
+      if builtins[builtin_name] then
+        builtins[builtin_name]()
+      end
+    end)
+  end
+end
 
-require("me.util").keymap.apply_keys {
+local gitsigns = function(action)
+  return function()
+    util.safe_run("gitsigns", function(gitsigns)
+      if gitsigns[action] then
+        gitsigns[action]()
+      end
+    end)
+  end
+end
+
+util.keymap.apply_keys {
   n = {
     ["<leader>"] = {
       e = {
-        action = require("nvim-tree.api").tree.toggle,
+        action = function() 
+          util.safe_run("nvim-tree.api", function(api) api.tree.toggle() end)
+        end,
         desc = "Open the file explorer",
       },
       xs = {
@@ -34,34 +55,34 @@ require("me.util").keymap.apply_keys {
         desc = "Save and quit the current file",
       },
       f = {
-        action = telescope_builtins.find_files,
+        action = telescope_prompt("find_files"),
         desc = "Find files using Telescope",
       },
       g = {
         B = {
-          action = gitsigns.blame_line,
+          action = gitsigns("blame_line"),
           desc = "Current Line Blame",
         },
         b = {
-          action = gitsigns.toggle_current_line_blame,
+          action = gitsigns("toggle_current_line_blame"),
           desc = "Current Line Blame",
         },
         h = {
-          action = gitsigns.preview_hunk,
+          action = gitsigns("preview_hunk"),
           desc = "Current Line Blame",
         },
       },
       t = {
         f = {
-          action = telescope_builtins.find_files,
+          action = telescope_prompt("find_files"),
           desc = "Find files using Telescope",
         },
         g = {
-          action = telescope_builtins.live_grep,
+          action = telescope_prompt("live_grep"),
           desc = "Grep over files",
         },
         h = {
-          action = telescope_builtins.help_tags,
+          action = telescope_prompt("help_tags"),
           desc = "Open help tags",
         },
       },

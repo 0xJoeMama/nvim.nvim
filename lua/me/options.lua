@@ -1,4 +1,4 @@
-local util = prequire("me.util")
+local util = require("me.util")
 
 util.apply(vim.opt) {
   -- ***only*** use UTF-8 for character encoding

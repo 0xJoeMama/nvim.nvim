@@ -14,7 +14,7 @@ end
 
 local M = {}
 
-function M:load_modules(mods)
+function M.load_modules(mods)
   local function parse_all(mod, prefix)
     if type(mod) == "string" then
       return { mod }
@@ -44,7 +44,7 @@ function M:load_modules(mods)
       err = true
       table.insert(res, module)
     elseif type(mod) == "function" then
-      mod(self)
+      mod(M)
     end
   end
 
@@ -79,9 +79,7 @@ M.keymap = {
       if curr_obj.action then
         curr_obj.trigger = key
 
-        return {
-          curr_obj,
-        }
+        return { curr_obj }
       else
         local inner_keys = {}
 
@@ -164,5 +162,7 @@ M.autocmd = {
     vim.api.nvim_create_autocmd(arg.events, arg.opts)
   end,
 }
+
+M.prequire = prequire
 
 return M

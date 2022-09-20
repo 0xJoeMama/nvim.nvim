@@ -5,6 +5,7 @@ packer.startup {
     use {
       "wbthomason/packer.nvim",
       "rmehri01/onenord.nvim",
+      'lewis6991/impatient.nvim',
       {
         "p00f/nvim-ts-rainbow",
         requires = {

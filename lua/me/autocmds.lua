@@ -1,5 +1,6 @@
-local group = require("me.util").autocmd.group
-local cmd = require("me.util").autocmd.cmd
+local util = require("me.util")
+local group = util.autocmd.group
+local cmd = util.autocmd.cmd
 
 local resource_config = group("SourceConfig")
 

@@ -10,7 +10,8 @@ if not ok then
   return
 end
 
-local err, issues = util:load_modules {
+local err, issues = util.load_modules {
+  "impatient",
   me = {
     "options",
     "keymaps",

@@ -115,6 +115,32 @@ util.keymap.apply_keys {
       desc = "KILL IT!",
     },
     ZZ = no_op(),
+    ["<A-h>"] = {
+      action = "<cmd>vert res +5<cr>",
+      desc = "Increase current window size by 5",
+    },
+    ["<A-l>"] = {
+      action = "<cmd>vert res -5<cr>",
+      desc = "Decrease current window size by 5",
+    },
+    d = {
+      j = {
+        action = "yyp",
+        desc = "Duplicate current line",
+      },
+      k = {
+        action = "yyP",
+        desc = "Duplicate current line above",
+      },
+    },
+    ["<A-j>"] = {
+      action = "<cmd>move . +1<cr>==",
+      desc = "Move current line down",
+    },
+    ["<A-k>"] = {
+      action = "<cmd>move . -2<cr>==",
+      desc = "Move current line up",
+    },
   },
   i = {
     jk = exit_ins(),

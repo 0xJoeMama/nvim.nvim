@@ -11,23 +11,27 @@ if not ok then
 end
 
 local err, issues = util:load_modules {
-  "me.options",
-  "me.keymaps",
-  "me.autocmds",
-  "me.plugins",
-  "me.config.treesitter",
-  "me.config.telescope",
-  "me.config.toggleterm",
-  "me.config.which-key",
-  "me.config.notify",
-  "me.config.nvim-tree",
-  "me.config.nvim-surround",
-  "me.config.nvim-autopairs",
-  "me.config.lualine",
-  "me.config.gitsigns",
-  "me.config.comment",
-  "me.config.alpha",
-  "me.colors",
+  me = {
+    "options",
+    "keymaps",
+    "autocmds",
+    "plugins",
+    config = {
+      "treesitter",
+      "telescope",
+      "toggleterm",
+      "which-key",
+      "notify",
+      "nvim-tree",
+      "nvim-surround",
+      "nvim-autopairs",
+      "lualine",
+      "gitsigns",
+      "comment",
+      "alpha",
+    },
+    "colors",
+  },
 }
 
 if err then

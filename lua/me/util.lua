@@ -15,18 +15,36 @@ end
 local M = {}
 
 function M:load_modules(mods)
+  local function parse_all(mod, prefix)
+    if type(mod) == "string" then
+      return { mod }
+    end
+
+    prefix = prefix or ""
+
+    local modules = {}
+
+    for key, sub in pairs(mod) do
+      for _, val in ipairs(parse_all(sub, key)) do
+        table.insert(modules, prefix .. "." .. val)
+      end
+    end
+
+    return modules
+  end
+
   local err = false
   local res = {}
 
-  for _, module in ipairs(mods) do
+  local parsed = parse_all(mods)
+
+  for _, module in ipairs(parsed) do
     local mod = prequire(module)
     if not mod then
-      table.insert(res, module)
       err = true
-    else
-      if type(mod) == "function" then
-        mod(self)
-      end
+      table.insert(res, module)
+    elseif type(mod) == "function" then
+      mod(self)
     end
   end
 

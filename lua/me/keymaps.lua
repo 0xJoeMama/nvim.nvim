@@ -65,11 +65,11 @@ util.keymap.apply_keys {
         },
         b = {
           action = gitsigns("toggle_current_line_blame"),
-          desc = "Current Line Blame",
+          desc = "Toggle Line Blame",
         },
         h = {
           action = gitsigns("preview_hunk"),
-          desc = "Current Line Blame",
+          desc = "Preview diff hunk",
         },
       },
       t = {

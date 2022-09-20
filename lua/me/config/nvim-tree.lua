@@ -5,7 +5,8 @@ require("me.util").safe_run("nvim-tree", function(nvim_tree)
     hijack_cursor = true,
     open_on_setup = true,
     open_on_setup_file = true, -- TODO: ????
-    sync_root_with_cwd = true,
+    -- sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     reload_on_bufenter = true,
     on_attach = nil, -- must be like this in order to apply mappings through view.mappings.list
     remove_keymaps = true,
@@ -77,7 +78,8 @@ require("me.util").safe_run("nvim-tree", function(nvim_tree)
     actions = {
       use_system_clipboard = true,
       change_dir = {
-        enable = false,
+        enable = true,
+        global = true,
       },
       file_popup = {
         open_win_config = {

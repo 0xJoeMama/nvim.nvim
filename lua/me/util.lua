@@ -96,35 +96,33 @@ M.keymap = {
 
 M.packer = {
   ensure_packer = function()
-    local ensure_packer = function()
-      local fn = vim.fn
-      local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    local boostrap = false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
-      if fn.empty(fn.glob(install_path)) > 0 then
-        vim.notify("Installing 'packer.nvim'!", vim.log.levels.INFO, {
-          title = "Please stand by!",
-        })
+    if fn.empty(fn.glob(install_path)) > 0 then
+      vim.notify("Installing 'packer.nvim'!", vim.log.levels.INFO, {
+        title = "Please stand by!",
+      })
 
-        fn.system {
-          "git",
-          "clone",
-          "--depth",
-          "1",
-          "https://github.com/wbthomason/packer.nvim",
-          install_path,
-        }
+      fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+      }
 
-        vim.cmd([[packadd packer.nvim]])
+      vim.cmd([[packadd packer.nvim]])
 
-        vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
+      vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
 
-        return true
-      end
-
-      return false
+      bootstrap = true
     end
 
-    return ensure_packer(), require("packer")
+
+    return bootstrap, require("packer")
   end,
 }
 

@@ -18,7 +18,7 @@ require("me.util").safe_run("nvim-tree", function(nvim_tree)
       hide_root_folder = false,
       side = "left",
       preserve_window_proportions = true,
-      signcolumn = "no", -- TODO: ?????
+      signcolumn = "yes", -- TODO: ?????
       mappings = {
         list = {
           { key = "l", action = "edit" },
@@ -50,7 +50,7 @@ require("me.util").safe_run("nvim-tree", function(nvim_tree)
       highlight_git = true,
       highlight_opened_files = "icon",
       indent_markers = {
-        enable = true,
+        enable = false,
         inline_arrows = false,
       },
       icons = {

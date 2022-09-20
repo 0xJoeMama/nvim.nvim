@@ -39,7 +39,7 @@ packer.startup(function(use)
     },
     {
       "rcarriga/nvim-notify",
-      branch = "master",
+      commit = "7a9be08986b4d98dd685a6b40a62fcba19c1ad27",
     },
     {
       "kyazdani42/nvim-tree.lua",
@@ -77,8 +77,11 @@ packer.startup(function(use)
       commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31",
     },
   }
-
-  if bootstrap then
-    packer.sync()
-  end
 end)
+
+if bootstrap then
+  vim.notify("Running initial sync...", vim.log.levels.INFO, {
+    title = "Packer was just installed!",
+  })
+  packer.sync()
+end

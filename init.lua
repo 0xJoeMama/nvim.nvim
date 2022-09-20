@@ -11,10 +11,10 @@ if not ok then
 end
 
 local err, issues = util:load_modules {
-  "me.plugins",
   "me.options",
   "me.keymaps",
   "me.autocmds",
+  "me.plugins",
   "me.config.treesitter",
   "me.config.telescope",
   "me.config.toggleterm",

@@ -137,7 +137,6 @@ M.packer = {
       bootstrap = true
     end
 
-
     return bootstrap, require("packer")
   end,
 }

@@ -13,9 +13,9 @@ local no_op = function()
   }
 end
 
-local telescope_prompt = function(builtin_name) 
+local telescope_prompt = function(builtin_name)
   return function()
-    util.safe_run("telescope.builtin", function(builtins) 
+    util.safe_run("telescope.builtin", function(builtins)
       if builtins[builtin_name] then
         builtins[builtin_name]()
       end
@@ -37,8 +37,10 @@ util.keymap.apply_keys {
   n = {
     ["<leader>"] = {
       e = {
-        action = function() 
-          util.safe_run("nvim-tree.api", function(api) api.tree.toggle() end)
+        action = function()
+          util.safe_run("nvim-tree.api", function(api)
+            api.tree.toggle()
+          end)
         end,
         desc = "Open the file explorer",
       },

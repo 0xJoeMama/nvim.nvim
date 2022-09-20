@@ -1,4 +1,4 @@
-require("me.util").safe_run ("lualine", function(lualine)
+require("me.util").safe_run("lualine", function(lualine)
   lualine.setup {
     options = {
       component_separators = { left = "", right = "" },
@@ -31,5 +31,5 @@ require("me.util").safe_run ("lualine", function(lualine)
       "quickfix",
       "man",
     },
-  } 
+  }
 end)

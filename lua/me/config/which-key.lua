@@ -1,4 +1,4 @@
-require("me.util").safe_run("which-key", function(which_key) 
+require("me.util").safe_run("which-key", function(which_key)
   which_key.setup {
     key_labels = {
       ["<space>"] = "Space",

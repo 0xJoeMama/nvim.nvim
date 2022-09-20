@@ -6,4 +6,4 @@ require("me.util").safe_run("notify", function(notify)
   }
 
   vim.notify = notify
-end )
+end)

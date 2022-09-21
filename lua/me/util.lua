@@ -20,13 +20,17 @@ function M.load_modules(mods)
       return { mod }
     end
 
+    if prefix then
+      prefix = prefix .. "."
+    end
+
     prefix = prefix or ""
 
     local modules = {}
 
     for key, sub in pairs(mod) do
       for _, val in ipairs(parse_all(sub, key)) do
-        table.insert(modules, prefix .. "." .. val)
+        table.insert(modules, prefix .. val)
       end
     end
 

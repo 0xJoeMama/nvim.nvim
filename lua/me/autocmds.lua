@@ -23,7 +23,7 @@ cmd {
   opts = {
     group = resource_config,
     pattern = vim.fn.stdpath("config") .. "*plugins.lua",
-    callback = function(args)
+    callback = function()
       vim.notify("Packer configuration has been modified", vim.log.levels.INFO, {
         title = "Syncing...",
       })

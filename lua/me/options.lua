@@ -82,7 +82,6 @@ util.apply(vim.opt) {
   confirm = true,
   pumblend = 10,
   winblend = 10,
-  -- shell = "fish",
 }
 
 util.apply(vim.g) {

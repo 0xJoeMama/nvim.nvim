@@ -1,4 +1,4 @@
-local boostrap, packer = require("me.util").packer.ensure_packer()
+local bootstrap, packer = require("me.util").packer.ensure_packer()
 
 packer.startup {
   function(use)
@@ -23,7 +23,7 @@ packer.startup {
       {
         "nvim-treesitter/nvim-treesitter",
         run = function()
-          require("nvim-treesitter.install").update {}
+          require("me.util").setup("nvim-treesitter.install", "update") {}
         end,
       },
       {
@@ -70,8 +70,39 @@ packer.startup {
       },
       {
         "goolord/alpha-nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
+        requires = {
+          "kyazdani42/nvim-web-devicons",
+        },
         commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31",
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        requires = {
+          "neovim/nvim-lspconfig",
+          "williamboman/mason.nvim",
+        },
+        commit = "b70dedab5ceb5f3f84c6bc9ceea013292a14f8dc",
+      },
+      {
+        -- notice how i dont lock this because i dont know what 
+        -- the correct lock would be in this case
+        "hrsh7th/nvim-cmp",
+        requires = {
+          "hrsh7th/cmp-buffer",
+          "hrsh7th/cmp-nvim-lsp",
+          "hrsh7th/cmp-path",
+          "petertriho/cmp-git",
+          "hrsh7th/cmp-cmdline",
+          {
+            "saadparwaiz1/cmp_luasnip",
+            requires = {
+              {
+                "L3MON4D3/LuaSnip",
+                tag = "v1.0.0"
+              }
+            },
+          }
+        },
       },
     }
 

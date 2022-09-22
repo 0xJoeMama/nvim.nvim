@@ -30,7 +30,9 @@ local err, issues = util.load_modules {
       "gitsigns",
       "comment",
       "alpha",
+      "nvim-cmp",
     },
+    "lsp",
     "colors",
   },
 }
@@ -45,3 +47,4 @@ if err then
     title = "Woops, there was issue!",
   })
 end
+

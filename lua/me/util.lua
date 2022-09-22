@@ -62,7 +62,7 @@ M.safe_run = function(modname, action)
     vim.notify("Module " .. modname .. " could not be loaded!")
   end
 
-  action(mod)
+  return action(mod)
 end
 
 M.apply = function(target)
@@ -79,7 +79,7 @@ end
 
 M.keymap = {
   apply_keys = function(keys)
-    local function into_table(key, curr_obj, modifiers)
+    local function into_table(key, curr_obj)
       if curr_obj.action then
         curr_obj.trigger = key
 
@@ -102,7 +102,7 @@ M.keymap = {
 
       for _, parsed_map in ipairs(parsed) do
         local opts = parsed_map.opts or {
-          remap = false,
+          noremap = false,
           silent = true,
         }
 
@@ -116,7 +116,7 @@ M.keymap = {
 
 M.packer = {
   ensure_packer = function()
-    local boostrap = false
+    local bootstrap = false
     local fn = vim.fn
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -167,5 +167,48 @@ M.autocmd = {
 }
 
 M.prequire = prequire
+
+M.lsp = {
+  load_lsps = function(lspconfig, cfg, on_attach)
+    local function load(lsp, settings)
+      local server = lspconfig[lsp]
+      if not server then
+        vim.notify("Could not find " .. lsp, vim.log.levels.WARN, {
+          title = "LSP not found!",
+        })
+      end
+      settings = settings or {}
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+      capabilities.textDocument.completion.completionItem.snipperSupport = false
+      settings.capabilities = capabilities
+      settings.on_attach = on_attach
+
+      server.setup(settings)
+    end
+
+    for _, lsp in ipairs(cfg) do
+      if type(lsp) == "string" then
+        load(lsp)
+      else
+        load(lsp.name, lsp.config)
+      end
+    end
+  end,
+}
+
+M.setup = function (module, setup_name)
+  return function (cfg)
+    M.safe_run(module, function (mod)
+      if not setup_name then
+        mod.setup(cfg)
+      else
+        mod[setup_name](cfg)
+      end
+    end)
+  end
+end
 
 return M

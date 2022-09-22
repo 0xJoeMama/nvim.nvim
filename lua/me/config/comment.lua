@@ -1,3 +1,1 @@
-require("me.util").safe_run("Comment", function(comment)
-  comment.setup {}
-end)
+require("me.util").setup("Comment") {}

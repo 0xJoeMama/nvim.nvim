@@ -79,7 +79,6 @@ util.safe_run("lspconfig", function(lspconfig)
   table.insert(lua_runtime_files, "/usr/share/awesome/lib/")
 
   util.lsp.load_lsps(lspconfig, {
-
     {
       name = "sumneko_lua",
       config = {
@@ -102,5 +101,7 @@ util.safe_run("lspconfig", function(lspconfig)
       },
     },
     "clangd",
+    "rust_analyzer",
+    "denols"
   }, on_attach)
 end)

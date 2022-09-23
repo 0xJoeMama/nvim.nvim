@@ -5,6 +5,7 @@ packer.startup {
     use {
       "wbthomason/packer.nvim",
       "rmehri01/onenord.nvim",
+      "folke/tokyonight.nvim",
       "martinsione/darkplus.nvim",
       "lewis6991/impatient.nvim",
       "andweeb/presence.nvim",
@@ -104,6 +105,18 @@ packer.startup {
             },
           },
         },
+      },
+      {
+        "ahmedkhalf/project.nvim",
+        commit = "628de7e433dd503e782831fe150bb750e56e55d6",
+      },
+      {
+        "RRethy/vim-illuminate",
+        commit = "a2e8476af3f3e993bb0d6477438aad3096512e42",
+      },
+      {
+        "akinsho/bufferline.nvim",
+        tag = "v2.11.1",
       },
     }
 

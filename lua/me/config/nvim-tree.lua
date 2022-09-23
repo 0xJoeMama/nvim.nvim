@@ -3,19 +3,25 @@ require("me.util").setup("nvim-tree") {
   disable_netrw = true, --
   hijack_cursor = true,
   open_on_setup = true,
-  open_on_setup_file = true, -- TODO: ????
+  open_on_setup_file = false,
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
   reload_on_bufenter = true,
   on_attach = nil, -- must be like this in order to apply mappings through view.mappings.list
   remove_keymaps = true,
   ignore_ft_on_setup = {},
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+  },
   view = {
     adaptive_size = false,
     width = 30,
     height = 30,
-    hide_root_folder = false,
+    hide_root_folder = true,
     side = "left",
     preserve_window_proportions = true,
-    signcolumn = "yes", -- TODO: ?????
+    signcolumn = "yes",
     mappings = {
       list = {
         { key = "l", action = "edit" },
@@ -45,7 +51,7 @@ require("me.util").setup("nvim-tree") {
   renderer = {
     group_empty = true,
     highlight_git = true,
-    highlight_opened_files = "icon",
+    highlight_opened_files = "none",
     indent_markers = {
       enable = false,
       inline_arrows = false,

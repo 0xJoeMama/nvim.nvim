@@ -1,12 +1,12 @@
 require("me.util").safe_run("luasnip", function(luasnip)
   local s = luasnip.snippet
   local i = luasnip.insert_node
-  local t = luasnip.text_node
+  -- local t = luasnip.text_node
   local fmt = require("luasnip.extras.fmt").fmt
-  local c = luasnip.choice_node
-  local d = luasnip.dynamic_node
-  local sn = luasnip.snippet_node
-  local f = luasnip.function_node
+  -- local c = luasnip.choice_node
+  -- local d = luasnip.dynamic_node
+  -- local sn = luasnip.snippet_node
+  -- local f = luasnip.function_node
 
   luasnip.add_snippets("lua", {
     s(

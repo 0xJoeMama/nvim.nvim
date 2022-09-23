@@ -33,6 +33,9 @@ local err, issues = util.load_modules {
       "nvim-cmp",
       "presence",
       "luasnip",
+      "project",
+      "bufferline",
+      "illuminate",
     },
     "lsp",
     "colors",
@@ -49,3 +52,4 @@ if err then
     title = "Woops, there was issue!",
   })
 end
+

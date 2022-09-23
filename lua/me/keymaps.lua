@@ -35,6 +35,21 @@ end
 
 util.keymap.apply_keys {
   n = {
+    L = {
+      action = function()
+        util.safe_run("bufferline", function(bufferline)
+          bufferline.cycle(1)
+        end)
+      end,
+      desc = "Move to the next buffer"
+    },
+    H = {
+      action = function()
+        util.safe_run("bufferline", function(bufferline)
+          bufferline.cycle(-1)
+        end)
+      end
+    },
     ["<leader>"] = {
       e = {
         action = function()

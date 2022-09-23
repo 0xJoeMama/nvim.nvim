@@ -182,7 +182,7 @@ M.lsp = {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-      capabilities.textDocument.completion.completionItem.snipperSupport = false
+      capabilities.textDocument.completion.completionItem.snippetSupport = false
       settings.capabilities = capabilities
       settings.on_attach = on_attach
 
@@ -199,9 +199,9 @@ M.lsp = {
   end,
 }
 
-M.setup = function (module, setup_name)
-  return function (cfg)
-    M.safe_run(module, function (mod)
+M.setup = function(module, setup_name)
+  return function(cfg)
+    M.safe_run(module, function(mod)
       if not setup_name then
         mod.setup(cfg)
       else

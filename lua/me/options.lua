@@ -43,12 +43,6 @@ util.apply(vim.opt) {
   smartcase = true, -- ^^
   incsearch = true, -- show search results *while* the pattern is being typed out
   cmdheight = 1, -- make the command bar smoll
-  -- cmp asked for these
-  completeopt = {
-    "menu",
-    "menuone",
-    "noselect",
-  },
   conceallevel = 0,
   pumheight = 10,
   -- disable the current mode indicator, as the statusline handles that for us
@@ -85,10 +79,6 @@ util.apply(vim.opt) {
 }
 
 util.apply(vim.g) {
-  neovide_transparency = 0.95,
-  neovide_refress_rate = 60,
-  neovide_idle_refresh_rate = 24,
-  neovide_cursor_vfx_mode = "wireframe",
   mapleader = " ",
   maplocalleader = " ",
   loaded_netrw = 1,

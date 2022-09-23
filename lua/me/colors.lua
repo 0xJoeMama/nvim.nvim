@@ -10,4 +10,3 @@ require("onenord").setup {
     diagnostics = "undercurl",
   },
 }
-

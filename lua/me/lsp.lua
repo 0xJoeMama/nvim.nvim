@@ -23,7 +23,7 @@ util.setup("mason-lspconfig") {
 }
 
 util.safe_run("lspconfig", function(lspconfig)
-  local on_attach = function (_, bfn)
+  local on_attach = function(_, bfn)
     local buf_opts = {
       noremap = true,
       silent = true,
@@ -52,7 +52,12 @@ util.safe_run("lspconfig", function(lspconfig)
             action = vim.lsp.buf.code_action,
             desc = "List code actions",
             opts = buf_opts,
-          }
+          },
+          f = {
+            action = vim.lsp.buf.formatting,
+            desc = "Format current file",
+            opts = buf_opts,
+          },
         },
         g = {
           d = {
@@ -64,13 +69,17 @@ util.safe_run("lspconfig", function(lspconfig)
             action = vim.lsp.buf.declaration,
             desc = "Goto declaration",
             opts = buf_opts,
-          }
+          },
         },
       },
     }
   end
 
+  local lua_runtime_files = vim.api.nvim_get_runtime_file("", true)
+  table.insert(lua_runtime_files, "/usr/share/awesome/lib/")
+
   util.lsp.load_lsps(lspconfig, {
+
     {
       name = "sumneko_lua",
       config = {
@@ -80,10 +89,10 @@ util.safe_run("lspconfig", function(lspconfig)
               version = "LuaJIT",
             },
             diagnostics = {
-              globals = { "vim" },
+              globals = { "vim", "awesome", "client", "screen", "root" },
             },
             workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
+              library = lua_runtime_files,
             },
             telemetry = {
               enable = false,

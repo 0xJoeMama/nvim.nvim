@@ -7,6 +7,7 @@ packer.startup {
       "rmehri01/onenord.nvim",
       "martinsione/darkplus.nvim",
       "lewis6991/impatient.nvim",
+      "andweeb/presence.nvim",
       {
         "p00f/nvim-ts-rainbow",
         requires = {
@@ -84,7 +85,7 @@ packer.startup {
         commit = "b70dedab5ceb5f3f84c6bc9ceea013292a14f8dc",
       },
       {
-        -- notice how i dont lock this because i dont know what 
+        -- notice how i dont lock this because i dont know what
         -- the correct lock would be in this case
         "hrsh7th/nvim-cmp",
         requires = {
@@ -98,10 +99,10 @@ packer.startup {
             requires = {
               {
                 "L3MON4D3/LuaSnip",
-                tag = "v1.0.0"
-              }
+                tag = "v1.0.0",
+              },
             },
-          }
+          },
         },
       },
     }

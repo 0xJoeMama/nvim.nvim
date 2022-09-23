@@ -2,6 +2,10 @@ local util = require("me.util")
 local has_run = false
 
 util.safe_run("cmp", function(cmp)
+  local function snippet_filter(entry)
+    return entry:get_kind() ~= cmp.lsp.CompletionItemKind.Snippet
+  end
+
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -20,12 +24,13 @@ util.safe_run("cmp", function(cmp)
         cmp.TriggerEvent.TextChanged,
         cmp.TriggerEvent.InsertEnter,
       },
+      completeopt = "menu,menuone,noselect",
     },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-u>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ["<Tab>"] = function (fallback)
+    mapping = cmp.mapping.preset.insert {
+      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-u>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<Tab>"] = cmp.mapping(function(fallback)
         local luasnip = require("luasnip")
 
         if cmp.visible() then
@@ -35,8 +40,8 @@ util.safe_run("cmp", function(cmp)
         else
           fallback()
         end
-      end,
-      ["<S-Tab>"] = function (fallback)
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         local luasnip = require("luasnip")
 
         if cmp.visible() then
@@ -46,13 +51,13 @@ util.safe_run("cmp", function(cmp)
         else
           fallback()
         end
-      end,
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    }),
+      end, { "i", "s" }),
+      ["<CR>"] = cmp.mapping.confirm { select = true },
+    },
     sources = cmp.config.sources {
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = "path", trigger_characters = {"/"} },
+      { name = "nvim_lsp", entry_filter = snippet_filter },
+      { name = "luasnip" },
+      { name = "path", trigger_characters = { "/" } },
       { name = "buffer", keyword_length = 5 },
     },
     experimental = {
@@ -60,37 +65,33 @@ util.safe_run("cmp", function(cmp)
     },
   }
 
-  cmp.setup.filetype('gitcommit', {
+  cmp.setup.filetype("gitcommit", {
     sources = cmp.config.sources {
-      { name = 'cmp_git' },
-    }
+      { name = "cmp_git" },
+    },
   })
 
-  cmp.setup.cmdline('/', {
+  cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = 'buffer' }
-    }
+      { name = "buffer" },
+    },
   })
 
-  cmp.setup.cmdline(':', {
+  cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = "path" },
     }, {
-      { name = 'cmdline' }
-    })
+      { name = "cmdline" },
+    }),
   })
 
   if not has_run then
-    util.safe_run('nvim-autopairs.completion.cmp', function (cmp_autopairs)
-      cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-      )
+    util.safe_run("nvim-autopairs.completion.cmp", function(cmp_autopairs)
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end)
 
     has_run = true
   end
 end)
-

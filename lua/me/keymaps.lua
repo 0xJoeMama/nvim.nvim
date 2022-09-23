@@ -147,6 +147,16 @@ util.keymap.apply_keys {
   i = {
     jk = exit_ins(),
     kj = exit_ins(),
+    ["<C-n>"] = {
+      action = function()
+        util.safe_run("luasnip", function(luasnip)
+          if luasnip.choice_active() then
+            luasnip.change_choice(1)
+          end
+        end)
+      end,
+      desc = "Next luasnip choice",
+    },
   },
   v = {
     ["<"] = {

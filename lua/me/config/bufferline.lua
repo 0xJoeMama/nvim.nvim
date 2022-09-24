@@ -26,7 +26,7 @@ require('me.util').setup("bufferline") {
     show_tab_indicators = true,
     show_duplicate_prefix = true,
     persist_buffer_sort = true,
-    separator_style = "",
+    separator_style = { "", "" },
     always_show_bufferline = true,
     hover = {
       enabled = true,

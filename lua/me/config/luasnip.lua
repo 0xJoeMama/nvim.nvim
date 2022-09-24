@@ -9,56 +9,30 @@ require("me.util").safe_run("luasnip", function(luasnip)
   -- local f = luasnip.function_node
 
   luasnip.add_snippets("lua", {
-    s(
-      "ift",
-      fmt(
-        [[
+    s("ift", fmt([[
     if {} then
       {}
     end
-    ]],
-        {
-          i(1),
-          i(0),
-        }
-      )
-    ),
-    s(
-      "fu",
-      fmt(
-        [[
-    function({})
-      {}
-    end
-    ]],
-        {
-          i(1),
-          i(0),
-        }
-      )
-    ),
-    s(
-      "lfu",
-      fmt(
-        [[
+    ]], {
+      i(1),
+      i(0),
+    })),
+    s("fu", fmt([[
+      function({})
+        {}
+      end
+      ]], {
+      i(1),
+      i(0),
+    })),
+    s("lfu", fmt([[
     local {} = function({})
       {}
     end
-    ]],
-        {
-          i(1, "fn"),
-          i(2),
-          i(0),
-        }
-      )
-    ),
-    -- s("req", fmt([[
-    -- local {} = require("{}")
-    -- ]], {
-    --   f(function(nodes)
-    --     return "asb"
-    --   end, { 0 }),
-    --   i(0)
-    -- }))
+    ]], {
+      i(1, "fn"),
+      i(2),
+      i(0),
+    })),
   })
 end)

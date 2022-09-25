@@ -13,4 +13,7 @@ require("me.util").setup("nvim-treesitter.configs") {
     extended_mode = true,
     max_lines = nil,
   },
+  playground = {
+    enable = true,
+  }
 }

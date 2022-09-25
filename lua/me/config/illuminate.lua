@@ -3,6 +3,6 @@ require("me.util").setup("illuminate", "configure") {
   filetypes_denylist = {
     "NvimTree",
     "TelescopePrompt",
-    "QFP"
+    "alpha",
   },
 }

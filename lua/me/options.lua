@@ -78,6 +78,11 @@ util.apply(vim.opt) {
   winblend = 10,
   fillchars = function(fillchars)
     fillchars:append("eob: ")
+  end,
+  formatoptions = function(formatoptions) -- this does not work ?! :concern:
+    formatoptions:remove("c")
+    formatoptions:remove("r")
+    formatoptions:remove("o")
   end
 }
 

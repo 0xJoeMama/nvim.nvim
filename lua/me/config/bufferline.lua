@@ -1,4 +1,9 @@
 require('me.util').setup("bufferline") {
+  highlights = {
+    buffer_selected = {
+      bold = true,
+    }
+  },
   options = {
     numbers = "none",
     indicator = {
@@ -16,6 +21,7 @@ require('me.util').setup("bufferline") {
         text = "",
         text_align = "center",
         separator = false,
+        padding = 1,
       },
     },
     color_icons = true,
@@ -26,8 +32,8 @@ require('me.util').setup("bufferline") {
     show_tab_indicators = true,
     show_duplicate_prefix = true,
     persist_buffer_sort = true,
-    separator_style = { "", "" },
-    always_show_bufferline = true,
+    separator_style = "slant",
+    always_show_bufferline = false,
     hover = {
       enabled = true,
       delay = 200,

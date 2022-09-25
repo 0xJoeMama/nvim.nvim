@@ -8,7 +8,7 @@ ui.create_popup = function(size, txt, callback)
     height = size.y,
     anchor = "SW",
     focusable = false,
-    border = "double",
+    border = "rounded",
     noautocmd = true,
     col = 0,
     row = 0,
@@ -61,10 +61,13 @@ ui.create_popup = function(size, txt, callback)
   vim.keymap.set("n", "k", function()
     set_cursor(vim.fn.line(".") - 1)
   end, map_opts)
-  vim.keymap.set("n", "l", function()
+  local accept = function()
     callback { win = winh, buffer = bfn, line = vim.fn.line(".") }
     close_fn()
-  end, map_opts)
+  end
+
+  vim.keymap.set("n", "l", accept, map_opts)
+  vim.keymap.set("n", "<CR>", accept, map_opts)
 end
 
 return ui

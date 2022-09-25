@@ -78,8 +78,13 @@ M.apply = function(target)
 end
 
 M.keymap = {
-  apply_keys = function(keys)
-    local function into_table(key, curr_obj)
+  apply_keys = function(keys, global_opts)
+    global_opts = global_opts or {
+      noremap = true,
+      silent = true,
+    }
+
+    local function parse(key, curr_obj)
       if curr_obj.action then
         curr_obj.trigger = key
 
@@ -88,7 +93,7 @@ M.keymap = {
         local inner_keys = {}
 
         for new_key, new_obj in pairs(curr_obj) do
-          for _, mapping in ipairs(into_table(key .. new_key, new_obj)) do
+          for _, mapping in ipairs(parse(key .. new_key, new_obj)) do
             table.insert(inner_keys, mapping)
           end
         end
@@ -98,13 +103,10 @@ M.keymap = {
     end
 
     for mode, mappings in pairs(keys) do
-      local parsed = into_table("", mappings)
+      local parsed = parse("", mappings)
 
       for _, parsed_map in ipairs(parsed) do
-        local opts = parsed_map.opts or {
-          noremap = false,
-          silent = true,
-        }
+        local opts = vim.tbl_deep_extend("force", global_opts, vim.deepcopy(parsed_map.opts or {}))
 
         opts.desc = parsed_map.desc or opts.desc or ""
 
@@ -179,11 +181,11 @@ M.lsp = {
       end
       settings = settings or {}
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+      local caps = vim.lsp.protocol.make_client_capabilities()
+      caps = require("cmp_nvim_lsp").update_capabilities(caps)
 
-      capabilities.textDocument.completion.completionItem.snippetSupport = false
-      settings.capabilities = capabilities
+      caps.textDocument.completion.completionItem.snippetSupport = false
+      settings.capabilities = caps
       settings.on_attach = on_attach
 
       server.setup(settings)
@@ -193,20 +195,18 @@ M.lsp = {
       if type(lsp) == "string" then
         load(lsp)
       else
-        load(lsp.name, lsp.config)
+        load(lsp[1], lsp.config)
       end
     end
   end,
 }
 
 M.setup = function(module, setup_name)
+  setup_name = setup_name or "setup"
+
   return function(cfg)
     M.safe_run(module, function(mod)
-      if not setup_name then
-        mod.setup(cfg)
-      else
-        mod[setup_name](cfg)
-      end
+      mod[setup_name](cfg)
     end)
   end
 end

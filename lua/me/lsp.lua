@@ -30,62 +30,51 @@ util.safe_run("lspconfig", function(lspconfig)
       buffer = bfn,
     }
 
-    util.keymap.apply_keys {
+    util.keymap.apply_keys({
       n = {
         ["<leader>l"] = {
           d = {
             action = vim.lsp.buf.definition,
             desc = "Goto definition",
-            opts = buf_opts,
           },
           D = {
             action = vim.lsp.buf.declaration,
             desc = "Goto declaration",
-            opts = buf_opts,
           },
           i = {
             action = vim.lsp.buf.implementation,
             desc = "Goto implementation",
-            opts = buf_opts,
           },
           a = {
             action = vim.lsp.buf.code_action,
             desc = "List code actions",
-            opts = buf_opts,
           },
           f = {
             action = vim.lsp.buf.formatting,
             desc = "Format current file",
-            opts = buf_opts,
           },
           r = {
             action = vim.lsp.buf.rename,
             desc = "Rename symbol",
-            opts = buf_opts,
           },
         },
         g = {
           d = {
             action = vim.lsp.buf.definition,
             desc = "Goto definition",
-            opts = buf_opts,
           },
           D = {
             action = vim.lsp.buf.declaration,
             desc = "Goto declaration",
-            opts = buf_opts,
           },
         },
       },
-    }
+    }, buf_opts)
   end
-
-  local lua_runtime_files = vim.api.nvim_get_runtime_file("", true)
-  table.insert(lua_runtime_files, "/usr/share/awesome/lib/")
 
   util.lsp.load_lsps(lspconfig, {
     {
-      name = "sumneko_lua",
+      "sumneko_lua",
       config = {
         settings = {
           Lua = {
@@ -93,10 +82,10 @@ util.safe_run("lspconfig", function(lspconfig)
               version = "LuaJIT",
             },
             diagnostics = {
-              globals = { "vim", "awesome", "client", "screen", "root" },
+              globals = { "vim", },
             },
             workspace = {
-              library = lua_runtime_files,
+              library = vim.api.nvim_get_runtime_file("", true),
             },
             telemetry = {
               enable = false,
@@ -107,7 +96,32 @@ util.safe_run("lspconfig", function(lspconfig)
     },
     "clangd",
     "rust_analyzer",
-    "denols"
+    "denols",
+    "zls",
+    {
+      "jsonls",
+      config = {
+        settings = {
+          json = {
+            schemas = {
+              {
+                url = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+                name = "luarc.json",
+                fileMatch = { ".luarc.json" },
+                description = "Sumneko Lua Workspace Configuration",
+              }
+            },
+            validate = {
+              enable = true,
+            },
+          },
+        },
+      },
+    },
+    "bashls",
+    "cssls",
+    "pyright",
+    "html",
   }, on_attach)
 
   for key, sign in pairs({

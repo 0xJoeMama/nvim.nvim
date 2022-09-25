@@ -1,9 +1,4 @@
--- ATTENTION: hack to improve runtime performance and cover some edge cases
--- make sure you remove this before considering something a bug!!!
-vim.cmd = function(viml)
-  vim.api.nvim_exec(viml, false)
-end
-
+-- evil hack was here but according to docs it hath been changed for a while now
 local ok, util = pcall(require, "me.util")
 
 if not ok then

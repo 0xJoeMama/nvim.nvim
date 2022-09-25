@@ -9,6 +9,7 @@ packer.startup {
       "martinsione/darkplus.nvim",
       "lewis6991/impatient.nvim",
       "andweeb/presence.nvim",
+      "nvim-treesitter/playground",
       {
         "p00f/nvim-ts-rainbow",
         requires = {

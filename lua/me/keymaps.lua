@@ -106,6 +106,10 @@ util.keymap.apply_keys {
           action = telescope_prompt("help_tags"),
           desc = "Open help tags",
         },
+        b = {
+          action = telescope_prompt("buffers"),
+          desc = "Show bufferlist in Telescope"
+        }
       },
     },
     ["<Backspace>"] = no_op(),

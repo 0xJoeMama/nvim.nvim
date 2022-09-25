@@ -76,6 +76,9 @@ util.apply(vim.opt) {
   confirm = true,
   pumblend = 10,
   winblend = 10,
+  fillchars = function(fillchars)
+    fillchars:append("eob: ")
+  end
 }
 
 util.apply(vim.g) {

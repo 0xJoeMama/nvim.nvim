@@ -24,11 +24,20 @@ require("me.util").setup("lualine") {
           local active_clients = vim.lsp.buf_get_clients()
 
           if #active_clients > 0 then
+            local final_string = "["
+            for _, client in ipairs(active_clients) do
+              final_string = final_string .. client.name .. ","
+            end
+
+            final_string = final_string:sub(1, final_string:len() - 1)
+
+            final_string = final_string .. "]"
+
             local bfn = vim.api.nvim_get_current_buf()
             local icon = require("me.util").safe_run("nvim-web-devicons", function(icons)
               return icons.get_icon_by_filetype(vim.fn.getbufvar(bfn, "&filetype"))
             end)
-            return icon .. " " .. active_clients[1].name
+            return icon .. " " .. final_string
           else
             return "No LSP"
           end

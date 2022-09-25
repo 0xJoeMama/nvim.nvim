@@ -39,6 +39,9 @@ local err, issues = util.load_modules {
     },
     "lsp",
     "colors",
+    ui = {
+      "lsp",
+    },
   },
 }
 
@@ -52,4 +55,3 @@ if err then
     title = "Woops, there was issue!",
   })
 end
-

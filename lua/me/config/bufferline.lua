@@ -13,7 +13,7 @@ require('me.util').setup("bufferline") {
     offsets = {
       {
         filetype = "NvimTree",
-        text = "Files",
+        text = "",
         text_align = "center",
         separator = false,
       },

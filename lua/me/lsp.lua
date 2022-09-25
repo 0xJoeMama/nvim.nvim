@@ -58,6 +58,11 @@ util.safe_run("lspconfig", function(lspconfig)
             desc = "Format current file",
             opts = buf_opts,
           },
+          r = {
+            action = vim.lsp.buf.rename,
+            desc = "Rename symbol",
+            opts = buf_opts,
+          },
         },
         g = {
           d = {
@@ -104,4 +109,28 @@ util.safe_run("lspconfig", function(lspconfig)
     "rust_analyzer",
     "denols"
   }, on_attach)
+
+  for key, sign in pairs({
+    Error = {
+      text = "",
+    },
+    Warn = {
+      text = "",
+    },
+    Hint = {
+      text = "💡",
+    },
+    Info = {
+      text = "",
+    },
+  }) do
+    sign.texthl = "Diagnostic" .. key
+    vim.fn.sign_define("DiagnosticSign" .. key, sign)
+  end
+
+  vim.diagnostic.config {
+    float = {
+      border = "rounded",
+    }
+  }
 end)

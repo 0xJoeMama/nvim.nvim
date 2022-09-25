@@ -46,10 +46,6 @@ require("me.util").safe_run("alpha", function(alpha)
     dashboard.button("p", "📂 Open project", ":Telescope projects<cr>"),
     dashboard.button("c", "⚙ Configure Neovim", ":e " .. vim.fn.stdpath("config") .. "/init.lua<cr>"),
     dashboard.button("q", " Quit Neovim", ":wqa<cr>"),
-    {
-      type = "padding",
-      val = 16,
-    },
   }
 
   dashboard.section.footer.val = "Made with ♥ by 0xJoeMama"

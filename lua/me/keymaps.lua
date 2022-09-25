@@ -51,6 +51,10 @@ util.keymap.apply_keys {
       end
     },
     ["<leader>"] = {
+      o = {
+        action = require("me.ui").create_popup,
+        desc = "Create popup(WIP)"
+      },
       e = {
         action = function()
           util.safe_run("nvim-tree.api", function(api)

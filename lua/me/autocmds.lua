@@ -3,6 +3,7 @@ local group = util.autocmd.group
 local cmd = util.autocmd.cmd
 
 local resource_config = group("SourceConfig")
+local my_group = group("Mine")
 
 cmd {
   events = "BufWritePost",
@@ -32,3 +33,14 @@ cmd {
   },
 }
 
+cmd {
+  events = "TextYankPost",
+  opts = {
+    group = my_group,
+    callback = function()
+      vim.highlight.on_yank {
+        timeout = 100,
+      }
+    end
+  }
+}

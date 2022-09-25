@@ -1,6 +1,5 @@
-require("onenord").setup {
-  theme = "dark",
-  fade_nc = false,
+require("tokyonight").setup {
+  theme = "storm",
   styles = {
     comments = "italic",
     strings = "NONE",
@@ -10,6 +9,8 @@ require("onenord").setup {
     diagnostics = "undercurl",
   },
 }
+
+vim.cmd("colorscheme tokyonight")
 
 local hl = function(args)
   local group = args[1]

@@ -4,5 +4,6 @@ require("me.util").setup("illuminate", "configure") {
     "NvimTree",
     "TelescopePrompt",
     "alpha",
+    "CodeActionPrompt",
   },
 }

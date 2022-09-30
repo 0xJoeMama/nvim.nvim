@@ -1,7 +1,7 @@
 require("me.util").setup("nvim-tree") {
   create_in_closed_folder = true,
-  disable_netrw = true, --
-  hijack_cursor = true,
+  disable_netrw = true,
+  hijack_cursor = false,
   open_on_setup = true,
   open_on_setup_file = false,
   sync_root_with_cwd = true,
@@ -18,7 +18,7 @@ require("me.util").setup("nvim-tree") {
     adaptive_size = false,
     width = 30,
     height = 30,
-    hide_root_folder = true,
+    hide_root_folder = false,
     side = "left",
     preserve_window_proportions = true,
     signcolumn = "yes",
@@ -93,7 +93,7 @@ require("me.util").setup("nvim-tree") {
       quit_on_open = false,
       resize_window = true,
       window_picker = {
-        enable = false, -- TODO: ????
+        enable = false,
       },
     },
   },

@@ -9,7 +9,8 @@ local function prequire(module)
 end
 
 function P(table)
-  print(vim.inspect(table))
+  vim.notify(vim.inspect(table))
+  return table
 end
 
 local M = {}
@@ -60,6 +61,7 @@ M.safe_run = function(modname, action)
 
   if not mod then
     vim.notify("Module " .. modname .. " could not be loaded!")
+    return nil
   end
 
   return action(mod)

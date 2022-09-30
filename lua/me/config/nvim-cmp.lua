@@ -1,5 +1,33 @@
 local util = require("me.util")
-local has_run = false
+BUFFERLINE_BOOTSTRAP = false
+
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
 
 util.safe_run("cmp", function(cmp)
   local function snippet_filter(entry)
@@ -22,14 +50,25 @@ util.safe_run("cmp", function(cmp)
     completion = {
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
-        cmp.TriggerEvent.InsertEnter,
       },
+      keyword_length = 5,
       completeopt = "menu,menuone,noselect",
     },
+    formatting = {
+      fields = {
+        "kind",
+        "abbr",
+      },
+      format = function(_, item)
+        item.kind = kind_icons[item.kind]
+        return item
+      end,
+    },
     mapping = cmp.mapping.preset.insert {
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-u>"] = cmp.mapping.scroll_docs(4),
+      ["<C-d>"] = cmp.mapping.scroll_docs(4),
+      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-k>"] = cmp.mapping.abort(),
       ["<Tab>"] = cmp.mapping(function(fallback)
         local luasnip = require("luasnip")
 
@@ -87,11 +126,11 @@ util.safe_run("cmp", function(cmp)
     }),
   })
 
-  if not has_run then
+  if not BUFFERLINE_BOOTSTRAP then
     util.safe_run("nvim-autopairs.completion.cmp", function(cmp_autopairs)
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end)
 
-    has_run = true
+    BUFFERLINE_BOOTSTRAP = true
   end
 end)

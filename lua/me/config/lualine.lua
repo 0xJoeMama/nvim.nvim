@@ -1,7 +1,7 @@
 require("me.util").setup("lualine") {
   options = {
     component_separators = "",
-    section_separators = { left = "", right = "" },
+    section_separators = "",
     disabled_filetypes = {
       statusline = {
         "TelescopePrompt",
@@ -12,41 +12,33 @@ require("me.util").setup("lualine") {
     globalstatus = true,
   },
   sections = {
-    lualine_a = {
-      { "mode", separator = { left = "", right = "" }, right_padding = 2 }
-    },
+    lualine_a = { "mode" },
     lualine_b = { "branch", "diff", "diagnostics" },
     lualine_c = { "filename" },
-    lualine_x = {},
-    lualine_y = {
+    lualine_x = {
       {
-        function()
-          local active_clients = vim.lsp.buf_get_clients()
+        "filetype",
+        icon_only = true,
+      },
+      function()
+        local active_clients = vim.lsp.buf_get_clients(0)
 
-          if #active_clients > 0 then
-            local final_string = "["
-            for _, client in ipairs(active_clients) do
-              final_string = final_string .. client.name .. ","
-            end
+        local final_string = ""
+        for _, client in pairs(active_clients) do
+          final_string = final_string .. client.name .. ","
+        end
 
-            final_string = final_string:sub(1, final_string:len() - 1)
+        final_string = final_string:sub(1, final_string:len() - 1)
 
-            final_string = final_string .. "]"
-
-            local bfn = vim.api.nvim_get_current_buf()
-            local icon = require("me.util").safe_run("nvim-web-devicons", function(icons)
-              return icons.get_icon_by_filetype(vim.fn.getbufvar(bfn, "&filetype"))
-            end)
-            return icon .. " " .. final_string
-          else
-            return "No LSP"
-          end
-        end,
-      }, "encoding", "fileformat", "progress",
+        if final_string == "" then
+          return "No LSP"
+        else
+          return final_string
+        end
+      end,
     },
-    lualine_z = {
-      { "location", separator = { right = "", left = "" }, left_padding = 2 }
-    },
+    lualine_y = { "encoding", "fileformat", "progress" },
+    lualine_z = { "location" },
   },
   extensions = {
     "nvim-tree",

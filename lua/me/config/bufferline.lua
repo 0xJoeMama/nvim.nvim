@@ -2,12 +2,13 @@ require('me.util').setup("bufferline") {
   highlights = {
     buffer_selected = {
       bold = true,
+      italic = true,
     }
   },
   options = {
     numbers = "none",
     indicator = {
-      icon = '▋ ',
+      icon = '▍',
       style = 'icon',
     },
     diagnostics = "nvim_lsp",
@@ -18,7 +19,7 @@ require('me.util').setup("bufferline") {
     offsets = {
       {
         filetype = "NvimTree",
-        text = "",
+        text = "Explorer",
         text_align = "center",
         separator = false,
         padding = 1,
@@ -32,12 +33,7 @@ require('me.util').setup("bufferline") {
     show_tab_indicators = true,
     show_duplicate_prefix = true,
     persist_buffer_sort = true,
-    separator_style = "slant",
+    separator_style = "thin",
     always_show_bufferline = false,
-    hover = {
-      enabled = true,
-      delay = 200,
-      reveal = { 'close' }
-    },
   }
 }

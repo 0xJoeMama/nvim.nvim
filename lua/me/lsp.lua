@@ -32,31 +32,41 @@ util.safe_run("lspconfig", function(lspconfig)
 
     util.keymap.apply_keys({
       n = {
-        ["<leader>l"] = {
-          d = {
-            action = vim.lsp.buf.definition,
-            desc = "Goto definition",
+        ["<leader>"] = {
+          o = {
+            action = function()
+              vim.lsp.buf.references {
+                includeDeclaration = false,
+              }
+            end,
+            desc = "List LSP references"
           },
-          D = {
-            action = vim.lsp.buf.declaration,
-            desc = "Goto declaration",
-          },
-          i = {
-            action = vim.lsp.buf.implementation,
-            desc = "Goto implementation",
-          },
-          a = {
-            action = vim.lsp.buf.code_action,
-            desc = "List code actions",
-          },
-          f = {
-            action = vim.lsp.buf.formatting,
-            desc = "Format current file",
-          },
-          r = {
-            action = vim.lsp.buf.rename,
-            desc = "Rename symbol",
-          },
+          l = {
+            d = {
+              action = vim.lsp.buf.definition,
+              desc = "Goto definition",
+            },
+            D = {
+              action = vim.lsp.buf.declaration,
+              desc = "Goto declaration",
+            },
+            i = {
+              action = vim.lsp.buf.implementation,
+              desc = "Goto implementation",
+            },
+            a = {
+              action = vim.lsp.buf.code_action,
+              desc = "List code actions",
+            },
+            f = {
+              action = vim.lsp.buf.formatting,
+              desc = "Format current file",
+            },
+            r = {
+              action = vim.lsp.buf.rename,
+              desc = "Rename symbol",
+            },
+          }
         },
         g = {
           d = {
@@ -103,14 +113,9 @@ util.safe_run("lspconfig", function(lspconfig)
       config = {
         settings = {
           json = {
-            schemas = {
-              {
-                url = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-                name = "luarc.json",
-                fileMatch = { ".luarc.json" },
-                description = "Sumneko Lua Workspace Configuration",
-              }
-            },
+            schemas = require("me.util").safe_run("schemastore", function(schemas)
+              return schemas.json.schemas()
+            end),
             validate = {
               enable = true,
             },
@@ -122,6 +127,8 @@ util.safe_run("lspconfig", function(lspconfig)
     "cssls",
     "pyright",
     "html",
+    "yamlls",
+    "denols",
   }, on_attach)
 
   for key, sign in pairs({
@@ -145,6 +152,7 @@ util.safe_run("lspconfig", function(lspconfig)
   vim.diagnostic.config {
     float = {
       border = "rounded",
-    }
+    },
+    virtual_text = false,
   }
 end)

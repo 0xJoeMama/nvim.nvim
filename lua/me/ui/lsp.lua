@@ -12,34 +12,19 @@ vim.ui.select = function(items, opts, on_choice)
     }
   end
 
-  local max_width = 0
-  for formatted_item, _ in pairs(formatted) do
-    local len = string.len(formatted_item)
-
-    if max_width > len then
-      max_width = len
-    end
-  end
-
-  if max_width == 0 then
-    max_width = 64
-  end
-
-  local size = {
-    x = max_width,
-    y = #items
-  }
-
   local txt = {}
   for desc, item in pairs(formatted) do
-    txt[item.index] = " -> " .. desc
+    txt[item.index] = " 🠞 " .. desc
   end
 
-  require("me.ui").create_popup(size, txt, function(ctx)
+  require("me.ui").create_popup(txt, function(ctx)
     if not ctx then
       on_choice(nil, nil)
     else
       on_choice(items[ctx.line], ctx.line)
     end
-  end)
+  end, {
+    highlights = { "DiagnosticSignHint" },
+    cursor_col = 6,
+  })
 end

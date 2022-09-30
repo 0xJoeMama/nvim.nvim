@@ -15,5 +15,12 @@ require("me.util").setup("nvim-treesitter.configs") {
   },
   playground = {
     enable = true,
-  }
+  },
+  autotag = {
+    enable = true,
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 }

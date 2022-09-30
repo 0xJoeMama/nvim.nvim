@@ -6,10 +6,13 @@ packer.startup {
       "wbthomason/packer.nvim",
       "rmehri01/onenord.nvim",
       "folke/tokyonight.nvim",
+      "catppuccin/nvim",
       "martinsione/darkplus.nvim",
       "lewis6991/impatient.nvim",
       "andweeb/presence.nvim",
       "nvim-treesitter/playground",
+      "b0o/schemastore.nvim",
+      "folke/lsp-colors.nvim",
       {
         "p00f/nvim-ts-rainbow",
         requires = {
@@ -28,6 +31,7 @@ packer.startup {
         run = function()
           require("me.util").setup("nvim-treesitter.install", "update") {}
         end,
+        commit = "aebc6cf6bd4675ac86629f516d612ad5288f7868",
       },
       {
         "akinsho/toggleterm.nvim",
@@ -119,6 +123,30 @@ packer.startup {
         "akinsho/bufferline.nvim",
         tag = "v2.11.1",
       },
+      {
+        "j-hui/fidget.nvim",
+        commit = "492492e7d50452a9ace8346d31f6d6da40439f0e",
+      },
+      {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        commit = "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea",
+      },
+      {
+        "windwp/nvim-ts-autotag",
+        requires = {
+          "nvim-treesitter/nvim-treesitter",
+        },
+      },
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        requires = {
+          "nvim-treesitter/nvim-treesitter",
+        },
+      },
+      {
+        "lukas-reineke/indent-blankline.nvim",
+        tag = "v2.20.2",
+      }
     }
 
     if bootstrap then

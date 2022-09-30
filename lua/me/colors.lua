@@ -1,7 +1,7 @@
 local colorschemes = {
   tokyonight = {
     config = {
-      style = "storm",
+      style = "night",
       styles = {
         comments = { italic = true },
         keywords = { bold = true },

@@ -13,6 +13,7 @@ packer.startup {
       "nvim-treesitter/playground",
       "b0o/schemastore.nvim",
       "folke/lsp-colors.nvim",
+      "simrat39/rust-tools.nvim",
       {
         "p00f/nvim-ts-rainbow",
         requires = {
@@ -161,5 +162,5 @@ packer.startup {
       level = "warn",
     },
     autoremove = true,
-  },
+  }
 }

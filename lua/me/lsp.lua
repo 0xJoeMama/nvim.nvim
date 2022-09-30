@@ -3,6 +3,66 @@
 -- - mason-lspconfig
 -- - lspconfig
 local util = require("me.util")
+local M = {}
+
+M.on_attach = function(_, bfn)
+  local buf_opts = {
+    noremap = true,
+    silent = true,
+    buffer = bfn,
+  }
+
+  util.keymap.apply_keys({
+    n = {
+      ["<leader>"] = {
+        o = {
+          action = function()
+            vim.lsp.buf.references {
+              includeDeclaration = false,
+            }
+          end,
+          desc = "List LSP references"
+        },
+        l = {
+          d = {
+            action = vim.lsp.buf.definition,
+            desc = "Goto definition",
+          },
+          D = {
+            action = vim.lsp.buf.declaration,
+            desc = "Goto declaration",
+          },
+          i = {
+            action = vim.lsp.buf.implementation,
+            desc = "Goto implementation",
+          },
+          a = {
+            action = vim.lsp.buf.code_action,
+            desc = "List code actions",
+          },
+          f = {
+            action = vim.lsp.buf.formatting,
+            desc = "Format current file",
+          },
+          r = {
+            action = vim.lsp.buf.rename,
+            desc = "Rename symbol",
+          },
+        }
+      },
+      g = {
+        d = {
+          action = vim.lsp.buf.definition,
+          desc = "Goto definition",
+        },
+        D = {
+          action = vim.lsp.buf.declaration,
+          desc = "Goto declaration",
+        },
+      },
+    },
+  }, buf_opts)
+end
 
 util.setup("mason") {
   ui = {
@@ -23,65 +83,6 @@ util.setup("mason-lspconfig") {
 }
 
 util.safe_run("lspconfig", function(lspconfig)
-  local on_attach = function(_, bfn)
-    local buf_opts = {
-      noremap = true,
-      silent = true,
-      buffer = bfn,
-    }
-
-    util.keymap.apply_keys({
-      n = {
-        ["<leader>"] = {
-          o = {
-            action = function()
-              vim.lsp.buf.references {
-                includeDeclaration = false,
-              }
-            end,
-            desc = "List LSP references"
-          },
-          l = {
-            d = {
-              action = vim.lsp.buf.definition,
-              desc = "Goto definition",
-            },
-            D = {
-              action = vim.lsp.buf.declaration,
-              desc = "Goto declaration",
-            },
-            i = {
-              action = vim.lsp.buf.implementation,
-              desc = "Goto implementation",
-            },
-            a = {
-              action = vim.lsp.buf.code_action,
-              desc = "List code actions",
-            },
-            f = {
-              action = vim.lsp.buf.formatting,
-              desc = "Format current file",
-            },
-            r = {
-              action = vim.lsp.buf.rename,
-              desc = "Rename symbol",
-            },
-          }
-        },
-        g = {
-          d = {
-            action = vim.lsp.buf.definition,
-            desc = "Goto definition",
-          },
-          D = {
-            action = vim.lsp.buf.declaration,
-            desc = "Goto declaration",
-          },
-        },
-      },
-    }, buf_opts)
-  end
-
   util.lsp.load_lsps(lspconfig, {
     {
       "sumneko_lua",
@@ -105,7 +106,7 @@ util.safe_run("lspconfig", function(lspconfig)
       },
     },
     "clangd",
-    "rust_analyzer",
+    -- "rust_analyzer", ATTENTION: Always make sure this is disabled if you are using rust-tools.nvim
     "denols",
     "zls",
     {
@@ -129,7 +130,7 @@ util.safe_run("lspconfig", function(lspconfig)
     "html",
     "yamlls",
     "denols",
-  }, on_attach)
+  }, M.on_attach)
 
   for key, sign in pairs({
     Error = {
@@ -156,3 +157,5 @@ util.safe_run("lspconfig", function(lspconfig)
     virtual_text = false,
   }
 end)
+
+return M

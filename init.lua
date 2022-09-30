@@ -13,7 +13,7 @@ local err, issues = util.load_modules {
     "autocmds",
     "plugins",
     config = {
-      "treesitter",
+      "nvim-treesitter",
       "telescope",
       "toggleterm",
       "which-key",
@@ -34,6 +34,7 @@ local err, issues = util.load_modules {
       "fidget",
       "lsp-lines",
       "lsp-colors",
+      "rust-tools",
     },
     "lsp",
     "colors",

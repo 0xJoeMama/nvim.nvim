@@ -143,10 +143,6 @@ packer.startup {
           "nvim-treesitter/nvim-treesitter",
         },
       },
-      {
-        "lukas-reineke/indent-blankline.nvim",
-        tag = "v2.20.2",
-      }
     }
 
     if bootstrap then

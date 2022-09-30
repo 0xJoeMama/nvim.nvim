@@ -34,7 +34,6 @@ local err, issues = util.load_modules {
       "fidget",
       "lsp-lines",
       "lsp-colors",
-      "indent_blankline",
     },
     "lsp",
     "colors",

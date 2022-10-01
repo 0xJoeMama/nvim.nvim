@@ -1,6 +1,8 @@
 require("me.util").setup("nvim-treesitter.configs") {
-  ensure_installed = "all",
   auto_install = true,
+  ignore_install = {
+    "markdown_inline",
+  },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,

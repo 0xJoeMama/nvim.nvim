@@ -5,7 +5,11 @@ vim.ui.select = function(items, opts, on_choice)
 
   local formatted = {}
   for i, item in ipairs(items) do
-    local formatted_item = opts.format_item(item)
+    local formatted_item = item
+    if opts.format_item then
+      formatted_item = opts.format_item(item)
+    end
+
     formatted[formatted_item] = {
       index = i,
       item = item,

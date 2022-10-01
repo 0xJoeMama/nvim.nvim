@@ -1,7 +1,14 @@
 local colorschemes = {
   tokyonight = {
     config = {
-      style = "night",
+      style = (function()
+        local day_hour = tonumber(os.date("%H"))
+        if day_hour > 19 then
+          return "night"
+        else
+          return "storm"
+        end
+      end)(),
       styles = {
         comments = { italic = true },
         keywords = { bold = true },
@@ -25,7 +32,7 @@ local colorschemes = {
       },
     },
     before_load = function()
-      vim.g.catppuccin_flavour = "macchiato"
+      vim.g.catppuccin_flavour = "mocha"
     end,
   },
   onenord = {

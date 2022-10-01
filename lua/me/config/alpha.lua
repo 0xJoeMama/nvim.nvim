@@ -17,16 +17,20 @@ require("me.util").safe_run("alpha", function(alpha)
   }
 
   dashboard.section.buttons.val = {
-    dashboard.button("e", "  New File", ":ene <BAR> startinsert <cr>"),
-    dashboard.button("f", "🔍 Find File", ":Telescope find_files<cr>"),
-    dashboard.button("p", "📂 Open Project", ":Telescope projects<cr>"),
-    dashboard.button("c", "⚙  Configure Neovim", ":e " .. vim.fn.stdpath("config") .. "/init.lua<cr>"),
-    dashboard.button("q", "  Quit Neovim", ":wqa<cr>"),
+    dashboard.button("e", "  New File", "<cmd>ene <BAR> startinsert <cr>"),
+    dashboard.button("g", "  Find File", "<cmd>Telescope find_files<cr>"),
+    dashboard.button("f", "  Live Grep", "<cmd>Telescope find_files<cr>"),
+    dashboard.button("p", "📂 Open Project", "<cmd>Telescope projects<cr>"),
+    dashboard.button("b", "ℱ  Show Keybinds", "<cmd>WhichKey<cr>"),
+    dashboard.button("c", "  Configure Neovim", "<cmd>e " .. vim.fn.stdpath("config") .. "/init.lua<cr>"),
+    dashboard.button("u", "  Update Plugins", "<cmd>PackerSync<cr>"),
+    dashboard.button("q", "  Quit Neovim", "<cmd>wqa<cr>"),
   }
 
   dashboard.section.footer.val = "Made with ♥ by 0xJoeMama"
 
   dashboard.config.opts.noautocmd = true
+
   local layout = dashboard.config.layout
   table.insert(layout, 4, {
     type = "text",

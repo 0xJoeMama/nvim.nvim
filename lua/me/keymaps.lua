@@ -59,6 +59,10 @@ util.keymap.apply_keys {
         end,
         desc = "Open the file explorer",
       },
+      [";"] = {
+        action = "<cmd>Alpha<cr>",
+        desc = "Exit to the welcome screen",
+      },
       xs = {
         action = "<cmd>source %<cr>",
         desc = "Source the current file",

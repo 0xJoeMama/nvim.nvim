@@ -21,7 +21,7 @@ util.apply(vim.opt) {
   smartindent = true,
   shiftround = true, -- round to shiftwidth
   -- mouse
-  mouse = "a",
+  mouse = "",
   -- background
   background = "dark",
   -- disable all backup functions except for undo files

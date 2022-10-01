@@ -130,6 +130,7 @@ util.safe_run("lspconfig", function(lspconfig)
     "html",
     "yamlls",
     "denols",
+    "taplo",
   }, M.on_attach)
 
   for key, sign in pairs({

@@ -15,7 +15,9 @@ end
 
 local M = {}
 
-function M.load_modules(mods)
+M.load_modules = function(mods)
+  -- recursively iterate over the mods table and only 
+  -- return a list of modules once we only get strings
   local function parse_all(mod, prefix)
     if type(mod) == "string" then
       return { mod }
@@ -41,8 +43,10 @@ function M.load_modules(mods)
   local err = false
   local res = {}
 
+  -- parse the module table into a list
   local parsed = parse_all(mods)
 
+  -- load all modules safely
   for _, module in ipairs(parsed) do
     local mod = prequire(module)
     if not mod then
@@ -53,9 +57,12 @@ function M.load_modules(mods)
     end
   end
 
+  -- return whether there was an issue
+  -- and also provide the issue itself
   return err, res
 end
 
+-- apply an action one a module while making sure that module exists
 M.safe_run = function(modname, action)
   local mod = prequire(modname)
 
@@ -67,6 +74,9 @@ M.safe_run = function(modname, action)
   return action(mod)
 end
 
+-- modify an table using another table
+-- values from target must be either a new value or 
+-- a function that takes in the old value and modifies it
 M.apply = function(target)
   return function(settings)
     for opt, value in pairs(settings) do
@@ -79,6 +89,7 @@ M.apply = function(target)
   end
 end
 
+-- keymap sub-module
 M.keymap = {
   apply_keys = function(keys, global_opts)
     global_opts = global_opts or {
@@ -170,8 +181,6 @@ M.autocmd = {
   end,
 }
 
-M.prequire = prequire
-
 M.lsp = {
   load_lsps = function(lspconfig, cfg, on_attach)
     local function load(lsp, settings)
@@ -184,7 +193,9 @@ M.lsp = {
       settings = settings or {}
 
       local caps = vim.lsp.protocol.make_client_capabilities()
-      caps = require("cmp_nvim_lsp").update_capabilities(caps)
+      M.safe_run("cmp_nvim_lsp", function(cmp)
+        caps = cmp.update_capabilities(caps)
+      end)
 
       caps.textDocument.completion.completionItem.snippetSupport = false
       settings.capabilities = caps

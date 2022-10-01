@@ -20,7 +20,7 @@ util.apply(vim.opt) {
   autoindent = true,
   smartindent = true,
   shiftround = true, -- round to shiftwidth
-  -- mouse
+  -- mouse off for the love of god
   mouse = "",
   -- background
   background = "dark",

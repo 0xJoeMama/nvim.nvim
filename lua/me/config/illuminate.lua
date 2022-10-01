@@ -1,5 +1,5 @@
 require("me.util").setup("illuminate", "configure") {
-  delay = 200,
+  delay = 100,
   filetypes_denylist = {
     "NvimTree",
     "TelescopePrompt",

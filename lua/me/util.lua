@@ -123,6 +123,7 @@ M.keymap = {
 
         opts.desc = parsed_map.desc or opts.desc or ""
 
+        -- vim.keymap.del(mode, parsed_map.trigger)
         vim.keymap.set(mode, parsed_map.trigger, parsed_map.action, opts)
       end
     end

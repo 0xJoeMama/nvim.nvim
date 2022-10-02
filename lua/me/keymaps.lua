@@ -148,16 +148,6 @@ util.keymap.apply_keys {
       action = "<cmd>vert res -5<cr>",
       desc = "Decrease current window size by 5",
     },
-    d = {
-      j = {
-        action = '\"jyyp',
-        desc = "Duplicate current line",
-      },
-      k = {
-        action = "yyP",
-        desc = "Duplicate current line above",
-      },
-    },
     ["<A-j>"] = {
       action = "<cmd>move . +1<cr>==",
       desc = "Move current line down",

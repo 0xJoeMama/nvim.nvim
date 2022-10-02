@@ -1,5 +1,9 @@
 -- firstly attempt to load impatient
-pcall(require, "impatient")
+local impatient_ok, impatient = pcall(require, "impatient")
+
+if impatient_ok then
+  impatient.enable_profile()
+end
 
 local config_main = function()
   -- then try to load util since it's needed everywhere

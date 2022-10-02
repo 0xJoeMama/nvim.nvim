@@ -3,27 +3,29 @@ local bootstrap, packer = require("me.util").packer.ensure_packer()
 packer.startup {
   function(use)
     use {
+      -- Package Manager
       "wbthomason/packer.nvim",
+      -- Colorschemes
       "rmehri01/onenord.nvim",
       "folke/tokyonight.nvim",
       "catppuccin/nvim",
       "martinsione/darkplus.nvim",
+      -- LuaCache implementation aka performance optimization
       "lewis6991/impatient.nvim",
+      -- Discord Rich Presence
       "andweeb/presence.nvim",
-      "nvim-treesitter/playground",
-      "b0o/schemastore.nvim",
-      "folke/lsp-colors.nvim",
-      "simrat39/rust-tools.nvim",
-      {
-        "p00f/nvim-ts-rainbow",
-        requires = {
-          "nvim-treesitter/nvim-treesitter",
-        },
-      },
+      -- Telescope for *all* the searching
       {
         "nvim-telescope/telescope.nvim",
         requires = {
           "nvim-lua/plenary.nvim",
+        },
+      },
+      -- Treesitter and related
+      {
+        "p00f/nvim-ts-rainbow",
+        requires = {
+          "nvim-treesitter/nvim-treesitter",
         },
       },
       {
@@ -32,31 +34,81 @@ packer.startup {
           require("me.util").setup("nvim-treesitter.install", "update") {}
         end,
       },
+      {
+        "nvim-treesitter/playground",
+        requires = {
+          "nvim-treesitter/nvim-treesitter"
+        }
+      },
+      {
+        "windwp/nvim-ts-autotag",
+        requires = {
+          "nvim-treesitter/nvim-treesitter",
+        },
+      },
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        requires = {
+          "nvim-treesitter/nvim-treesitter",
+        },
+      },
+      -- JSON SchemaStore for the JSON LSP
+      "b0o/schemastore.nvim",
+      -- Colors for LSP groups
+      "folke/lsp-colors.nvim",
+      -- Rust specific support
+      "simrat39/rust-tools.nvim",
+      -- Better builtin terminal implementation
       "akinsho/toggleterm.nvim",
+      -- Keybind Window
       "folke/which-key.nvim",
+      -- Fancy notifications
       "rcarriga/nvim-notify",
+      -- Surround and autopairs for brackets etc
+      "kylechui/nvim-surround",
+      "windwp/nvim-autopairs",
+      -- Commenting using treesitter
+      "numToStr/Comment.nvim",
+      -- Git Related things(I personally only care about diff and blame so signs is all a I need)
+      "lewis6991/gitsigns.nvim",
+      -- Project Management
+      "ahmedkhalf/project.nvim",
+      -- Highlight Selected Symbol(uses/requires LSP)
+      {
+        "RRethy/vim-illuminate",
+        requires = {
+          "neovim/nvim-lspconfig",
+        }
+      },
+      -- Buffer List at the top of the screen
+      -- TODO: Remove this and move to a winbar
+      "akinsho/bufferline.nvim",
+      -- LSP Loading Widget(look at bottom right)
+      "j-hui/fidget.nvim",
+      -- Better virtual text
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      -- File Explorer
       {
         "kyazdani42/nvim-tree.lua",
         requires = {
           "kyazdani42/nvim-web-devicons",
         },
       },
-      "kylechui/nvim-surround",
-      "windwp/nvim-autopairs",
+      -- StatusLine
       {
         "nvim-lualine/lualine.nvim",
         requires = {
           "kyazdani42/nvim-web-devicons",
         },
       },
-      "lewis6991/gitsigns.nvim",
-      "numToStr/Comment.nvim",
+      -- Starting Screen
       {
         "goolord/alpha-nvim",
         requires = {
           "kyazdani42/nvim-web-devicons",
         },
       },
+      -- LSP and related
       {
         "williamboman/mason-lspconfig.nvim",
         requires = {
@@ -64,9 +116,8 @@ packer.startup {
           "williamboman/mason.nvim",
         },
       },
+      -- Autocomplete
       {
-        -- notice how i dont lock this because i dont know what
-        -- the correct lock would be in this case
         "hrsh7th/nvim-cmp",
         requires = {
           "hrsh7th/cmp-buffer",
@@ -80,23 +131,6 @@ packer.startup {
               "L3MON4D3/LuaSnip",
             },
           },
-        },
-      },
-      "ahmedkhalf/project.nvim",
-      "RRethy/vim-illuminate",
-      "akinsho/bufferline.nvim",
-      "j-hui/fidget.nvim",
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      {
-        "windwp/nvim-ts-autotag",
-        requires = {
-          "nvim-treesitter/nvim-treesitter",
-        },
-      },
-      {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        requires = {
-          "nvim-treesitter/nvim-treesitter",
         },
       },
     }

@@ -1,3 +1,5 @@
+local current_scheme = "tokyonight"
+
 local colorschemes = {
   tokyonight = {
     config = {
@@ -85,8 +87,6 @@ local colorschemes = {
     end
   }
 }
-
-local current_scheme = "tokyonight"
 
 local before_load =  colorschemes[current_scheme].before_load
 

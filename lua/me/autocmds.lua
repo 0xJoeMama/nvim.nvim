@@ -44,3 +44,15 @@ cmd {
     end
   }
 }
+
+cmd {
+  events = { "BufWinEnter", "BufRead", "BufNewFile" },
+  opts = {
+    group = my_group,
+    callback = function()
+      vim.cmd [[
+      setlocal formatoptions-=cro
+      ]]
+    end
+  }
+}

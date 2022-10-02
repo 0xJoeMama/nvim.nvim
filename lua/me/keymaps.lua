@@ -150,7 +150,7 @@ util.keymap.apply_keys {
     },
     d = {
       j = {
-        action = "yyp",
+        action = '\"jyyp',
         desc = "Duplicate current line",
       },
       k = {

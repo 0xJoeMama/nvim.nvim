@@ -66,5 +66,5 @@ end
 local ok, _ = pcall(config_main)
 if not ok then
   print("Something went terribly wrong! Exiting the config!")
-  vim.cmd[[qa!]]
+  vim.cmd [[qa!]]
 end

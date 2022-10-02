@@ -16,7 +16,7 @@ end
 local M = {}
 
 M.load_modules = function(mods)
-  -- recursively iterate over the mods table and only 
+  -- recursively iterate over the mods table and only
   -- return a list of modules once we only get strings
   local function parse_all(mod, prefix)
     if type(mod) == "string" then
@@ -75,7 +75,7 @@ M.safe_run = function(modname, action)
 end
 
 -- modify an table using another table
--- values from target must be either a new value or 
+-- values from target must be either a new value or
 -- a function that takes in the old value and modifies it
 M.apply = function(target)
   return function(settings)
@@ -149,7 +149,7 @@ M.packer = {
         install_path,
       }
 
-      vim.cmd([[packadd packer.nvim]])
+      vim.cmd [[packadd packer.nvim]]
 
       vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
 
@@ -225,3 +225,4 @@ M.setup = function(module, setup_name)
 end
 
 return M
+

@@ -41,7 +41,9 @@ M.on_attach = function(_, bfn)
             desc = "List code actions",
           },
           f = {
-            action = vim.lsp.buf.formatting,
+            action = function()
+              vim.lsp.buf.format { async = true }
+            end,
             desc = "Format current file",
           },
           r = {

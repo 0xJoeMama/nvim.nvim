@@ -1,0 +1,134 @@
+{
+  "project.nvim": {
+    "commit": "628de7e"
+  },
+  "packer.nvim": {
+    "commit": "6afb674"
+  },
+  "nvim-notify": {
+    "commit": "4144654"
+  },
+  "nvim-lspconfig": {
+    "commit": "f11fdff"
+  },
+  "playground": {
+    "commit": "e6a0bfa"
+  },
+  "lsp-colors.nvim": {
+    "commit": "4e6da19"
+  },
+  "lualine.nvim": {
+    "commit": "a52f078"
+  },
+  "which-key.nvim": {
+    "commit": "6885b66"
+  },
+  "bufferline.nvim": {
+    "commit": "83bf4dc"
+  },
+  "cmp-nvim-lsp": {
+    "commit": "affe808"
+  },
+  "cmp_luasnip": {
+    "commit": "a9de941"
+  },
+  "nvim": {
+    "commit": "167ecd3"
+  },
+  "rust-tools.nvim": {
+    "commit": "86a2b4e"
+  },
+  "gitsigns.nvim": {
+    "commit": "f98c85e"
+  },
+  "cmp-git": {
+    "commit": "fae6cdb"
+  },
+  "nvim-ts-autotag": {
+    "commit": "fdefe46"
+  },
+  "cmp-cmdline": {
+    "commit": "c66c379"
+  },
+  "telescope.nvim": {
+    "commit": "76ea9a8"
+  },
+  "nvim-ts-context-commentstring": {
+    "commit": "4d3a68c"
+  },
+  "Comment.nvim": {
+    "commit": "97a188a"
+  },
+  "mason.nvim": {
+    "commit": "a82ef67"
+  },
+  "alpha-nvim": {
+    "commit": "0bb6fc0"
+  },
+  "nvim-autopairs": {
+    "commit": "4fc96c8"
+  },
+  "darkplus.nvim": {
+    "commit": "6101ffc"
+  },
+  "vim-illuminate": {
+    "commit": "a2e8476"
+  },
+  "LuaSnip": {
+    "commit": "8f8d493"
+  },
+  "presence.nvim": {
+    "commit": "03e09d3"
+  },
+  "schemastore.nvim": {
+    "commit": "33873c7"
+  },
+  "nvim-web-devicons": {
+    "commit": "563f363"
+  },
+  "tokyonight.nvim": {
+    "commit": "4092905"
+  },
+  "nvim-treesitter": {
+    "commit": "28f54584"
+  },
+  "mason-lspconfig.nvim": {
+    "commit": "0051870"
+  },
+  "impatient.nvim": {
+    "commit": "b842e16"
+  },
+  "nvim-tree.lua": {
+    "commit": "7282f7d"
+  },
+  "onenord.nvim": {
+    "commit": "749ee2f"
+  },
+  "fidget.nvim": {
+    "commit": "1097a86"
+  },
+  "toggleterm.nvim": {
+    "commit": "2a787c4"
+  },
+  "plenary.nvim": {
+    "commit": "4b7e520"
+  },
+  "nvim-surround": {
+    "commit": "1719167"
+  },
+  "nvim-cmp": {
+    "commit": "203aa26"
+  },
+  "lsp_lines.nvim": {
+    "commit": "dbfd8e9"
+  },
+  "nvim-ts-rainbow": {
+    "commit": "1ec3f88"
+  },
+  "cmp-path": {
+    "commit": "447c87c"
+  },
+  "cmp-buffer": {
+    "commit": "3022dbc"
+  }
+}

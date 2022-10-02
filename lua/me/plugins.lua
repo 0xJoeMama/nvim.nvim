@@ -150,6 +150,7 @@ packer.startup {
     log = {
       level = "warn",
     },
+    snapshot_path = vim.fn.stdpath("config") .. "/snapshots/",
     autoremove = true,
   }
 }

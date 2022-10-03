@@ -9,7 +9,6 @@ packer.startup {
       "rmehri01/onenord.nvim",
       "folke/tokyonight.nvim",
       "catppuccin/nvim",
-      "martinsione/darkplus.nvim",
       -- LuaCache implementation aka performance optimization
       "lewis6991/impatient.nvim",
       -- Discord Rich Presence

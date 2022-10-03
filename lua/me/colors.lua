@@ -34,7 +34,7 @@ local colorschemes = {
       },
     },
     before_load = function()
-      vim.g.catppuccin_flavour = "mocha"
+      vim.g.catppuccin_flavour = "macchiato"
     end,
   },
   onenord = {

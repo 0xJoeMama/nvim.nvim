@@ -133,6 +133,7 @@ util.safe_run("lspconfig", function(lspconfig)
     "yamlls",
     "denols",
     "taplo",
+    "svelte",
   }, M.on_attach)
 
   for key, sign in pairs({

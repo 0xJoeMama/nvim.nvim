@@ -56,7 +56,7 @@ util.apply(vim.opt) {
   -- always display the statusline
   laststatus = 3,
   -- neovide font
-  guifont = "JetBrainsMono Nerd Font:h11",
+  guifont = "JetBrainsMono Nerd Font:h10",
   -- highlight current line
   cursorline = true,
   clipboard = function(clip)

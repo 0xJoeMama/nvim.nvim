@@ -88,17 +88,19 @@ local colorschemes = {
   }
 }
 
-local before_load =  colorschemes[current_scheme].before_load
+current_scheme = current_scheme or "tokyonight"
+local scheme_config = colorschemes[current_scheme] or {}
+local before_load =  scheme_config.before_load
 
 if before_load then
   before_load()
 end
 
-require(current_scheme).setup(colorschemes[current_scheme].config)
+require(current_scheme).setup(scheme_config.config or {})
 vim.api.nvim_exec("colorscheme " .. current_scheme, false)
 vim.g.colors_name = current_scheme
 
-local extra = colorschemes[current_scheme].highlight_extras
+local extra = scheme_config.highlight_extras
 
 if extra then
   extra(function(args)

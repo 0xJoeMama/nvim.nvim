@@ -9,6 +9,7 @@ packer.startup {
       "rmehri01/onenord.nvim",
       "folke/tokyonight.nvim",
       "catppuccin/nvim",
+      "gruvbox-community/gruvbox",
       -- LuaCache implementation aka performance optimization
       "lewis6991/impatient.nvim",
       -- Discord Rich Presence

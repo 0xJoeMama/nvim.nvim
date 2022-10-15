@@ -195,10 +195,11 @@ M.lsp = {
 
       local caps = vim.lsp.protocol.make_client_capabilities()
       M.safe_run("cmp_nvim_lsp", function(cmp)
-        caps = cmp.update_capabilities(caps)
+        caps = cmp.default_capabilities {
+          snippetSupport = false,
+        }
       end)
 
-      caps.textDocument.completion.completionItem.snippetSupport = false
       settings.capabilities = caps
       settings.on_attach = on_attach
 

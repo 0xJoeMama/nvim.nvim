@@ -135,11 +135,10 @@ util.keymap.apply_keys {
       action = "<cmd>ToggleTerm<cr>",
       desc = "Toggle Toggleterm view",
     },
-    FF = {
-      action = "<cmd>wqa<cr>",
+    ZZ = {
+      action = "<cmd>wqa!<cr>",
       desc = "KILL IT!",
     },
-    ZZ = no_op(),
     ["<A-h>"] = {
       action = "<cmd>vert res +5<cr>",
       desc = "Increase current window size by 5",

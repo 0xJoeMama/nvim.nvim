@@ -83,7 +83,8 @@ util.apply(vim.opt) {
     formatoptions:remove("c")
     formatoptions:remove("r")
     formatoptions:remove("o")
-  end
+  end,
+  foldmethod = "marker",
 }
 
 util.apply(vim.g) {

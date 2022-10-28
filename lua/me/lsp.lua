@@ -5,7 +5,7 @@
 local util = require("me.util")
 local M = {}
 
-M.on_attach = function(_, bfn)
+M.on_attach = function(_client, bfn)
   local buf_opts = {
     noremap = true,
     silent = true,
@@ -64,6 +64,12 @@ M.on_attach = function(_, bfn)
       },
     },
   }, buf_opts)
+
+  -- util.safe_run("nvim-navic", function(navic)
+  --   if client.server_capabilities.documentSymbolProvider then
+  --     navic.attach(client, bfn)
+  --   end
+  -- end)
 end
 
 util.setup("mason") {

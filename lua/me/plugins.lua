@@ -133,6 +133,7 @@ packer.startup {
           },
         },
       },
+      "EdenEast/nightfox.nvim",
     }
 
     if bootstrap then

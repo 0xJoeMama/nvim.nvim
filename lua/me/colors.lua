@@ -1,11 +1,11 @@
-local current_scheme = "tokyonight"
+local current_scheme = "gruvbox"
 
 local colorschemes = {
   tokyonight = {
     config = {
       style = (function()
         local day_hour = tonumber(os.date("%H"))
-        if day_hour > 19 then
+        if day_hour > 18 then
           return "night"
         else
           return "storm"
@@ -50,53 +50,37 @@ local colorschemes = {
       },
     },
     highlight_extras = function(hl)
-      hl {
+      for _, group in ipairs {
         "IlluminatedWordText",
-        values = {
-          bg = "#3F4758"
-        },
-      }
-
-      hl {
         "IlluminatedWordRead",
-        values = {
-          bg = "#3F4758",
-        },
-      }
-
-      hl {
         "IlluminatedWordWrite",
-        values = {
-          bg = "#3F4758",
-        },
-      }
-
-      hl {
         "illuminatedWord",
-        values = {
-          bg = "#3F4758",
-        },
-      }
-
-      hl {
         "illuminatedCurrWord",
-        values = {
-          bg = "#3F4758",
-        },
-      }
+      } do
+        hl {
+          group,
+          values = {
+            bg = "#3F4758"
+          },
+        }
+      end
     end
   }
 }
 
 current_scheme = current_scheme or "tokyonight"
 local scheme_config = colorschemes[current_scheme] or {}
-local before_load =  scheme_config.before_load
+local before_load = scheme_config.before_load
 
 if before_load then
   before_load()
 end
 
-require(current_scheme).setup(scheme_config.config or {})
+local ok, scheme = pcall(require, current_scheme)
+if ok then
+  scheme.setup(scheme_config.config or {})
+end
+
 vim.api.nvim_exec("colorscheme " .. current_scheme, false)
 vim.g.colors_name = current_scheme
 
@@ -110,4 +94,3 @@ if extra then
     vim.api.nvim_set_hl(0, group, values)
   end)
 end
-

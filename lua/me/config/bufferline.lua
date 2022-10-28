@@ -19,7 +19,7 @@ require('me.util').setup("bufferline") {
     offsets = {
       {
         filetype = "NvimTree",
-        text = "Explorer",
+        text = "",
         text_align = "center",
         separator = false,
         padding = 1,

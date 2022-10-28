@@ -51,7 +51,6 @@ util.safe_run("cmp", function(cmp)
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
       },
-      keyword_length = 5,
       completeopt = "menu,menuone,noselect",
     },
     formatting = {

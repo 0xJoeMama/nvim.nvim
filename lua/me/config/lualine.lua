@@ -38,7 +38,9 @@ require("me.util").setup("lualine") {
             return final_string
           end
         end,
-        color = "Bold",
+        color = {
+          gui = "bold",
+        },
       }
     },
     lualine_y = { "encoding", "fileformat", "progress" },

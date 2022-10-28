@@ -34,7 +34,7 @@ require("me.util").safe_run("luasnip", function(luasnip)
       i(2),
       i(0),
     })),
-    s("form", fmt([[
+    s("for", fmt([[
     for {}, {} in pairs({}) do
       {}
     end

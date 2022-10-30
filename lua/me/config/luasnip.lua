@@ -4,9 +4,9 @@ require("me.util").safe_run("luasnip", function(luasnip)
   local t = luasnip.text_node
   local fmt = require("luasnip.extras.fmt").fmt
   local c = luasnip.choice_node
+  local f = luasnip.function_node
   -- local d = luasnip.dynamic_node
   -- local sn = luasnip.snippet_node
-  -- local f = luasnip.function_node
 
   luasnip.add_snippets("lua", {
     s("ift", fmt([[
@@ -57,6 +57,23 @@ require("me.util").safe_run("luasnip", function(luasnip)
       i(3),
       i(0),
     })),
+    s("req", fmt([[
+    local {} = require("{}")
+    ]], {
+      f(function(env)
+          local package = env[1][1]
+          local split = vim.split(package, ".", { plain = true })
+          local mod_name = split[#split]
+          return mod_name
+      end, {1}),
+      i(1, "module_name"),
+    }))
   })
+
+  local config = require("luasnip.config")
+
+  config.setup {
+    update_events = "TextChanged,TextChangedI,InsertLeave",
+  }
 end)
 

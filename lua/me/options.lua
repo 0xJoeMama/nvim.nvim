@@ -21,7 +21,7 @@ util.apply(vim.opt) {
   smartindent = true,
   shiftround = true, -- round to shiftwidth
   -- mouse off for the love of god
-  mouse = "",
+  mouse = "a",
   -- background
   background = "dark",
   -- disable all backup functions except for undo files
@@ -85,6 +85,7 @@ util.apply(vim.opt) {
     formatoptions:remove("o")
   end,
   foldmethod = "marker",
+  -- winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 }
 
 util.apply(vim.g) {

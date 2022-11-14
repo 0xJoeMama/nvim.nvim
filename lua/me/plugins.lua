@@ -9,6 +9,7 @@ packer.startup {
       "rmehri01/onenord.nvim",
       "folke/tokyonight.nvim",
       "catppuccin/nvim",
+      "EdenEast/nightfox.nvim",
       "gruvbox-community/gruvbox",
       -- LuaCache implementation aka performance optimization
       "lewis6991/impatient.nvim",
@@ -133,7 +134,10 @@ packer.startup {
           },
         },
       },
-      "EdenEast/nightfox.nvim",
+      {
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig"
+      }
     }
 
     if bootstrap then

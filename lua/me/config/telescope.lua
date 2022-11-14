@@ -7,6 +7,7 @@ require("me.util").safe_run("telescope", function(telescope)
       selection_caret = "🡆 ",
       multi_icon = "🡆 ",
       history = false,
+      winblend = 10,
     },
     pickers = {
       find_files = {

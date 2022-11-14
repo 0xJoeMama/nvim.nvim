@@ -5,7 +5,13 @@
 local util = require("me.util")
 local M = {}
 
-M.on_attach = function(_client, bfn)
+M.on_attach = function(client, bfn)
+  if client.server_capabilities.documentSymbolProvider then
+    util.safe_run("nvim-navic", function(navic)
+      navic.attach(client, bfn)
+    end)
+  end
+
   local buf_opts = {
     noremap = true,
     silent = true,
@@ -140,6 +146,7 @@ util.safe_run("lspconfig", function(lspconfig)
     "denols",
     "taplo",
     "svelte",
+    "tsserver",
   }, M.on_attach)
 
   for key, sign in pairs({

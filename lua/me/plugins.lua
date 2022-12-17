@@ -137,7 +137,8 @@ packer.startup {
       {
         "SmiteshP/nvim-navic",
         requires = "neovim/nvim-lspconfig"
-      }
+      },
+      { "zbirenbaum/copilot.lua" }
     }
 
     if bootstrap then

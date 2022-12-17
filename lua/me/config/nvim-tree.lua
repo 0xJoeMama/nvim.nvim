@@ -1,5 +1,4 @@
 require("me.util").setup("nvim-tree") {
-  create_in_closed_folder = true,
   disable_netrw = true,
   hijack_cursor = false,
   open_on_setup = true,

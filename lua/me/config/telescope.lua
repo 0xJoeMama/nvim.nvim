@@ -6,7 +6,7 @@ require("me.util").safe_run("telescope", function(telescope)
       prompt_prefix = "  ",
       selection_caret = "🡆 ",
       multi_icon = "🡆 ",
-      history = false,
+      history = true,
       winblend = 10,
     },
     pickers = {

@@ -9,65 +9,101 @@ require("me.util").safe_run("luasnip", function(luasnip)
   -- local sn = luasnip.snippet_node
 
   luasnip.add_snippets("lua", {
-    s("ift", fmt([[
+    s(
+      "ift",
+      fmt(
+        [[
     if {} then
       {}
     end
-    ]], {
-      i(1),
-      i(0),
-    })),
-    s("fu", fmt([[
+    ]],
+        {
+          i(1),
+          i(0),
+        }
+      )
+    ),
+    s(
+      "fu",
+      fmt(
+        [[
       function({})
         {}
       end
-      ]], {
-      i(1),
-      i(0),
-    })),
-    s("lfu", fmt([[
+      ]],
+        {
+          i(1),
+          i(0),
+        }
+      )
+    ),
+    s(
+      "lfu",
+      fmt(
+        [[
     local {} = function({})
       {}
     end
-    ]], {
-      i(1, "fn"),
-      i(2),
-      i(0),
-    })),
-    s("for", fmt([[
+    ]],
+        {
+          i(1, "fn"),
+          i(2),
+          i(0),
+        }
+      )
+    ),
+    s(
+      "for",
+      fmt(
+        [[
     for {}, {} in pairs({}) do
       {}
     end
-    ]], {
-      i(1, "key"),
-      i(2, "value"),
-      i(3),
-      i(0),
-    })),
-    s("fori", fmt([[
+    ]],
+        {
+          i(1, "key"),
+          i(2, "value"),
+          i(3),
+          i(0),
+        }
+      )
+    ),
+    s(
+      "fori",
+      fmt(
+        [[
     for {}, {} in ipairs({}) do
       {}
     end
-    ]], {
-      c(1, {
-        t("_"),
-        i(4, "i"),
-      }),
-      i(2, "value"),
-      i(3),
-      i(0),
-    })),
-    s("req", fmt([[
+    ]],
+        {
+          c(1, {
+            t("_"),
+            i(4, "i"),
+          }),
+          i(2, "value"),
+          i(3),
+          i(0),
+        }
+      )
+    ),
+    s(
+      "req",
+      fmt(
+        [[
     local {} = require("{}")
-    ]], {
-      f(function(env)
-          local package = env[1][1]
-          local split = vim.split(package, ".", { plain = true })
-          local mod_name = split[#split]
-          return mod_name
-      end, {1}),
-      i(1, "module_name"),
-    }))
+    ]],
+        {
+          f(function(env)
+            local package = env[1][1]
+            local split = vim.split(package, ".", { plain = true })
+            local mod_name = split[#split]
+            return mod_name
+          end, { 1 }),
+          i(1, "module_name"),
+        }
+      )
+    ),
   })
 
   local config = require("luasnip.config")
@@ -76,4 +112,3 @@ require("me.util").safe_run("luasnip", function(luasnip)
     update_events = "TextChanged,TextChangedI,InsertLeave",
   }
 end)
-

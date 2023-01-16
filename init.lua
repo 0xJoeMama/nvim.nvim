@@ -46,6 +46,7 @@ local config_main = function()
         "rust-tools",
         "nvim-navic",
         "copilot",
+        "null-ls",
       },
       "lsp",
       "colors",
@@ -72,5 +73,5 @@ end
 local ok, _ = pcall(config_main)
 if not ok then
   print("Something went terribly wrong! Exiting the config!")
-  vim.cmd [[qa!]]
+  vim.cmd([[qa!]])
 end

@@ -12,7 +12,7 @@ local calculate_size = function(text)
 
   return {
     x = curr_max,
-    y = #text
+    y = #text,
   }
 end
 
@@ -67,7 +67,7 @@ ui.create_popup = function(txt, callback, opts)
 
   local close_fn = function()
     vim.api.nvim_win_close(winh, true)
-    vim.api.nvim_buf_delete(bfn, { force = true, })
+    vim.api.nvim_buf_delete(bfn, { force = true })
     callback(nil)
   end
 

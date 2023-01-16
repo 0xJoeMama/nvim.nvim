@@ -1,15 +1,15 @@
-require('me.util').setup("bufferline") {
+require("me.util").setup("bufferline") {
   highlights = {
     buffer_selected = {
       bold = true,
       italic = true,
-    }
+    },
   },
   options = {
     numbers = "none",
     indicator = {
-      icon = '▍',
-      style = 'icon',
+      icon = "▍",
+      style = "icon",
     },
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
@@ -35,5 +35,5 @@ require('me.util').setup("bufferline") {
     persist_buffer_sort = true,
     separator_style = "",
     always_show_bufferline = false,
-  }
+  },
 }

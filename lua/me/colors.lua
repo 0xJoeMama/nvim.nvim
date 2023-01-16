@@ -1,4 +1,4 @@
-local current_scheme = "gruvbox"
+local current_scheme = "tokyonight"
 
 local colorschemes = {
   tokyonight = {
@@ -21,8 +21,9 @@ local colorschemes = {
         "NvimTree",
       },
       use_background = true,
-    }
+    },
   },
+
   catppuccin = {
     config = {
       styles = {
@@ -37,6 +38,7 @@ local colorschemes = {
       vim.g.catppuccin_flavour = "macchiato"
     end,
   },
+
   onenord = {
     config = {
       theme = "dark",
@@ -60,12 +62,12 @@ local colorschemes = {
         hl {
           group,
           values = {
-            bg = "#3F4758"
+            bg = "#3F4758",
           },
         }
       end
-    end
-  }
+    end,
+  },
 }
 
 current_scheme = current_scheme or "tokyonight"

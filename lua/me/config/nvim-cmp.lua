@@ -26,7 +26,7 @@ local kind_icons = {
   Struct = "",
   Event = "",
   Operator = "",
-  TypeParameter = ""
+  TypeParameter = "",
 }
 
 util.safe_run("cmp", function(cmp)

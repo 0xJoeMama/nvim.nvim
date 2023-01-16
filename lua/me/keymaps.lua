@@ -41,14 +41,14 @@ util.keymap.apply_keys {
           bufferline.cycle(1)
         end)
       end,
-      desc = "Move to the next buffer"
+      desc = "Move to the next buffer",
     },
     H = {
       action = function()
         util.safe_run("bufferline", function(bufferline)
           bufferline.cycle(-1)
         end)
-      end
+      end,
     },
     ["<leader>"] = {
       e = {
@@ -108,8 +108,8 @@ util.keymap.apply_keys {
         },
         b = {
           action = telescope_prompt("buffers"),
-          desc = "Show bufferlist in Telescope"
-        }
+          desc = "Show bufferlist in Telescope",
+        },
       },
     },
     ["<Backspace>"] = no_op(),

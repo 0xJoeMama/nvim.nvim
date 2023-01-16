@@ -11,6 +11,6 @@ require("me.util").safe_run("nvim-autopairs", function(npairs)
 
   npairs.add_rules {
     Rule("|", "|", "rust") -- automatically create closures in Rust?!
-        :with_pair(ts_conds.is_ts_node("arguments")),
+      :with_pair(ts_conds.is_ts_node("arguments")),
   }
 end)

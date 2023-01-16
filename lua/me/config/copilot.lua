@@ -13,5 +13,8 @@ require("me.util").setup("copilot") {
       dismiss = "<C-]>",
     },
   },
+  filetypes = {
+    cpp = false,
+    c = false,
+  },
 }
-

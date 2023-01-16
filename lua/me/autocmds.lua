@@ -41,8 +41,8 @@ cmd {
       vim.highlight.on_yank {
         timeout = 100,
       }
-    end
-  }
+    end,
+  },
 }
 
 cmd {
@@ -50,9 +50,9 @@ cmd {
   opts = {
     group = my_group,
     callback = function()
-      vim.cmd [[
+      vim.cmd([[
       setlocal formatoptions-=cro
-      ]]
-    end
-  }
+      ]])
+    end,
+  },
 }

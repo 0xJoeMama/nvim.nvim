@@ -150,7 +150,7 @@ M.packer = {
         install_path,
       }
 
-      vim.cmd [[packadd packer.nvim]]
+      vim.cmd([[packadd packer.nvim]])
 
       vim.notify("'packer.nvim' was just installed automatically!", vim.log.levels.INFO)
 
@@ -227,4 +227,3 @@ M.setup = function(module, setup_name)
 end
 
 return M
-

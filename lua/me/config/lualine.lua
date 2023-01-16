@@ -14,7 +14,7 @@ require("me.util").setup("lualine") {
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch", "diagnostics" },
-    lualine_c = { { "filetype", icon_only = true, padding = { left = 2, right = 0 } }, "filename", "diff"},
+    lualine_c = { { "filetype", icon_only = true, padding = { left = 2, right = 0 } }, "filename", "diff" },
     lualine_x = {
       {
         "filetype",
@@ -41,7 +41,7 @@ require("me.util").setup("lualine") {
         color = {
           gui = "bold",
         },
-      }
+      },
     },
     lualine_y = { "encoding", "fileformat", "progress" },
     lualine_z = { "location" },

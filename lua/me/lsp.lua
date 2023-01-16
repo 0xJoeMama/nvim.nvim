@@ -12,6 +12,8 @@ M.on_attach = function(client, bfn)
     end)
   end
 
+  -- client.server_capabilities.offsetEncoding = "utf-8"
+
   local buf_opts = {
     noremap = true,
     silent = true,
@@ -27,7 +29,7 @@ M.on_attach = function(client, bfn)
               includeDeclaration = false,
             }
           end,
-          desc = "List LSP references"
+          desc = "List LSP references",
         },
         l = {
           d = {
@@ -56,7 +58,7 @@ M.on_attach = function(client, bfn)
             action = vim.lsp.buf.rename,
             desc = "Rename symbol",
           },
-        }
+        },
       },
       g = {
         d = {
@@ -107,7 +109,7 @@ util.safe_run("lspconfig", function(lspconfig)
               version = "LuaJIT",
             },
             diagnostics = {
-              globals = { "vim", },
+              globals = { "vim" },
             },
             workspace = {
               library = vim.api.nvim_get_runtime_file("", true),
@@ -119,7 +121,24 @@ util.safe_run("lspconfig", function(lspconfig)
         },
       },
     },
-    "clangd",
+    {
+      "clangd",
+      config = {
+        cmd = {
+          "clangd",
+          "--all-scopes-completion",
+          "--suggest-missing-includes",
+          "--background-index",
+          "--pch-storage=disk",
+          "--cross-file-rename",
+          "--log=info",
+          "--completion-style=detailed",
+          "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+          "--clang-tidy",
+          "--offset-encoding=utf-8", --temporary fix for null-ls
+        },
+      },
+    },
     -- "rust_analyzer", ATTENTION: Always make sure this is disabled if you are using rust-tools.nvim
     "denols",
     "zls",
@@ -149,7 +168,7 @@ util.safe_run("lspconfig", function(lspconfig)
     "tsserver",
   }, M.on_attach)
 
-  for key, sign in pairs({
+  for key, sign in pairs {
     Error = {
       text = "",
     },
@@ -162,7 +181,7 @@ util.safe_run("lspconfig", function(lspconfig)
     Info = {
       text = "",
     },
-  }) do
+  } do
     sign.texthl = "Diagnostic" .. key
     vim.fn.sign_define("DiagnosticSign" .. key, sign)
   end

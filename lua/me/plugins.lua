@@ -38,8 +38,8 @@ packer.startup {
       {
         "nvim-treesitter/playground",
         requires = {
-          "nvim-treesitter/nvim-treesitter"
-        }
+          "nvim-treesitter/nvim-treesitter",
+        },
       },
       {
         "windwp/nvim-ts-autotag",
@@ -61,7 +61,7 @@ packer.startup {
       "simrat39/rust-tools.nvim",
       -- Better builtin terminal implementation
       "akinsho/toggleterm.nvim",
-      -- Keybind Window
+      -- Keybind Window: removed as I don't really use it.
       "folke/which-key.nvim",
       -- Fancy notifications
       "rcarriga/nvim-notify",
@@ -79,7 +79,7 @@ packer.startup {
         "RRethy/vim-illuminate",
         requires = {
           "neovim/nvim-lspconfig",
-        }
+        },
       },
       -- Buffer List at the top of the screen
       -- TODO: Remove this and move to a winbar
@@ -136,9 +136,15 @@ packer.startup {
       },
       {
         "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig"
+        requires = "neovim/nvim-lspconfig",
       },
-      { "zbirenbaum/copilot.lua" }
+      { "zbirenbaum/copilot.lua" },
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = {
+          "nvim-lua/plenary.nvim",
+        },
+      }
     }
 
     if bootstrap then
@@ -158,5 +164,5 @@ packer.startup {
     },
     snapshot_path = vim.fn.stdpath("config") .. "/snapshots/",
     autoremove = true,
-  }
+  },
 }

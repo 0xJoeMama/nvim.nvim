@@ -144,7 +144,7 @@ packer.startup {
         requires = {
           "nvim-lua/plenary.nvim",
         },
-      }
+      },
     }
 
     if bootstrap then

@@ -1,15 +1,16 @@
-local current_scheme = "tokyonight"
+local current_scheme = "nightfox"
 
 local colorschemes = {
   tokyonight = {
     config = {
       style = (function()
-        local day_hour = tonumber(os.date("%H"))
-        if day_hour > 18 then
-          return "night"
-        else
-          return "storm"
-        end
+        -- local day_hour = tonumber(os.date("%H"))
+        -- if day_hour > 18 then
+        --   return "night"
+        -- else
+        --   return "storm"
+        -- end
+        return "storm"
       end)(),
       styles = {
         comments = { italic = true },

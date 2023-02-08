@@ -1,8 +1,7 @@
 require("me.util").setup("rust-tools") {
   tools = {
     inlay_hints = {
-      -- auto = true,
-      auto = false,
+      auto = true,
       other_hints_prefix = ": ",
     },
   },

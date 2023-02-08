@@ -1,14 +1,11 @@
 require("me.util").setup("nvim-tree") {
   disable_netrw = true,
   hijack_cursor = false,
-  open_on_setup = true,
-  open_on_setup_file = false,
   sync_root_with_cwd = false,
   respect_buf_cwd = true,
   reload_on_bufenter = false,
   on_attach = nil, -- must be like this in order to apply mappings through view.mappings.list
   remove_keymaps = true,
-  ignore_ft_on_setup = {},
   update_focused_file = {
     enable = true,
   },

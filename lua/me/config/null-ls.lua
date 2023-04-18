@@ -17,9 +17,6 @@ require("me.util").safe_run("null-ls", function(null_ls)
       builtins.diagnostics.markdownlint,
       builtins.diagnostics.selene,
       builtins.diagnostics.flake8,
-
-      -- completion
-      -- builtins.completion.spell,
     },
   }
 end)

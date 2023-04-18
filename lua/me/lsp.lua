@@ -22,6 +22,10 @@ M.on_attach = function(client, bfn)
 
   util.keymap.apply_keys({
     n = {
+      K = {
+        action = vim.lsp.buf.hover,
+        desc = "Hover information"
+      },
       ["<leader>"] = {
         o = {
           action = function()
@@ -101,7 +105,7 @@ util.setup("mason-lspconfig") {
 util.safe_run("lspconfig", function(lspconfig)
   util.lsp.load_lsps(lspconfig, {
     {
-      "sumneko_lua",
+      "lua_ls",
       config = {
         settings = {
           Lua = {
@@ -166,6 +170,7 @@ util.safe_run("lspconfig", function(lspconfig)
     "taplo",
     "svelte",
     "tsserver",
+    "asm_lsp",
   }, M.on_attach)
 
   for key, sign in pairs {

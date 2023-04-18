@@ -85,7 +85,6 @@ util.apply(vim.opt) {
     formatoptions:remove("o")
   end,
   foldmethod = "marker",
-  -- winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 }
 
 util.apply(vim.g) {

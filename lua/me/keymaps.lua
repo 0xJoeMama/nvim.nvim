@@ -25,9 +25,9 @@ end
 
 local gitsigns = function(action)
   return function()
-    util.safe_run("gitsigns", function(gitsigns)
-      if gitsigns[action] then
-        gitsigns[action]()
+    util.safe_run("gitsigns", function(gs)
+      if gs[action] then
+        gs[action]()
       end
     end)
   end

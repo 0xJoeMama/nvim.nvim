@@ -36,12 +36,6 @@ packer.startup {
         end,
       },
       {
-        "nvim-treesitter/playground",
-        requires = {
-          "nvim-treesitter/nvim-treesitter",
-        },
-      },
-      {
         "windwp/nvim-ts-autotag",
         requires = {
           "nvim-treesitter/nvim-treesitter",
@@ -134,10 +128,6 @@ packer.startup {
           },
         },
       },
-      {
-        "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig",
-      },
       { "zbirenbaum/copilot.lua" },
       {
         "jose-elias-alvarez/null-ls.nvim",
@@ -145,6 +135,7 @@ packer.startup {
           "nvim-lua/plenary.nvim",
         },
       },
+      "MunifTanjim/nui.nvim",
     }
 
     if bootstrap then

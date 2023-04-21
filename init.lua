@@ -44,7 +44,6 @@ local config_main = function()
         "lsp-lines",
         "lsp-colors",
         "rust-tools",
-        "nvim-navic",
         "copilot",
         "null-ls",
       },

@@ -27,8 +27,13 @@ vim.ui.select = function(items, opts, on_choice)
     else
       on_choice(items[ctx.line], ctx.line)
     end
-  end, {
-    highlights = { "DiagnosticSignHint" },
-    cursor_col = 6,
-  })
+  end)
+end
+
+vim.ui.input = function(opts, on_confirm)
+  require("me.ui").create_prompt(opts.prompt, opts.default, function(new_name)
+    if new_name then
+      on_confirm(new_name)
+    end
+  end)
 end

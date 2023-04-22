@@ -1,5 +1,5 @@
 local util = require("me.util")
-BUFFERLINE_BOOTSTRAP = false
+_AUTOPAIRS_INIT = false
 
 local kind_icons = {
   Text = "",
@@ -43,7 +43,7 @@ util.safe_run("cmp", function(cmp)
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered {
-        border = "double",
+        border = "single",
       },
     },
     preselect = cmp.PreselectMode.Item,
@@ -57,9 +57,11 @@ util.safe_run("cmp", function(cmp)
       fields = {
         "kind",
         "abbr",
+        "menu",
       },
       format = function(_, item)
-        item.kind = kind_icons[item.kind]
+        item.kind = --[[ item.kind .. " " .. ]]
+          kind_icons[item.kind]
         return item
       end,
     },
@@ -72,7 +74,7 @@ util.safe_run("cmp", function(cmp)
         local luasnip = require("luasnip")
 
         if cmp.visible() then
-          cmp.select_next_item()
+          cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
@@ -83,7 +85,7 @@ util.safe_run("cmp", function(cmp)
         local luasnip = require("luasnip")
 
         if cmp.visible() then
-          cmp.select_prev_item()
+          cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
@@ -93,10 +95,10 @@ util.safe_run("cmp", function(cmp)
       ["<CR>"] = cmp.mapping.confirm { select = true },
     },
     sources = cmp.config.sources {
+      { name = "luasnip", priority = 5 },
       { name = "nvim_lsp", entry_filter = snippet_filter },
-      { name = "luasnip" },
-      { name = "path", trigger_characters = { "/" } },
-      { name = "buffer", keyword_length = 5 },
+      { name = "path", trigger_characters = { "/" }, priority = 10 },
+      -- { name = "buffer", keyword_length = 5 },
     },
     experimental = {
       ghost_text = true,
@@ -111,25 +113,24 @@ util.safe_run("cmp", function(cmp)
 
   cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
+    sources = cmp.config.sources {
+      { name = "path" },
       { name = "buffer" },
     },
   })
 
   cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
+    sources = cmp.config.sources {
       { name = "path" },
-    }, {
       { name = "cmdline" },
-    }),
+    },
   })
 
-  if not BUFFERLINE_BOOTSTRAP then
+  if not _AUTOPAIRS_INIT then
     util.safe_run("nvim-autopairs.completion.cmp", function(cmp_autopairs)
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end)
-
-    BUFFERLINE_BOOTSTRAP = true
+    _AUTOPAIRS_INIT = true
   end
 end)

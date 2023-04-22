@@ -16,7 +16,7 @@ M.on_attach = function(_, bfn)
     n = {
       K = {
         action = vim.lsp.buf.hover,
-        desc = "Hover information"
+        desc = "Hover information",
       },
       ["<leader>"] = {
         o = {
@@ -167,7 +167,7 @@ util.safe_run("lspconfig", function(lspconfig)
       text = "",
     },
     Hint = {
-      text = "💡",
+      text = "",
     },
     Info = {
       text = "",

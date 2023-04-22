@@ -21,9 +21,6 @@ ui.create_popup = function(txt, callback)
         top_align = "left",
       },
     },
-    win_options = {
-      winhighlight = "Normal:Normal,FloatBorder:Normal",
-    },
   }, {
     lines = items,
     keymap = {

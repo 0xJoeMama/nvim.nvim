@@ -5,7 +5,6 @@ local cmd = util.autocmd.cmd
 local resource_config = group("SourceConfig")
 local my_group = group("Mine")
 
-
 cmd {
   events = "BufWritePost",
   opts = {
@@ -57,4 +56,3 @@ cmd {
     end,
   },
 }
-

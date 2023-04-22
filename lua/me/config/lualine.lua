@@ -1,7 +1,7 @@
 require("me.util").setup("lualine") {
   options = {
-    component_separators = "",
-    section_separators = "",
+    component_separators = "|",
+    section_separators = {},
     disabled_filetypes = {
       statusline = {
         "TelescopePrompt",
@@ -12,14 +12,29 @@ require("me.util").setup("lualine") {
     globalstatus = true,
   },
   sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch", "diagnostics" },
-    lualine_c = { { "filetype", icon_only = true, padding = { left = 1, right = 0 } }, "filename", "diff" },
+    lualine_a = {
+      {
+        "mode",
+        color = {
+          gui = "Bold",
+        },
+      },
+    },
+    lualine_b = {
+      "branch",
+      "diff",
+      "diagnostics",
+    },
+    lualine_c = {
+      { "filetype", icon_only = true, padding = { left = 1, right = 0 }, separator = "" },
+      "filename",
+    },
     lualine_x = {
       {
         "filetype",
         icon_only = true,
         padding = 0,
+        separator = "",
       },
       {
         function()
@@ -35,11 +50,11 @@ require("me.util").setup("lualine") {
           if final_string == "" then
             return "No LSP"
           else
-            return final_string
+            return "[" .. final_string .. "]"
           end
         end,
         color = {
-          gui = "bold",
+          gui = "Bold",
         },
       },
     },

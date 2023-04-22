@@ -28,7 +28,11 @@ require("me.util").setup("bufferline") {
     color_icons = true,
     show_buffer_icons = true,
     show_buffer_close_icons = true,
-    show_buffer_default_icon = true,
+    get_element_icon = function(args)
+      return require("me.util").safe_run("nvim-web-devicons", function(icons)
+        return icons.get_icon(args, { default = false })
+      end)
+    end,
     show_close_icon = true,
     show_tab_indicators = true,
     show_duplicate_prefix = true,

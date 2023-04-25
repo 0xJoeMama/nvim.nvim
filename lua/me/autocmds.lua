@@ -20,39 +20,14 @@ cmd {
 }
 
 cmd {
-  events = "BufWritePost",
-  opts = {
-    group = resource_config,
-    pattern = vim.fn.stdpath("config") .. "*plugins.lua",
-    callback = function()
-      vim.notify("Packer configuration has been modified", vim.log.levels.INFO, {
-        title = "Syncing...",
-      })
-      require("packer").sync()
-    end,
-  },
-}
-
-cmd {
   events = "TextYankPost",
   opts = {
     group = my_group,
     callback = function()
       vim.highlight.on_yank {
-        timeout = 100,
+        timeout = 40,
       }
     end,
   },
 }
 
-cmd {
-  events = { "BufWinEnter", "BufRead", "BufNewFile" },
-  opts = {
-    group = my_group,
-    callback = function()
-      vim.cmd([[
-      setlocal formatoptions-=cro
-      ]])
-    end,
-  },
-}

@@ -1,4 +1,4 @@
-local current_scheme = "tokyonight"
+local current_scheme = "onenord"
 
 local colorschemes = {
   tokyonight = {

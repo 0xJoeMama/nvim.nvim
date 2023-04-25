@@ -42,12 +42,12 @@ require("me.util").setup("nvim-tree") {
   view = {
     adaptive_size = false,
     width = 30,
-    hide_root_folder = true,
     side = "left",
     preserve_window_proportions = true,
     signcolumn = "yes",
   },
   renderer = {
+    root_folder_label = false,
     group_empty = true,
     highlight_git = true,
     highlight_opened_files = "none",

@@ -84,7 +84,14 @@ util.setup("mason") {
 }
 
 util.setup("mason-lspconfig") {
-  ensure_installed = {},
+  ensure_installed = {
+    "clangd",
+    "lua_ls",
+    "rust_analyzer",
+    "jsonls",
+    "bashls",
+    "taplo"
+  },
   automatic_installation = true,
 }
 
@@ -102,7 +109,7 @@ util.safe_run("lspconfig", function(lspconfig)
               globals = { "vim" },
             },
             workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
+              library = vim.api.nvim_get_runtime_file("", false),
             },
             telemetry = {
               enable = false,
@@ -123,7 +130,7 @@ util.safe_run("lspconfig", function(lspconfig)
           "--cross-file-rename",
           "--log=info",
           "--completion-style=detailed",
-          "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+          "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
           "--clang-tidy",
           "--offset-encoding=utf-16", --temporary fix for null-ls
         },
@@ -181,7 +188,9 @@ util.safe_run("lspconfig", function(lspconfig)
     float = {
       border = "rounded",
     },
-    virtual_text = false,
+    severity_sort = true,
+    underline = true,
+    update_in_insert = true,
   }
 end)
 

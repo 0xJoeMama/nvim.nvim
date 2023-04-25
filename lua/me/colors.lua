@@ -1,17 +1,9 @@
-local current_scheme = "onenord"
+local current_scheme = "darkplus"
 
 local colorschemes = {
   tokyonight = {
     config = {
-      style = (function()
-        -- local day_hour = tonumber(os.date("%H"))
-        -- if day_hour > 18 then
-        --   return "night"
-        -- else
-        --   return "storm"
-        -- end
-        return "storm"
-      end)(),
+      style = "night",
       styles = {
         comments = { italic = true },
         keywords = { bold = true },
@@ -24,7 +16,6 @@ local colorschemes = {
       use_background = true,
     },
   },
-
   catppuccin = {
     config = {
       styles = {
@@ -39,7 +30,6 @@ local colorschemes = {
       vim.g.catppuccin_flavour = "macchiato"
     end,
   },
-
   onenord = {
     config = {
       theme = "dark",

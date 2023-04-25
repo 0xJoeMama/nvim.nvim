@@ -13,6 +13,8 @@ lazy.setup({
   "catppuccin/nvim",
   "EdenEast/nightfox.nvim",
   "gruvbox-community/gruvbox",
+  "LunarVim/lunar.nvim",
+  "LunarVim/darkplus.nvim",
   -- LuaCache implementation aka performance optimization
   "lewis6991/impatient.nvim",
   -- Discord Rich Presence

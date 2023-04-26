@@ -18,7 +18,7 @@ require("me.util").safe_run("alpha", function(alpha)
     dashboard.button("p", "  Open Project", "<cmd>Telescope projects<cr>"),
     dashboard.button("b", "  Show Keybinds", "<cmd>WhichKey<cr>"),
     dashboard.button("c", "  Configure Neovim", "<cmd>e " .. vim.fn.stdpath("config") .. "/init.lua<cr>"),
-    dashboard.button("u", "  Update Plugins", "<cmd>PackerSync<cr>"),
+    dashboard.button("u", "  Update Plugins", "<cmd>Lazy update<cr>"),
     dashboard.button("q", "  Quit Neovim", "<cmd>wqa<cr>"),
   }
 

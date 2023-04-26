@@ -21,7 +21,7 @@ util.apply(vim.opt) {
   smartindent = true,
   shiftround = true, -- round to shiftwidth
   -- mouse off for the love of god
-  mouse = "a",
+  mouse = "",
   -- background
   background = "dark",
   -- disable all backup functions except for undo files
@@ -84,7 +84,8 @@ util.apply(vim.opt) {
     formatoptions:remove("r")
     formatoptions:remove("o")
   end,
-  foldmethod = "marker",
+  foldmethod = "marker", -- markers are cool, give them a try with {{{ and 'za'
+  guicursor = "",
 }
 
 util.apply(vim.g) {

@@ -1,6 +1,6 @@
 local ui = {}
 
-ui.create_popup = function(txt, callback)
+ui.create_popup = function(prompt, txt, callback)
   local Menu = require("nui.menu")
 
   local items = {}
@@ -17,7 +17,7 @@ ui.create_popup = function(txt, callback)
     border = {
       style = "rounded",
       text = {
-        top = "[Code Actions]",
+        top = "[" .. prompt .. "]",
         top_align = "left",
       },
     },

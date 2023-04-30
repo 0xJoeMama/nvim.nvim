@@ -43,6 +43,7 @@ local config_main = function()
         "fidget",
         -- "lsp-lines",
         "rust-tools",
+        "crates",
         "copilot",
         "null-ls",
       },

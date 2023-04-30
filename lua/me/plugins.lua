@@ -55,6 +55,12 @@ lazy.setup({
   "b0o/schemastore.nvim",
   -- Rust specific support
   "simrat39/rust-tools.nvim",
+  {
+    "saecki/crates.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
   -- Better builtin terminal implementation
   "akinsho/toggleterm.nvim",
   -- Keybind Window: removed as I don't really use it.
@@ -139,7 +145,6 @@ lazy.setup({
     lazy = true, -- TODO: Make sure this doesn't break anything!
     cond = nil, ---@type boolean|fun(self:LazyPlugin):boolean|nil
   },
-  concurrency = 10, ---@type number limit the maximum amount of concurrent tasks
   dev = {
     path = "~/Development/Lua/nvim-plugins",
   },
@@ -150,13 +155,10 @@ lazy.setup({
   ui = {
     size = { width = 0.6, height = 0.8 },
     border = "rounded",
-    throttle = 20, -- how frequently should the ui process render events
   },
   checker = {
     enabled = false,
-    concurrency = 10, ---@type number? set to 1 to check for updates very slowly
     notify = true, -- get a notification when new updates are found
-    frequency = 3600, -- check for updates every hour
   },
   change_detection = {
     enabled = true,

@@ -10,11 +10,6 @@ require("me.util").setup("copilot") {
       accept = "<M-l>",
       next = "<M-]>",
       prev = "<M-[>",
-      dismiss = "<C-]>",
     },
-  },
-  filetypes = {
-    cpp = false,
-    c = false,
   },
 }

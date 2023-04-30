@@ -206,7 +206,7 @@ M.autocmd = {
 }
 
 M.lsp = {
-  load_lsps = function(lspconfig, cfg, on_attach)
+  load_lsps = function(lspconfig, cfg, glob)
     local function load(lsp, settings)
       local server = lspconfig[lsp]
       if not server then
@@ -224,7 +224,8 @@ M.lsp = {
       end)
 
       settings.capabilities = caps
-      settings.on_attach = on_attach
+      settings.on_attach = glob.on_attach
+      settings.handlers = vim.tbl_deep_extend("force", glob.handlers or {}, settings.handlers or {})
 
       server.setup(settings)
     end

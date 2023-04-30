@@ -5,6 +5,15 @@
 local util = require("me.util")
 local M = {}
 
+M.handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  }),
+}
+
 M.on_attach = function(_, bfn)
   local buf_opts = {
     noremap = true,
@@ -90,7 +99,7 @@ util.setup("mason-lspconfig") {
     "rust_analyzer",
     "jsonls",
     "bashls",
-    "taplo"
+    "taplo",
   },
   automatic_installation = true,
 }
@@ -164,7 +173,10 @@ util.safe_run("lspconfig", function(lspconfig)
     "svelte",
     "tsserver",
     "asm_lsp",
-  }, M.on_attach)
+  }, {
+    on_attach = M.on_attach,
+    handlers = M.handlers,
+  })
 
   for key, sign in pairs {
     Error = {

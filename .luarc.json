@@ -2,14 +2,10 @@
     "workspace.library": [
         "/home/joemama/.config/nvim",
         "/home/joemama/.local/share/nvim/lazy/lazy.nvim",
-        "/home/joemama/.local/share/nvim/lazy/nvim-lspconfig",
-        "/home/joemama/.local/share/nvim/lazy/mason-lspconfig.nvim",
-        "/home/joemama/.local/share/nvim/lazy/mason.nvim",
         "/usr/share/nvim/runtime",
         "/usr/share/nvim/runtime/pack/dist/opt/matchit",
         "/usr/lib/nvim",
-        "/home/joemama/.local/state/nvim/lazy/readme",
-        "${3rd}/luassert/library",
-        "${3rd}/luassert/library"
-    ]
+        "/home/joemama/.local/state/nvim/lazy/readme"
+    ],
+    "workspace.checkThirdParty": false
 }

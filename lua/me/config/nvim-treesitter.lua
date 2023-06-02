@@ -21,10 +21,6 @@ require("me.util").setup("nvim-treesitter.configs") {
     enable = true,
     enable_autocmd = false,
   },
-  playground = {
-    enable = true,
-    updatetime = 50,
-  },
   query_linter = {
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },

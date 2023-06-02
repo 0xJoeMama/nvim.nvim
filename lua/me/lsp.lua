@@ -168,7 +168,6 @@ util.safe_run("lspconfig", function(lspconfig)
     "pyright",
     "html",
     "yamlls",
-    "denols",
     "taplo",
     "svelte",
     "tsserver",

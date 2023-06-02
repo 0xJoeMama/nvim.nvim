@@ -12,11 +12,18 @@ lazy.setup({
   "folke/tokyonight.nvim",
   "catppuccin/nvim",
   "EdenEast/nightfox.nvim",
-  "gruvbox-community/gruvbox",
+  {
+    "gruvbox-community/gruvbox",
+    lazy = false,
+    priority = 1000,
+  },
   "LunarVim/lunar.nvim",
   "LunarVim/darkplus.nvim",
   -- LuaCache implementation aka performance optimization
-  "lewis6991/impatient.nvim",
+  {
+    "lewis6991/impatient.nvim",
+    lazy = false,
+  },
   -- Discord Rich Presence
   "andweeb/presence.nvim",
   -- Telescope for *all* the searching
@@ -29,6 +36,7 @@ lazy.setup({
   -- Treesitter and related
   {
     "p00f/nvim-ts-rainbow",
+    lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -41,6 +49,13 @@ lazy.setup({
   },
   {
     "windwp/nvim-ts-autotag",
+    ft = {
+      "html",
+      "xml",
+      "tsx",
+      "jsx",
+      "svelte",
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -54,9 +69,16 @@ lazy.setup({
   -- JSON SchemaStore for the JSON LSP
   "b0o/schemastore.nvim",
   -- Rust specific support
-  "simrat39/rust-tools.nvim",
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    config = function()
+      require("me.config.rust-tools")
+    end,
+  },
   {
     "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -113,9 +135,9 @@ lazy.setup({
   },
   -- LSP and related
   {
-    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
-      "neovim/nvim-lspconfig",
+      "williamboman/mason-lspconfig.nvim",
       "williamboman/mason.nvim",
     },
   },
@@ -123,7 +145,6 @@ lazy.setup({
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "petertriho/cmp-git",
@@ -132,7 +153,7 @@ lazy.setup({
     },
   },
   "L3MON4D3/LuaSnip",
-  "zbirenbaum/copilot.lua",
+  -- "zbirenbaum/copilot.lua",
   {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = {
@@ -150,10 +171,10 @@ lazy.setup({
   },
   install = {
     missing = true,
-    colorscheme = { "tokyonight" },
+    colorscheme = { "gruvbox" },
   },
   ui = {
-    size = { width = 0.6, height = 0.8 },
+    size = { width = 0.8, height = 0.8 },
     border = "rounded",
   },
   checker = {

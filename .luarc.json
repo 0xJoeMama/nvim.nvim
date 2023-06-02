@@ -1,8 +1,11 @@
 {
-  "Lua.workspace.checkThirdParty": false,
-  "diagnostics": {
-    "globals": [
-      "vim"
-    ]
-  }
+    "workspace.library": [
+        "/home/joemama/.config/nvim",
+        "/home/joemama/.local/share/nvim/lazy/lazy.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/share/nvim/runtime/pack/dist/opt/matchit",
+        "/usr/lib/nvim",
+        "/home/joemama/.local/state/nvim/lazy/readme"
+    ],
+    "workspace.checkThirdParty": false
 }

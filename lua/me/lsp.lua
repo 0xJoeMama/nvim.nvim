@@ -5,6 +5,15 @@
 local util = require("me.util")
 local M = {}
 
+M.handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  }),
+}
+
 M.on_attach = function(_, bfn)
   local buf_opts = {
     noremap = true,
@@ -84,7 +93,14 @@ util.setup("mason") {
 }
 
 util.setup("mason-lspconfig") {
-  ensure_installed = {},
+  ensure_installed = {
+    "clangd",
+    "lua_ls",
+    "rust_analyzer",
+    "jsonls",
+    "bashls",
+    "taplo",
+  },
   automatic_installation = true,
 }
 
@@ -102,7 +118,7 @@ util.safe_run("lspconfig", function(lspconfig)
               globals = { "vim" },
             },
             workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
+              library = vim.api.nvim_get_runtime_file("*", true),
             },
             telemetry = {
               enable = false,
@@ -123,7 +139,7 @@ util.safe_run("lspconfig", function(lspconfig)
           "--cross-file-rename",
           "--log=info",
           "--completion-style=detailed",
-          "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+          "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
           "--clang-tidy",
           "--offset-encoding=utf-16", --temporary fix for null-ls
         },
@@ -152,12 +168,14 @@ util.safe_run("lspconfig", function(lspconfig)
     "pyright",
     "html",
     "yamlls",
-    "denols",
     "taplo",
     "svelte",
     "tsserver",
     "asm_lsp",
-  }, M.on_attach)
+  }, {
+    on_attach = M.on_attach,
+    handlers = M.handlers,
+  })
 
   for key, sign in pairs {
     Error = {
@@ -181,7 +199,9 @@ util.safe_run("lspconfig", function(lspconfig)
     float = {
       border = "rounded",
     },
-    virtual_text = false,
+    severity_sort = true,
+    underline = true,
+    update_in_insert = true,
   }
 end)
 

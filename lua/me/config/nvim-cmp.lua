@@ -60,8 +60,7 @@ util.safe_run("cmp", function(cmp)
         "menu",
       },
       format = function(_, item)
-        item.kind = --[[ item.kind .. " " .. ]]
-          kind_icons[item.kind]
+        item.kind = kind_icons[item.kind]
         return item
       end,
     },
@@ -98,7 +97,7 @@ util.safe_run("cmp", function(cmp)
       { name = "luasnip", priority = 5 },
       { name = "nvim_lsp", entry_filter = snippet_filter },
       { name = "path", trigger_characters = { "/" }, priority = 10 },
-      -- { name = "buffer", keyword_length = 5 },
+      { name = "crates" },
     },
     experimental = {
       ghost_text = true,

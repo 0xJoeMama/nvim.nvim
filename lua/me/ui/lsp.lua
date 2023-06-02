@@ -21,7 +21,7 @@ vim.ui.select = function(items, opts, on_choice)
     txt[item.index] = " 🠞 " .. desc
   end
 
-  require("me.ui").create_popup(txt, function(ctx)
+  require("me.ui").create_popup(opts.prompt or "Choose", txt, function(ctx)
     if not ctx then
       on_choice(nil, nil)
     else
@@ -37,3 +37,4 @@ vim.ui.input = function(opts, on_confirm)
     end
   end)
 end
+

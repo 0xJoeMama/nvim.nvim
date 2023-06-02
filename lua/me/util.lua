@@ -130,6 +130,29 @@ M.keymap = {
   end,
 }
 
+M.lazy = {
+  ensure_lazy = function()
+    local ret = false
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    if not vim.loop.fs_stat(lazypath) then
+      vim.print("Installing lazy.nvim, please wait.")
+      vim.fn.system {
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+      }
+
+      ret = true
+    end
+    vim.opt.rtp:prepend(lazypath)
+
+    return ret, require("lazy")
+  end,
+}
+
 M.packer = {
   ensure_packer = function()
     local bootstrap = false
@@ -183,7 +206,7 @@ M.autocmd = {
 }
 
 M.lsp = {
-  load_lsps = function(lspconfig, cfg, on_attach)
+  load_lsps = function(lspconfig, cfg, glob)
     local function load(lsp, settings)
       local server = lspconfig[lsp]
       if not server then
@@ -201,7 +224,8 @@ M.lsp = {
       end)
 
       settings.capabilities = caps
-      settings.on_attach = on_attach
+      settings.on_attach = glob.on_attach
+      settings.handlers = vim.tbl_deep_extend("force", glob.handlers or {}, settings.handlers or {})
 
       server.setup(settings)
     end

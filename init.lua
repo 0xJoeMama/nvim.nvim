@@ -9,7 +9,7 @@ local config_main = function()
   -- then try to load util since it's needed everywhere
   local ok, util = pcall(require, "me.util")
 
-  -- exit the config early, since the util module *is* needed
+  -- exit the config early, since the util module *is* required for any of this to work
   if not ok then
     return
   end
@@ -41,11 +41,11 @@ local config_main = function()
         "bufferline",
         "illuminate",
         "fidget",
-        "lsp-lines",
-        "lsp-colors",
-        "rust-tools",
-        "copilot",
+        -- "rust-tools",
+        "crates",
         "null-ls",
+        -- "lsp-lines",
+        -- "copilot",
       },
       "lsp",
       "colors",

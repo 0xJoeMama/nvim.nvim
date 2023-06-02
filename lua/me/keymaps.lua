@@ -35,6 +35,12 @@ end
 
 util.keymap.apply_keys {
   n = {
+    ldi = {
+      action = function()
+        vim.diagnostic.goto_next()
+      end,
+      desc = "Jump to the next diagnostic",
+    },
     L = {
       action = function()
         util.safe_run("bufferline", function(bufferline)

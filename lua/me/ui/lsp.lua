@@ -37,4 +37,3 @@ vim.ui.input = function(opts, on_confirm)
     end
   end)
 end
-

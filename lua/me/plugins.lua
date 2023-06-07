@@ -8,39 +8,31 @@ end
 
 lazy.setup({
   -- Colorschemes
-  "rmehri01/onenord.nvim",
-  "folke/tokyonight.nvim",
-  "catppuccin/nvim",
-  "EdenEast/nightfox.nvim",
-  {
-    "gruvbox-community/gruvbox",
-    lazy = false,
-    priority = 1000,
-  },
-  "LunarVim/lunar.nvim",
-  "LunarVim/darkplus.nvim",
+  { "rmehri01/onenord.nvim", lazy = true },
+  { "folke/tokyonight.nvim", lazy = true },
+  { "catppuccin/nvim", lazy = true },
+  { "EdenEast/nightfox.nvim", lazy = true },
+  { "LunarVim/lunar.nvim", lazy = true },
+  { "LunarVim/darkplus.nvim", lazy = true },
+  { "tjdevries/gruvbuddy.nvim", lazy = true },
+  { "ellisonleao/gruvbox.nvim", priority = 100 },
   -- LuaCache implementation aka performance optimization
-  {
-    "lewis6991/impatient.nvim",
-    lazy = false,
-  },
+  "lewis6991/impatient.nvim",
   -- Discord Rich Presence
   "andweeb/presence.nvim",
   -- Telescope for *all* the searching
   {
     "nvim-telescope/telescope.nvim",
+    config = function()
+      require("me.config.telescope")
+    end,
+    cmd = "Telescope",
+    lazy = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
   -- Treesitter and related
-  {
-    "p00f/nvim-ts-rainbow",
-    lazy = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
@@ -48,7 +40,14 @@ lazy.setup({
     end,
   },
   {
+    "mrjones2014/nvim-ts-rainbow",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+  {
     "windwp/nvim-ts-autotag",
+    lazy = true,
     ft = {
       "html",
       "xml",
@@ -62,12 +61,28 @@ lazy.setup({
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
+    ft = {
+      "html",
+      "css",
+      "lua",
+      "xml",
+      "tsx",
+      "jsx",
+      "svelte",
+      "python",
+      "vim",
+    },
+    lazy = true,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
   },
   -- JSON SchemaStore for the JSON LSP
-  "b0o/schemastore.nvim",
+  {
+    "b0o/schemastore.nvim",
+    ft = "json",
+    lazy = true,
+  },
   -- Rust specific support
   {
     "simrat39/rust-tools.nvim",
@@ -75,13 +90,18 @@ lazy.setup({
     config = function()
       require("me.config.rust-tools")
     end,
+    lazy = true,
   },
   {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
+    config = function()
+      require("me.config.crates")
+    end,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    lazy = true,
   },
   -- Better builtin terminal implementation
   "akinsho/toggleterm.nvim",
@@ -97,13 +117,13 @@ lazy.setup({
   -- Git Related things(I personally only care about diff and blame so signs is all a I need)
   "lewis6991/gitsigns.nvim",
   -- Project Management
-  "ahmedkhalf/project.nvim",
-  -- Highlight Selected Symbol(uses/dependencies LSP)
   {
-    "RRethy/vim-illuminate",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
+    "ahmedkhalf/project.nvim",
+    lazy = true,
+    cmd = "Telescope projects",
+    config = function()
+      require("me.config.project")
+    end,
   },
   -- Buffer List at the top of the screen
   -- TODO: Remove this and move to a winbar
@@ -152,19 +172,23 @@ lazy.setup({
       "saadparwaiz1/cmp_luasnip",
     },
   },
-  "L3MON4D3/LuaSnip",
-  -- "zbirenbaum/copilot.lua",
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = true,
+    config = function()
+      require("me.config.luasnip")
+    end,
+  },
   {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
-  "MunifTanjim/nui.nvim",
+  { "MunifTanjim/nui.nvim", lazy = true },
 }, {
   defaults = {
-    lazy = true, -- TODO: Make sure this doesn't break anything!
-    cond = nil, ---@type boolean|fun(self:LazyPlugin):boolean|nil
+    lazy = false,
   },
   dev = {
     path = "~/Development/Lua/nvim-plugins",
@@ -179,10 +203,10 @@ lazy.setup({
   },
   checker = {
     enabled = false,
-    notify = true, -- get a notification when new updates are found
+    notify = true,
   },
   change_detection = {
     enabled = true,
-    notify = true, -- get a notification when changes are found
+    notify = true,
   },
 })

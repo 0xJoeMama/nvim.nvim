@@ -1,4 +1,4 @@
-local current_scheme = "gruvbox"
+local current_scheme = "tokyonight"
 
 local colorschemes = {
   tokyonight = {

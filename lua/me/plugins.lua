@@ -23,11 +23,7 @@ lazy.setup({
   -- Telescope for *all* the searching
   {
     "nvim-telescope/telescope.nvim",
-    config = function()
-      require("me.config.telescope")
-    end,
-    cmd = "Telescope",
-    lazy = true,
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -129,7 +125,14 @@ lazy.setup({
   -- TODO: Remove this and move to a winbar
   "akinsho/bufferline.nvim",
   -- LSP Loading Widget(look at bottom right)
-  "j-hui/fidget.nvim",
+  {
+    "j-hui/fidget.nvim",
+    lazy = true,
+    config = function()
+      require("me.config.fidget")
+    end,
+    event = "LspAttach",
+  },
   -- Better virtual text
   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   -- File Explorer

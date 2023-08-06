@@ -22,6 +22,7 @@ local config_main = function()
       "autocmds",
       "plugins",
       config = {
+        "telescope",
         "nvim-treesitter",
         "toggleterm",
         "which-key",
@@ -36,8 +37,8 @@ local config_main = function()
         "nvim-cmp",
         "presence",
         "bufferline",
-        "fidget",
         "null-ls",
+        "lsp-lines",
       },
       "lsp",
       "colors",

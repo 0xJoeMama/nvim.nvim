@@ -132,9 +132,8 @@ lazy.setup({
       require("me.config.fidget")
     end,
     event = "LspAttach",
+    tag = "legacy",
   },
-  -- Better virtual text
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   -- File Explorer
   {
     "kyazdani42/nvim-tree.lua",

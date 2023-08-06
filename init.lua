@@ -38,7 +38,6 @@ local config_main = function()
         "presence",
         "bufferline",
         "null-ls",
-        "lsp-lines",
       },
       "lsp",
       "colors",

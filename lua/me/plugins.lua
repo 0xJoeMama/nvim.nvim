@@ -190,9 +190,6 @@ lazy.setup({
   defaults = {
     lazy = false,
   },
-  dev = {
-    path = "~/Development/Lua/nvim-plugins",
-  },
   install = {
     missing = true,
     colorscheme = { "gruvbox" },

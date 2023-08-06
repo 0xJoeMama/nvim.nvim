@@ -16,6 +16,9 @@ require("me.util").setup("nvim-treesitter.configs") {
   },
   autotag = {
     enable = true,
+    filetypes = {
+      "rust", "html", "jsx", "tsx"
+    }
   },
   context_commentstring = {
     enable = true,

@@ -84,7 +84,7 @@ util.apply(vim.opt) {
     formatoptions:remove("r")
     formatoptions:remove("o")
   end,
-  foldmethod = "marker", -- markers are cool, give them a try with {{{ and 'za'
+  foldmethod = "marker", -- markers are cool, give them a try with {\{{ and 'za'
   guicursor = "",
 }
 

@@ -101,7 +101,11 @@ util.setup("mason-lspconfig") {
     "bashls",
     "taplo",
   },
-  automatic_installation = true,
+  automatic_installation = {
+    exclude = {
+      "julials",
+    }
+  }
 }
 
 util.safe_run("lspconfig", function(lspconfig)
@@ -139,7 +143,7 @@ util.safe_run("lspconfig", function(lspconfig)
           "--cross-file-rename",
           "--log=info",
           "--completion-style=detailed",
-          "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+          "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
           "--clang-tidy",
           "--offset-encoding=utf-16", --temporary fix for null-ls
         },
@@ -172,6 +176,12 @@ util.safe_run("lspconfig", function(lspconfig)
     "svelte",
     "tsserver",
     "asm_lsp",
+    {
+      "julials",
+      config = {
+        single_file_support = true,
+      },
+    },
   }, {
     on_attach = M.on_attach,
     handlers = M.handlers,

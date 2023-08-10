@@ -80,9 +80,6 @@ M.on_attach = function(server, bfn)
 
   -- automatically refresh codelens when it's available
   if server.server_capabilities.codeLensProvider then
-    vim.notify("Automatically refreshing codelens", vim.log.levels.INFO, {
-      title = "CodeLens capability found!",
-    })
     util.autocmd.cmd {
       events = {
         "BufEnter",

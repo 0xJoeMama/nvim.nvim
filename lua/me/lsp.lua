@@ -14,7 +14,7 @@ M.handlers = {
   }),
 }
 
-M.on_attach = function(_, bfn)
+M.on_attach = function(server, bfn)
   local buf_opts = {
     noremap = true,
     silent = true,
@@ -77,6 +77,27 @@ M.on_attach = function(_, bfn)
       },
     },
   }, buf_opts)
+
+  -- automatically refresh codelens when it's available
+  if server.server_capabilities.codeLensProvider then
+    vim.notify("Automatically refreshing codelens", vim.log.levels.INFO, {
+      title = "CodeLens capability found!",
+    })
+    util.autocmd.cmd {
+      events = {
+        "BufEnter",
+        "CursorHold",
+        "InsertLeave",
+      },
+      opts = {
+        group = util.autocmd.group("CodeLensRefresh"),
+        callback = function()
+          require("vim.lsp.codelens").refresh()
+        end,
+        buffer = bfn,
+      },
+    }
+  end
 end
 
 util.setup("mason") {
@@ -104,8 +125,8 @@ util.setup("mason-lspconfig") {
   automatic_installation = {
     exclude = {
       "julials",
-    }
-  }
+    },
+  },
 }
 
 util.safe_run("lspconfig", function(lspconfig)
@@ -123,6 +144,7 @@ util.safe_run("lspconfig", function(lspconfig)
             },
             workspace = {
               library = vim.api.nvim_get_runtime_file("*", true),
+              checkThirdParty = false,
             },
             telemetry = {
               enable = false,

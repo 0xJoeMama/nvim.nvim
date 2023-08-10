@@ -24,7 +24,6 @@ lazy.setup({
   -- Telescope for *all* the searching
   {
     "nvim-telescope/telescope.nvim",
-    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -46,11 +45,17 @@ lazy.setup({
     "windwp/nvim-ts-autotag",
     lazy = true,
     ft = {
+      "svelte",
       "html",
+      "css",
+      "lua",
       "xml",
       "tsx",
       "jsx",
       "svelte",
+      "python",
+      "vim",
+      "rust",
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -101,7 +106,14 @@ lazy.setup({
     lazy = true,
   },
   -- Better builtin terminal implementation
-  "akinsho/toggleterm.nvim",
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = "ToggleTerm",
+    lazy = true,
+    config = function()
+      require("me.config.toggleterm")
+    end,
+  },
   -- Keybind Window: removed as I don't really use it.
   "folke/which-key.nvim",
   -- Fancy notifications

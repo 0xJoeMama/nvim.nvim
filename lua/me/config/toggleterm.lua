@@ -1,7 +1,7 @@
 require("me.util").setup("toggleterm") {
   open_mapping = "<c-t>",
-  direction = "horizontal",
+  direction = "float",
   float_opts = {
-    border = "double",
+    border = "rounded",
   },
 }

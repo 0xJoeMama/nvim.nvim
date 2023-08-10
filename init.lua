@@ -24,7 +24,6 @@ local config_main = function()
       config = {
         "telescope",
         "nvim-treesitter",
-        "toggleterm",
         "which-key",
         "notify",
         "nvim-tree",

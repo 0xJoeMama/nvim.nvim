@@ -36,7 +36,6 @@ local config_main = function()
         "nvim-cmp",
         "presence",
         "bufferline",
-        "null-ls",
       },
       "lsp",
       "colors",

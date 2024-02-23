@@ -35,7 +35,6 @@ require("me.util").setup("nvim-tree") {
   sync_root_with_cwd = false,
   respect_buf_cwd = true,
   reload_on_bufenter = false,
-  remove_keymaps = true,
   update_focused_file = {
     enable = true,
   },

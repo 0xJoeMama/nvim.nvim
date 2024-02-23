@@ -56,6 +56,7 @@ M.on_attach = function(server, bfn)
           f = {
             action = function()
               vim.lsp.buf.format { async = true }
+              vim.cmd [[FormatWriteLock]]
             end,
             desc = "Format current file",
           },
@@ -111,14 +112,6 @@ util.setup("mason") {
 }
 
 util.setup("mason-lspconfig") {
-  ensure_installed = {
-    "clangd",
-    "lua_ls",
-    "rust_analyzer",
-    "jsonls",
-    "bashls",
-    "taplo",
-  },
   automatic_installation = {
     exclude = {
       "julials",
@@ -170,7 +163,6 @@ util.safe_run("lspconfig", function(lspconfig)
     },
     -- "rust_analyzer", ATTENTION: Always make sure this is disabled if you are using rust-tools.nvim
     "denols",
-    "zls",
     {
       "jsonls",
       config = {

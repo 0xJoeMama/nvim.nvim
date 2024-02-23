@@ -8,13 +8,12 @@ end
 
 lazy.setup({
   -- Colorschemes
-  { "rmehri01/onenord.nvim", lazy = true },
-  { "folke/tokyonight.nvim", lazy = true },
-  { "catppuccin/nvim", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "LunarVim/lunar.nvim", lazy = true },
-  { "LunarVim/darkplus.nvim", lazy = true },
-  { "LunarVim/onedarker.nvim", lazy = true },
+  { "rmehri01/onenord.nvim",    lazy = true },
+  { "folke/tokyonight.nvim",    lazy = true },
+  { "EdenEast/nightfox.nvim",   lazy = true },
+  { "LunarVim/lunar.nvim",      lazy = true },
+  { "LunarVim/darkplus.nvim",   lazy = true },
+  { "LunarVim/onedarker.nvim",  lazy = true },
   { "tjdevries/gruvbuddy.nvim", lazy = true },
   { "ellisonleao/gruvbox.nvim", priority = 100 },
   -- LuaCache implementation aka performance optimization
@@ -197,10 +196,17 @@ lazy.setup({
   -- TODO: Remove this since null-ls is being archived
   -- Instead move to: nvim-list and formatter.nvim
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    "mhartington/formatter.nvim",
+    lazy = true,
+    config = function()
+      require("me.config.formatter")
+    end,
+    cmd = {
+      "Format",
+      "FormatWriteLock",
+      "FormatLock",
+      "FormatWrite"
+    }
   },
   { "MunifTanjim/nui.nvim", lazy = true },
 }, {

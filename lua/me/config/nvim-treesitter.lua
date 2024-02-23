@@ -20,10 +20,6 @@ require("me.util").setup("nvim-treesitter.configs") {
       "rust", "html", "jsx", "tsx"
     }
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
   query_linter = {
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },

@@ -56,7 +56,7 @@ M.on_attach = function(server, bfn)
           f = {
             action = function()
               vim.lsp.buf.format { async = true }
-              vim.cmd [[FormatWriteLock]]
+              vim.cmd([[FormatWriteLock]])
             end,
             desc = "Format current file",
           },
@@ -155,7 +155,7 @@ util.safe_run("lspconfig", function(lspconfig)
           "--cross-file-rename",
           "--log=info",
           "--completion-style=detailed",
-          "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
+          "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
           "--clang-tidy",
           "--offset-encoding=utf-16", --temporary fix for null-ls
         },

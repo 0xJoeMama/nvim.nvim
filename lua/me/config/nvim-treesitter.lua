@@ -17,8 +17,11 @@ require("me.util").setup("nvim-treesitter.configs") {
   autotag = {
     enable = true,
     filetypes = {
-      "rust", "html", "jsx", "tsx"
-    }
+      "rust",
+      "html",
+      "jsx",
+      "tsx",
+    },
   },
   query_linter = {
     use_virtual_text = true,

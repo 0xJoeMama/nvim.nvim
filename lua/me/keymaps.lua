@@ -161,6 +161,10 @@ util.keymap.apply_keys {
       action = "<cmd>move . -2<cr>==",
       desc = "Move current line up",
     },
+    lm = {
+      action = "<cmd>Man 2 <cword><cr>",
+      desc = "Open man page for currently highlighted symbol",
+    },
   },
   i = {
     jk = exit_ins(),

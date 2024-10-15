@@ -185,14 +185,17 @@ util.safe_run("lspconfig", function(lspconfig)
     "yamlls",
     "taplo",
     "svelte",
-    "tsserver",
+    "ts_ls",
     "asm_lsp",
+    "gradle_ls",
+    "kotlin_language_server",
     {
       "julials",
       config = {
         single_file_support = true,
       },
     },
+    "jdtls",
   }, {
     on_attach = M.on_attach,
     handlers = M.handlers,

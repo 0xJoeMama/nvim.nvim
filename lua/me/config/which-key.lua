@@ -1,10 +1,10 @@
 require("me.util").setup("which-key") {
-  key_labels = {
+  replace = {
     ["<space>"] = "Space",
     ["<cr>"] = "Enter",
     ["<tab>"] = "Tab",
   },
-  window = {
+  win = {
     border = "rounded",
   },
 }

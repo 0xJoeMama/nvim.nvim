@@ -196,6 +196,7 @@ util.safe_run("lspconfig", function(lspconfig)
       },
     },
     "jdtls",
+    "vhdl_ls"
   }, {
     on_attach = M.on_attach,
     handlers = M.handlers,

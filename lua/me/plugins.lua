@@ -8,12 +8,12 @@ end
 
 lazy.setup({
   -- Colorschemes
-  { "rmehri01/onenord.nvim",    lazy = true },
-  { "folke/tokyonight.nvim",    lazy = true },
-  { "EdenEast/nightfox.nvim",   lazy = true },
-  { "LunarVim/lunar.nvim",      lazy = true },
-  { "LunarVim/darkplus.nvim",   lazy = true },
-  { "LunarVim/onedarker.nvim",  lazy = true },
+  { "rmehri01/onenord.nvim", lazy = true },
+  { "folke/tokyonight.nvim", lazy = true },
+  { "EdenEast/nightfox.nvim", lazy = true },
+  { "LunarVim/lunar.nvim", lazy = true },
+  { "LunarVim/darkplus.nvim", lazy = true },
+  { "LunarVim/onedarker.nvim", lazy = true },
   { "tjdevries/gruvbuddy.nvim", lazy = true },
   { "ellisonleao/gruvbox.nvim", priority = 100 },
   -- The latest version of Neovim actually supports it out of the box using vim.loader.enable()

@@ -1,9 +1,12 @@
--- firstly attempt to load impatient
-local impatient_ok, impatient = pcall(require, "impatient")
+-- firstly enable luacache loader
+vim.loader.enable()
 
-if impatient_ok then
-  impatient.enable_profile()
-end
+-- Removed since the newest versions of neovim actually can do this out-of-the-box using the command above
+-- local impatient_ok, impatient = pcall(require, "impatient")
+--
+-- if impatient_ok then
+--   impatient.enable_profile()
+-- end
 
 local config_main = function()
   -- then try to load util since it's needed everywhere

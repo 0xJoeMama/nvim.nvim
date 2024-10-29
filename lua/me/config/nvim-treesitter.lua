@@ -14,17 +14,17 @@ require("me.util").setup("nvim-treesitter.configs") {
     extended_mode = true,
     max_lines = nil,
   },
-  autotag = {
-    enable = true,
-    filetypes = {
-      "rust",
-      "html",
-      "jsx",
-      "tsx",
-    },
-  },
   query_linter = {
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },
   },
+}
+
+require("me.util").setup("nvim-ts-autotag") {
+  opts = {
+    enable_close = true,
+    enable_rename = true,
+    enable_close_on_slash = false
+  },
+  per_filetype = {}
 }

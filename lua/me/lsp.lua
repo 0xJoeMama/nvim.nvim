@@ -197,6 +197,8 @@ util.safe_run("lspconfig", function(lspconfig)
     },
     "jdtls",
     "vhdl_ls",
+    "texlab",
+    "zls"
   }, {
     on_attach = M.on_attach,
     handlers = M.handlers,

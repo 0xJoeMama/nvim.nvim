@@ -88,6 +88,14 @@ util.apply(vim.opt) {
   guicursor = "",
 }
 
+vim.filetype.add({
+  extension = {
+    c3 = "c3",
+    c3i = "c3",
+    c3t = "c3",
+  },
+})
+
 util.apply(vim.g) {
   mapleader = " ",
   maplocalleader = " ",

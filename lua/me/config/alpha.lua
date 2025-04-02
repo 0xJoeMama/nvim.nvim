@@ -15,7 +15,6 @@ require("me.util").safe_run("alpha", function(alpha)
     dashboard.button("e", "  New File", "<cmd>ene <BAR> startinsert <cr>"),
     dashboard.button("f", "  Find File", "<cmd>Telescope find_files<cr>"),
     dashboard.button("g", "  Live Grep", "<cmd>Telescope live_grep<cr>"),
-    dashboard.button("p", "  Open Project", "<cmd>Telescope projects<cr>"),
     dashboard.button("b", "  Show Keybinds", "<cmd>WhichKey<cr>"),
     dashboard.button("c", "  Configure Neovim", "<cmd>e " .. vim.fn.stdpath("config") .. "/init.lua<cr>"),
     dashboard.button("u", "  Update Plugins", "<cmd>Lazy update<cr>"),

@@ -19,5 +19,4 @@ require("me.util").safe_run("telescope", function(telescope)
   }
 
   telescope.load_extension("notify")
-  telescope.load_extension("projects")
 end)

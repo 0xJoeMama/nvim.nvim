@@ -5,15 +5,6 @@
 local util = require("me.util")
 local M = {}
 
-M.handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  }),
-}
-
 M.on_attach = function(server, bfn)
   local buf_opts = {
     noremap = true,
@@ -24,7 +15,11 @@ M.on_attach = function(server, bfn)
   util.keymap.apply_keys({
     n = {
       K = {
-        action = vim.lsp.buf.hover,
+        action = function () 
+          vim.lsp.buf.hover {
+            border = "rounded",
+          }
+        end,
         desc = "Hover information",
       },
       ["<leader>"] = {
@@ -155,7 +150,7 @@ util.safe_run("lspconfig", function(lspconfig)
           "--cross-file-rename",
           "--log=info",
           "--completion-style=detailed",
-          "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+          "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
           "--clang-tidy",
           "--offset-encoding=utf-16", --temporary fix for null-ls
         },
@@ -198,37 +193,30 @@ util.safe_run("lspconfig", function(lspconfig)
     "jdtls",
     "vhdl_ls",
     "texlab",
-    "zls"
+    "zls",
+    {
+      "svls",
+      config = {
+        root_dir = function(startpath)
+          return vim.fs.dirname(vim.fs.find('.git', { path = startpath, upward = true })[1])
+        end,
+      }
+    }
   }, {
     on_attach = M.on_attach,
-    handlers = M.handlers,
   })
 
-  for key, sign in pairs {
-    Error = {
-      text = "",
-    },
-    Warn = {
-      text = "",
-    },
-    Hint = {
-      text = "",
-    },
-    Info = {
-      text = "",
-    },
-  } do
-    sign.texthl = "Diagnostic" .. key
-    vim.fn.sign_define("DiagnosticSign" .. key, sign)
-  end
-
   vim.diagnostic.config {
-    float = {
-      border = "rounded",
+    float = { border = "rounded" },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = "",
+        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.INFO] = "",
+      },
     },
-    severity_sort = true,
     underline = true,
-    update_in_insert = true,
   }
 end)
 

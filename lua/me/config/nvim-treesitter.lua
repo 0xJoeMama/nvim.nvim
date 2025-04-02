@@ -1,3 +1,14 @@
+require("me.util").safe_run("nvim-treesitter.parsers", function(parsers)
+  local parser_configs = parsers.get_parser_configs()
+  parser_configs.c3 = {
+    install_info = {
+      url = "https://github.com/c3lang/tree-sitter-c3",
+      files = { "src/parser.c", "src/scanner.c" },
+      branch = "main",
+    },
+  }
+end)
+
 require("me.util").setup("nvim-treesitter.configs") {
   ensure_installed = {
     "c",

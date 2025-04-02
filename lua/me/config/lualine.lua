@@ -38,7 +38,7 @@ require("me.util").setup("lualine") {
       },
       {
         function()
-          local active_clients = vim.lsp.buf_get_clients(0)
+          local active_clients = vim.lsp.get_clients { bufnr = 0 }
 
           local final_string = ""
           for _, client in pairs(active_clients) do

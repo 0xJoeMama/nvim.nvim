@@ -37,7 +37,7 @@ lazy.setup({
     end,
   },
   {
-    "mrjones2014/nvim-ts-rainbow",
+    "hiphish/rainbow-delimiters.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -126,15 +126,6 @@ lazy.setup({
   "numToStr/Comment.nvim",
   -- Git Related things(I personally only care about diff and blame so signs is all a I need)
   "lewis6991/gitsigns.nvim",
-  -- Project Management
-  {
-    "ahmedkhalf/project.nvim",
-    lazy = true,
-    cmd = "Telescope projects",
-    config = function()
-      require("me.config.project")
-    end,
-  },
   -- Buffer List at the top of the screen
   -- TODO: Remove this and move to a winbar
   "akinsho/bufferline.nvim",

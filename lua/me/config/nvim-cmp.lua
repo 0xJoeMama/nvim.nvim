@@ -37,7 +37,7 @@ util.safe_run("cmp", function(cmp)
   cmp.setup {
     snippet = {
       expand = function(args)
-        require("luasnip").lsp_expand(args.body)
+        vim.snippet.expand(args.body)
       end,
     },
     window = {
@@ -70,23 +70,19 @@ util.safe_run("cmp", function(cmp)
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-k>"] = cmp.mapping.abort(),
       ["<Tab>"] = cmp.mapping(function(fallback)
-        local luasnip = require("luasnip")
-
         if cmp.visible() then
           cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
+        elseif vim.snippet.active({direction = 1}) then
+          vim.snippet.jump(1)
         else
           fallback()
         end
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
-        local luasnip = require("luasnip")
-
         if cmp.visible() then
           cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        elseif vim.snippet.active({direction = -1}) then
+          vim.snippet.jump(-1)
         else
           fallback()
         end
@@ -94,7 +90,7 @@ util.safe_run("cmp", function(cmp)
       ["<CR>"] = cmp.mapping.confirm { select = true },
     },
     sources = cmp.config.sources {
-      { name = "luasnip", priority = 5 },
+      -- TODO: no snippet support anymore
       { name = "nvim_lsp", entry_filter = snippet_filter },
       { name = "path", trigger_characters = { "/" }, priority = 10 },
       { name = "crates" },

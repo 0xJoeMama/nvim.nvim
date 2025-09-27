@@ -15,7 +15,7 @@ M.on_attach = function(server, bfn)
   util.keymap.apply_keys({
     n = {
       K = {
-        action = function () 
+        action = function()
           vim.lsp.buf.hover {
             border = "rounded",
           }
@@ -51,7 +51,6 @@ M.on_attach = function(server, bfn)
           f = {
             action = function()
               vim.lsp.buf.format { async = true }
-              vim.cmd([[FormatWriteLock]])
             end,
             desc = "Format current file",
           },
@@ -114,110 +113,80 @@ util.setup("mason-lspconfig") {
   },
 }
 
-util.safe_run("lspconfig", function(lspconfig)
-  util.lsp.load_lsps(lspconfig, {
-    {
-      "lua_ls",
-      config = {
-        settings = {
-          Lua = {
-            runtime = {
-              version = "LuaJIT",
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("*", true),
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false,
-            },
+util.lsp.load_lsps({
+  {
+    "lua_ls",
+    config = {
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("*", true),
+            checkThirdParty = false,
+          },
+          telemetry = {
+            enable = false,
           },
         },
       },
     },
-    {
-      "clangd",
-      config = {
-        cmd = {
-          "clangd",
-          "--all-scopes-completion",
-          "--suggest-missing-includes",
-          "--background-index",
-          "--pch-storage=disk",
-          "--cross-file-rename",
-          "--log=info",
-          "--completion-style=detailed",
-          "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
-          "--clang-tidy",
-          "--offset-encoding=utf-16", --temporary fix for null-ls
-        },
-      },
-    },
-    -- "rust_analyzer", ATTENTION: Always make sure this is disabled if you are using rust-tools.nvim
-    "denols",
-    {
-      "jsonls",
-      config = {
-        settings = {
-          json = {
-            schemas = require("me.util").safe_run("schemastore", function(schemas)
-              return schemas.json.schemas()
-            end),
-            validate = {
-              enable = true,
-            },
-          },
-        },
-      },
-    },
-    "bashls",
-    "cssls",
-    "pyright",
-    "html",
-    "yamlls",
-    "taplo",
-    "svelte",
-    "ts_ls",
-    "asm_lsp",
-    "gradle_ls",
-    "kotlin_language_server",
-    {
-      "julials",
-      config = {
-        single_file_support = true,
-      },
-    },
-    "jdtls",
-    "vhdl_ls",
-    "texlab",
-    "zls",
-    {
-      "svls",
-      config = {
-        root_dir = function(startpath)
-          return vim.fs.dirname(vim.fs.find('.git', { path = startpath, upward = true })[1])
-        end,
-      }
+  },
+  {
+    "clangd",
+    config = {
+      root_markers = { "compile_commands.json", ".clangd" }
     }
-  }, {
-    on_attach = M.on_attach,
-  })
-
-  vim.diagnostic.config {
-    float = { border = "rounded" },
-    signs = {
-      text = {
-        [vim.diagnostic.severity.ERROR] = "",
-        [vim.diagnostic.severity.HINT] = "",
-        [vim.diagnostic.severity.WARN] = "",
-        [vim.diagnostic.severity.INFO] = "",
+  },
+  -- "rust_analyzer", ATTENTION: Always make sure this is disabled if you are using rust-tools.nvim
+  "denols",
+  {
+    "jsonls",
+    config = {
+      settings = {
+        json = {
+          schemas = require("me.util").safe_run("schemastore", function(schemas)
+            return schemas.json.schemas()
+          end),
+          validate = {
+            enable = true,
+          },
+        },
       },
     },
-    underline = true,
-  }
-end)
+  },
+  "bashls",
+  "cssls",
+  "pyright",
+  "html",
+  "yamlls",
+  "taplo",
+  "svelte",
+  "ts_ls",
+  "asm_lsp",
+  "gradle_ls",
+  "kotlin_language_server",
+  "vhdl_ls",
+  "texlab"
+}, {
+  on_attach = M.on_attach,
+})
+
+vim.diagnostic.config {
+  float = { border = "rounded" },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+  underline = true,
+}
 
 return M

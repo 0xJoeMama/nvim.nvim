@@ -134,7 +134,7 @@ M.lazy = {
   ensure_lazy = function()
     local ret = false
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-    if not vim.loop.fs_stat(lazypath) then
+    if not vim.uv.fs_stat(lazypath) then
       vim.print("Installing lazy.nvim, please wait.")
       vim.fn.system {
         "git",
@@ -206,14 +206,8 @@ M.autocmd = {
 }
 
 M.lsp = {
-  load_lsps = function(lspconfig, cfg, glob)
+  load_lsps = function(cfg, glob)
     local function load(lsp, settings)
-      local server = lspconfig[lsp]
-      if not server then
-        vim.notify("Could not find " .. lsp, vim.log.levels.WARN, {
-          title = "LSP not found!",
-        })
-      end
       settings = settings or {}
 
       local caps = vim.lsp.protocol.make_client_capabilities()
@@ -227,7 +221,7 @@ M.lsp = {
       settings.on_attach = glob.on_attach
       settings.handlers = vim.tbl_deep_extend("force", glob.handlers or {}, settings.handlers or {})
 
-      server.setup(settings)
+      vim.lsp.config(lsp, settings)
     end
 
     for _, lsp in ipairs(cfg) do

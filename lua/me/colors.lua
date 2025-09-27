@@ -74,7 +74,7 @@ if ok then
   scheme.setup(scheme_config.config or {})
 end
 
-vim.api.nvim_exec("colorscheme " .. current_scheme, false)
+vim.api.nvim_exec2("colorscheme " .. current_scheme, {})
 vim.g.colors_name = current_scheme
 
 local extra = scheme_config.highlight_extras

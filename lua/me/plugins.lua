@@ -8,15 +8,14 @@ end
 
 lazy.setup({
   -- Colorschemes
-  { "Rigellute/shades-of-purple.vim", lazy = true },
-  { "rmehri01/onenord.nvim",          lazy = true },
-  { "folke/tokyonight.nvim",          lazy = true },
-  { "EdenEast/nightfox.nvim",         lazy = true },
-  { "LunarVim/lunar.nvim",            lazy = true },
-  { "LunarVim/darkplus.nvim",         lazy = true },
-  { "LunarVim/onedarker.nvim",        lazy = true },
-  { "tjdevries/gruvbuddy.nvim",       lazy = true },
-  { "ellisonleao/gruvbox.nvim",       priority = 100 },
+  { "rmehri01/onenord.nvim",    lazy = true },
+  { "folke/tokyonight.nvim",    lazy = true },
+  { "EdenEast/nightfox.nvim",   lazy = true },
+  { "LunarVim/lunar.nvim",      lazy = true },
+  { "LunarVim/darkplus.nvim",   lazy = true },
+  { "LunarVim/onedarker.nvim",  lazy = true },
+  { "tjdevries/gruvbuddy.nvim", lazy = true },
+  { "ellisonleao/gruvbox.nvim", priority = 100 },
   -- The latest version of Neovim actually supports it out of the box using vim.loader.enable()
   -- LuaCache implementation aka performance optimization
   -- "lewis6991/impatient.nvim",
@@ -126,9 +125,6 @@ lazy.setup({
   "numToStr/Comment.nvim",
   -- Git Related things(I personally only care about diff and blame so signs is all a I need)
   "lewis6991/gitsigns.nvim",
-  -- Buffer List at the top of the screen
-  -- TODO: Remove this and move to a winbar
-  "akinsho/bufferline.nvim",
   -- LSP Loading Widget(look at bottom right)
   {
     "j-hui/fidget.nvim",
@@ -137,7 +133,7 @@ lazy.setup({
       require("me.config.fidget")
     end,
     event = "LspAttach",
-    tag = "legacy",
+    tag = "v1.6.1",
   },
   -- File Explorer
   {
@@ -176,15 +172,7 @@ lazy.setup({
       "hrsh7th/cmp-path",
       "petertriho/cmp-git",
       "hrsh7th/cmp-cmdline",
-      "saadparwaiz1/cmp_luasnip",
     },
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    lazy = true,
-    config = function()
-      require("me.config.luasnip")
-    end,
   },
   {
     "mhartington/formatter.nvim",

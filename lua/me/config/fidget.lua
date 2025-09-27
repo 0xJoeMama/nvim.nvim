@@ -1,5 +1,7 @@
 require("me.util").setup("fidget") {
-  text = {
-    spinner = "dots",
-  },
+  progress = {
+    display = {
+      progress_icon = { "dots" },
+    },
+  }
 }

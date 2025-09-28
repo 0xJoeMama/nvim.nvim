@@ -174,6 +174,9 @@ lazy.setup({
       "hrsh7th/cmp-cmdline",
     },
   },
+  -- Cool UI stuff
+  { "MunifTanjim/nui.nvim", lazy = true },
+  -- code formatting and linting
   {
     "mhartington/formatter.nvim",
     lazy = true,

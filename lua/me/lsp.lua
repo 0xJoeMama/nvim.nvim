@@ -73,6 +73,8 @@ M.on_attach = function(server, bfn)
     },
   }, buf_opts)
 
+  vim.lsp.inlay_hint.enable(true, {bufnr = bfn})
+
   -- automatically refresh codelens when it's available
   if server.server_capabilities.codeLensProvider then
     util.autocmd.cmd {
@@ -106,11 +108,7 @@ util.setup("mason") {
 }
 
 util.setup("mason-lspconfig") {
-  automatic_installation = {
-    exclude = {
-      "julials",
-    },
-  },
+  automatic_installation = false
 }
 
 util.lsp.load_lsps({
@@ -142,7 +140,6 @@ util.lsp.load_lsps({
       root_markers = { "compile_commands.json", ".clangd" }
     }
   },
-  -- "rust_analyzer", ATTENTION: Always make sure this is disabled if you are using rust-tools.nvim
   "denols",
   {
     "jsonls",

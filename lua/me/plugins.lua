@@ -87,12 +87,16 @@ lazy.setup({
   },
   -- Rust specific support
   {
-    "simrat39/rust-tools.nvim",
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
     ft = "rust",
     config = function()
-      require("me.config.rust-tools")
+      vim.g.rustaceanvim = {
+        server = {
+          on_attach = require("me.lsp").on_attach,
+        }
+      }
     end,
-    lazy = true,
   },
   {
     "saecki/crates.nvim",

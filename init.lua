@@ -30,7 +30,7 @@ local config_main = function()
         "gitsigns",
         "comment",
         "alpha",
-        "nvim-cmp",
+        "blink",
         "presence"
       },
       "lsp",

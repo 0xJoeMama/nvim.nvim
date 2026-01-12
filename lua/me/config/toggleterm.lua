@@ -4,4 +4,5 @@ require("me.util").setup("toggleterm") {
   float_opts = {
     border = "rounded",
   },
+  size = 25,
 }

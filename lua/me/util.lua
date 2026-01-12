@@ -211,10 +211,8 @@ M.lsp = {
       settings = settings or {}
 
       local caps = vim.lsp.protocol.make_client_capabilities()
-      M.safe_run("cmp_nvim_lsp", function(cmp)
-        caps = cmp.default_capabilities {
-          snippetSupport = false,
-        }
+      M.safe_run("blink.cmp", function(cmp)
+        caps = cmp.get_lsp_capabilities()
       end)
 
       settings.capabilities = caps

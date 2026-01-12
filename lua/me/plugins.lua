@@ -168,15 +168,12 @@ lazy.setup({
       "williamboman/mason.nvim",
     },
   },
-  -- Autocomplete
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "petertriho/cmp-git",
-      "hrsh7th/cmp-cmdline",
-    },
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
   },
   -- Cool UI stuff
   { "MunifTanjim/nui.nvim", lazy = true },

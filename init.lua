@@ -113,6 +113,7 @@ vim.pack.add {
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
   "https://github.com/stevearc/oil.nvim",
+  "https://github.com/lewis6991/gitsigns.nvim",
 }
 
 vim.cmd.colorscheme("gruvbox")
@@ -226,6 +227,7 @@ require("lualine").setup {
 }
 
 require("oil").setup()
+require("gitsigns").setup()
 
 vim.keymap.set({ "t" }, "<Esc>", "<C-\\><C-n>", { remap = true })
 vim.keymap.set({ "n" }, "<C-T>", "<cmd>terminal bash -i<enter>I", { remap = true })

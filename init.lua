@@ -119,7 +119,8 @@ vim.pack.add {
 vim.cmd.colorscheme("gruvbox")
 
 local ts_lingas = {
-  "c", "lua", "cpp", "rust"
+  "c", "lua", "cpp", "rust",
+  "python", "sql",
 }
 
 require("nvim-treesitter").install(ts_lingas)

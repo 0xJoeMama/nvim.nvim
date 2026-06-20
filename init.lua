@@ -38,11 +38,11 @@ util.apply(vim.opt) {
   -- colours
   termguicolors = true,
   -- search options
-  hlsearch = false, -- disables highlight
+  hlsearch = false,  -- disables highlight
   ignorecase = true, -- together with smartcase makes searches ignore casing except when a capital is present
-  smartcase = true, -- ^^
-  incsearch = true, -- show search results *while* the pattern is being typed out
-  cmdheight = 1, -- make the command bar smoll
+  smartcase = true,  -- ^^
+  incsearch = true,  -- show search results *while* the pattern is being typed out
+  cmdheight = 1,     -- make the command bar smoll
   conceallevel = 0,
   pumheight = 10,
   -- disable the current mode indicator, as the statusline handles that for us
@@ -109,6 +109,7 @@ vim.pack.add {
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/neovim-treesitter/nvim-treesitter",
+  "https://github.com/neovim-treesitter/treesitter-parser-registry",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
@@ -128,7 +129,7 @@ require("nvim-treesitter").install(ts_lingas)
 vim.api.nvim_create_autocmd('FileType', {
   pattern = ts_lingas,
   callback = function()
-    vim.treesitter.start()                                    -- highlighting
+    vim.treesitter.start() -- highlighting
     -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'     -- folds
     -- vim.wo.foldmethod = 'expr'
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- indentation

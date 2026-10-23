@@ -108,13 +108,13 @@ vim.pack.add {
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-lualine/lualine.nvim",
-  "https://github.com/neovim-treesitter/nvim-treesitter",
   "https://github.com/neovim-treesitter/treesitter-parser-registry",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
 }
 
 vim.cmd.colorscheme("gruvbox")
